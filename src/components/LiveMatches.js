@@ -699,7 +699,7 @@ const LiveMatches = ({ navigation }) => {
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("Graphs", {
-            params: "random params here",
+            fixtureID: el.fixture.id,
           })
         }
       >

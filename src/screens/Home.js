@@ -6,6 +6,14 @@ import NextMatches from "../components/NextMatches";
 const Home = ({ navigation }) => {
   return (
     <View>
+      <Button
+        title="button"
+        onPress={() =>
+          navigation.navigate("Graphs", {
+            params: "random params here",
+          })
+        }
+      />
       <Text>Home page</Text>
       <LiveMatches navigation={navigation} style={styles.LiveMatchesStyle} />
       <NextMatches navigation={navigation} />
