@@ -1,16 +1,15 @@
-import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from './src/screens/Home';
-import Explore from './src/screens/Explore';
-import Graphs from './src/screens/Graphs';
-import Settings from './src/screens/Settings';
-
+import * as React from "react";
+import { Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "./src/screens/Home";
+import Explore from "./src/screens/Explore";
+import Graphs from "./src/screens/Graphs";
+import Settings from "./src/screens/Settings";
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+export default function App({ navigation, route }) {
   return (
     <NavigationContainer>
       <Tab.Navigator>

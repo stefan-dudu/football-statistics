@@ -1,18 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import LiveMatches from "../components/LiveMatches";
 import NextMatches from "../components/NextMatches";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View>
       <Text>Home page</Text>
-      <LiveMatches />
-      <NextMatches />
+      <LiveMatches navigation={navigation} style={styles.LiveMatchesStyle} />
+      <NextMatches navigation={navigation} />
     </View>
   );
 };
 
 export default Home;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  LiveMatchesStyle: {
+    backgroundColor: "green",
+  },
+});
