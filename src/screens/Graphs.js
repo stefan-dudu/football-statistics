@@ -1,20 +1,25 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { useNavigation, useIsFocused } from "@react-navigation/native";
 
 const Graphs = (params, { navigation }) => {
-  // console.log("params", params.route.params.fixtureID);
+  // // console.log("params", params.route.params.fixtureID);
 
-  const fixtureID = params.route.params.fixtureID;
+  // // const fixtureID = params?.route?.params?.fixtureID;
 
-  // console.log("params", params);
-  // console.log("navigation.getState();", navigation());
+  // console.log("params", params.navigation.getState());
+  // // console.log("navigation.getState();", navigation());
+
+  // const navigationNative = useNavigation();
+  // console.log("currentScreen", navigationNative);
+  // const isFocused = useIsFocused();
+  // console.log("isFocused", isFocused);
 
   return (
     <View>
-      <Text>Graphs</Text>
-      <Text>Fixture id: {fixtureID}</Text>
-      <Text>Score</Text>
-      <Text>Spurs 2 : 1 Man City</Text>
+      <View>
+        <Text>Clasament</Text>
+      </View>
     </View>
   );
 };

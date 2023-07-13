@@ -698,8 +698,9 @@ const NextMatches = ({ navigation }) => {
     return (
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("Graphs", {
-            params: "random params here",
+          navigation.navigate("Details", {
+            fixtureID: el.fixture.id,
+            typeOfMatch: "to be played",
           })
         }
       >

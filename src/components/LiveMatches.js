@@ -4,6 +4,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Modal,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import apiSports from "../api/api-sports";
@@ -698,8 +699,9 @@ const LiveMatches = ({ navigation }) => {
     return (
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("Graphs", {
+          navigation.navigate("Details", {
             fixtureID: el.fixture.id,
+            typeOfMatch: "live",
           })
         }
       >

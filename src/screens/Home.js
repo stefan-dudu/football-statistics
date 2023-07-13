@@ -10,7 +10,7 @@ const Home = ({ navigation }) => {
         title="button"
         onPress={() =>
           navigation.navigate("Graphs", {
-            params: "random params here",
+            params: "home params",
           })
         }
       />
