@@ -5,8 +5,7 @@ import NextMatches from "../components/NextMatches";
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View style={styles.containerWrapper}>
       <TouchableOpacity onPress={() => navigation.navigate("Details")}>
         <LiveMatches navigation={navigation} />
         <NextMatches navigation={navigation} />
@@ -17,4 +16,8 @@ const HomeScreen = ({ navigation }) => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  containerWrapper: {
+    marginTop: 10,
+  },
+});

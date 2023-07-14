@@ -14,7 +14,7 @@ const Explore = () => {
         },
       });
       // console.log("response", response.data.response[0].league.standings[2]);
-      console.log("data is fetched");
+      // console.log("data is fetched");
       setData(response.data.response[0].league.standings[2]);
     } catch (err) {
       console.log("error : ", err);

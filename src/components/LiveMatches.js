@@ -700,7 +700,7 @@ const LiveMatches = ({ navigation }) => {
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("Details", {
-            fixtureID: el.fixture.id,
+            fixtureData: el,
             typeOfMatch: "live",
           })
         }
