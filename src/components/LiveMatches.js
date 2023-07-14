@@ -713,7 +713,7 @@ const LiveMatches = ({ navigation }) => {
 
   return (
     <View style={styles.containerStyle}>
-      <Text>Live matches</Text>
+      <Text style={styles.textHeader}>Live matches</Text>
       <ScrollView horizontal>{matchData}</ScrollView>
     </View>
   );
@@ -727,12 +727,9 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
 
-  scrollView: {
-    flexDirection: "row",
-  },
-
   textHeader: {
     fontSize: 25,
-    color: "white",
+    color: "rgb(86,86,86)",
+    fontWeight: 600,
   },
 });

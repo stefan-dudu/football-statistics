@@ -2,6 +2,7 @@ import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import LiveMatches from "../components/LiveMatches";
 import NextMatches from "../components/NextMatches";
+import { backgroundGray } from "../utils/files";
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -19,5 +20,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   containerWrapper: {
     marginTop: 10,
+    backgroundColor: backgroundGray,
   },
 });
