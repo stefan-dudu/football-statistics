@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { purple, lightPurple, pink } from "../utils/files";
+import { COLORS } from "../utils/colors";
 
 const BigScoreCard = ({ data }) => {
   //   console.log(data.teams.away.logo);
@@ -51,7 +51,7 @@ export default BigScoreCard;
 const styles = StyleSheet.create({
   wrapper: {
     margin: 5,
-    backgroundColor: purple,
+    backgroundColor: COLORS.purple,
     text: "white",
     width: 330,
     height: 300,
@@ -157,11 +157,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
     marginTop: 30,
-    backgroundColor: lightPurple,
+    backgroundColor: COLORS.lightPurple,
     paddingVertical: 5,
     paddingHorizontal: 15,
     borderRadius: 17,
-    borderColor: pink,
+    borderColor: COLORS.pink,
     borderWidth: 1.5,
   },
 });

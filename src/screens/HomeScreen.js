@@ -2,7 +2,7 @@ import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import LiveMatches from "../components/LiveMatches";
 import NextMatches from "../components/NextMatches";
-import { backgroundGray } from "../utils/files";
+import { backgroundGray } from "../utils/colors";
 
 const HomeScreen = ({ navigation }) => {
   return (
