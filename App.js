@@ -30,7 +30,7 @@ const TopTabNavigator = () => {
 
 const HomeStack = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen name="HomeStack" component={HomeScreen} />
     {/* <Stack.Screen name="Details" component={TopTabNavigator} /> */}
     <Stack.Screen name="Details" component={DetailsScreen} />
   </Stack.Navigator>

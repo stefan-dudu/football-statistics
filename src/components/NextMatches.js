@@ -13,7 +13,7 @@ const NextMatches = ({ navigation }) => {
     response: [
       {
         fixture: {
-          id: 882956,
+          id: 8829564,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -81,7 +81,7 @@ const NextMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 8829565,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -149,7 +149,7 @@ const NextMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 8829566,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -217,7 +217,7 @@ const NextMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 8829567,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -285,7 +285,7 @@ const NextMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 8,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -353,7 +353,7 @@ const NextMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 8829561,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -703,6 +703,7 @@ const NextMatches = ({ navigation }) => {
             typeOfMatch: "to be played",
           })
         }
+        key={el.fixture.id}
       >
         <View style={styles.matchOutline}>
           <Text>Arbitru: {el.fixture.referee}</Text>
