@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import apiSports from "../api/api-sports";
+import BigScoreCard from "./BigScoreCard";
 
 const LiveMatches = ({ navigation }) => {
   const data = {
@@ -705,20 +706,15 @@ const LiveMatches = ({ navigation }) => {
           })
         }
       >
-        <View style={styles.matchOutline}>
-          <Text>Arbitru: {el.fixture.referee}</Text>
-          <Text>{el.teams.home.name} : </Text>
-          <Text>{el.teams.away.name}</Text>
-        </View>
+        <BigScoreCard data={el} />
       </TouchableOpacity>
     );
   });
 
   return (
     <View style={styles.containerStyle}>
-      <ScrollView horizontal style={styles.scrollView}>
-        {matchData}
-      </ScrollView>
+      <Text>Live matches</Text>
+      <ScrollView horizontal>{matchData}</ScrollView>
     </View>
   );
 };
@@ -726,21 +722,17 @@ const LiveMatches = ({ navigation }) => {
 export default LiveMatches;
 
 const styles = StyleSheet.create({
-  matchOutline: {
-    margin: 5,
-    borderWidth: 3,
-    borderColor: "blue",
-    width: 200,
-    height: 150,
-    flexDirection: "column",
-  },
-
   containerStyle: {
-    backgroundColor: "pink",
+    // backgroundColor: "pink",
     flexDirection: "column",
   },
 
   scrollView: {
     flexDirection: "row",
+  },
+
+  textHeader: {
+    fontSize: 25,
+    color: "white",
   },
 });
