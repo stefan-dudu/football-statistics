@@ -29,13 +29,17 @@ const DetailsScreen = (params) => {
       {score}
       <CustomSwitch
         selectionMode={1}
-        option1={"free"}
-        option2={"paid"}
+        option1={"Stats"}
+        option2={"Summary"}
+        option3={"Line-up"}
+        option4={"H2H"}
         onSelectSwitch={onSelectSwitch}
       />
 
-      {detailsTab == 1 && <Text>1st tab</Text>}
-      {detailsTab == 2 && <Text>2nd tab</Text>}
+      {detailsTab == 1 && <Text>Stats</Text>}
+      {detailsTab == 2 && <Text>Summary</Text>}
+      {detailsTab == 3 && <Text>Line-up</Text>}
+      {detailsTab == 4 && <Text>H2H</Text>}
     </View>
   );
 };

@@ -5,6 +5,8 @@ export default function CustomSwitch({
   selectionMode,
   option1,
   option2,
+  option3,
+  option4,
   onSelectSwitch,
 }) {
   const [getSelectionMode, setSelectionMode] = useState(selectionMode);
@@ -64,6 +66,46 @@ export default function CustomSwitch({
           }}
         >
           {option2}
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => updateSwitchData(3)}
+        style={{
+          flex: 1,
+          backgroundColor: getSelectionMode == 3 ? "#AD40AF" : "#e4e4e4",
+          borderRadius: 10,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text
+          style={{
+            color: getSelectionMode == 3 ? "white" : "#AD40AF",
+            fontSize: 14,
+          }}
+        >
+          {option3}
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => updateSwitchData(4)}
+        style={{
+          flex: 1,
+          backgroundColor: getSelectionMode == 4 ? "#AD40AF" : "#e4e4e4",
+          borderRadius: 10,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text
+          style={{
+            color: getSelectionMode == 4 ? "white" : "#AD40AF",
+            fontSize: 14,
+          }}
+        >
+          {option4}
         </Text>
       </TouchableOpacity>
     </View>
