@@ -9,13 +9,14 @@ import {
 import React, { useEffect, useState } from "react";
 import apiSports from "../api/api-sports";
 import BigScoreCard from "./BigScoreCard";
+import { COLORS } from "../utils/colors";
 
 const LiveMatches = ({ navigation }) => {
   const data = {
     response: [
       {
         fixture: {
-          id: 882956,
+          id: 1,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -83,7 +84,7 @@ const LiveMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 2,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -151,7 +152,7 @@ const LiveMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 3,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -219,7 +220,7 @@ const LiveMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 4,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -287,7 +288,7 @@ const LiveMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 5,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -355,7 +356,7 @@ const LiveMatches = ({ navigation }) => {
       },
       {
         fixture: {
-          id: 882956,
+          id: 6,
           referee: "G. Găman",
           timezone: "UTC",
           date: "2022-07-18T18:30:00+00:00",
@@ -705,6 +706,7 @@ const LiveMatches = ({ navigation }) => {
             typeOfMatch: "live",
           })
         }
+        key={el.fixture.id}
       >
         <BigScoreCard data={el} />
       </TouchableOpacity>
@@ -729,7 +731,7 @@ const styles = StyleSheet.create({
 
   textHeader: {
     fontSize: 25,
-    color: "rgb(86,86,86)",
+    color: COLORS.titleDarkGray,
     fontWeight: 600,
   },
 });

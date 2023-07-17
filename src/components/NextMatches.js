@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
+import { COLORS } from "../utils/colors";
+import SmallScoreCard from "./SmallScoreCard";
 
 const NextMatches = ({ navigation }) => {
   const data = {
@@ -705,18 +707,19 @@ const NextMatches = ({ navigation }) => {
         }
         key={el.fixture.id}
       >
-        <View style={styles.matchOutline}>
+        {/* <View style={styles.matchOutline}>
           <Text>Arbitru: {el.fixture.referee}</Text>
           <Text>{el.teams.home.name} : </Text>
           <Text>{el.teams.away.name}</Text>
-        </View>
+        </View> */}
+        <SmallScoreCard data={el} />
       </TouchableOpacity>
     );
   });
 
   return (
     <View style={styles.containerStyle}>
-      <Text>Next matches</Text>
+      <Text style={styles.textHeader}>Next matches</Text>
       <ScrollView style={styles.scrollView}>{matchData}</ScrollView>
     </View>
   );
@@ -739,11 +742,18 @@ const styles = StyleSheet.create({
   },
 
   containerStyle: {
-    backgroundColor: "gray",
+    marginTop: 15,
     flexDirection: "column",
   },
 
   scrollView: {
     flexDirection: "column",
+  },
+
+  textHeader: {
+    fontSize: 25,
+    color: COLORS.titleDarkGray,
+    fontWeight: 600,
+    marginBottom: 15,
   },
 });

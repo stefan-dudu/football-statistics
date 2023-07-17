@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-import HomeScreen from "./src/screens/HomeScreen";
+import Home from "./src/screens/Home";
 import Explore from "./src/screens/Explore";
 import Graphs from "./src/screens/Graphs";
 import Settings from "./src/screens/Settings";
@@ -30,7 +30,7 @@ const TopTabNavigator = () => {
 
 const HomeStack = () => (
   <Stack.Navigator>
-    <Stack.Screen name="HomeStack" component={HomeScreen} />
+    <Stack.Screen name="HomeStack" component={Home} />
     {/* <Stack.Screen name="Details" component={TopTabNavigator} /> */}
     <Stack.Screen name="Details" component={DetailsScreen} />
   </Stack.Navigator>
@@ -66,7 +66,6 @@ export default App;
 
 const styles = StyleSheet.create({
   topBar: {
-    backgroundColor: "green",
     position: "relative",
     top: 200,
     elevation: 0,

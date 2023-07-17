@@ -1,25 +1,24 @@
-import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import LiveMatches from "../components/LiveMatches";
 import NextMatches from "../components/NextMatches";
 import { backgroundGray } from "../utils/colors";
 
-const HomeScreen = ({ navigation }) => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.containerWrapper}>
-      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
-        <LiveMatches navigation={navigation} />
-        <NextMatches navigation={navigation} />
-      </TouchableOpacity>
+      <LiveMatches navigation={navigation} />
+      <NextMatches navigation={navigation} />
     </View>
   );
 };
 
-export default HomeScreen;
+export default Home;
 
 const styles = StyleSheet.create({
   containerWrapper: {
     marginTop: 10,
+    marginLeft: 20,
     backgroundColor: backgroundGray,
   },
 });

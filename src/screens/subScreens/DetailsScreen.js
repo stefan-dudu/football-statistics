@@ -7,7 +7,7 @@ const DetailsScreen = (params) => {
   const [detailsTab, setDetailsTab] = useState(1);
 
   // console.log("params", params.route.params.fixtureData);
-  const parameters = params?.route?.params.fixtureData;
+  const parameters = params?.route?.params?.fixtureData;
   const competition = parameters?.league?.name;
   const round = parameters?.league?.round;
   const score = (
