@@ -7,4 +7,6 @@ export const COLORS = {
   orange: "rgb(255,117,58)",
   gray: "rgb(142,142,142)",
   lightPink: "rgb(255,234,243)",
+  buttonsBackgroundGray: "rgb(245,245,245)",
+  textGrayButtons: "rgb(174,174,174)",
 };

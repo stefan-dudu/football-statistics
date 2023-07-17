@@ -30,9 +30,17 @@ const TopTabNavigator = () => {
 
 const HomeStack = () => (
   <Stack.Navigator>
-    <Stack.Screen name="HomeStack" component={Home} />
+    <Stack.Screen
+      name="HomeStack"
+      component={Home}
+      options={{ headerShown: false }}
+    />
     {/* <Stack.Screen name="Details" component={TopTabNavigator} /> */}
-    <Stack.Screen name="Details" component={DetailsScreen} />
+    <Stack.Screen
+      name="Details"
+      component={DetailsScreen}
+      options={{ headerShown: false }}
+    />
   </Stack.Navigator>
 );
 

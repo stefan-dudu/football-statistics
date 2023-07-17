@@ -5,6 +5,32 @@ const Summary = () => {
   return (
     <View>
       <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
+      <Text>Summary</Text>
     </View>
   );
 };

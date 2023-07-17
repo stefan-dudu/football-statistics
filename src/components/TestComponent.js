@@ -15,7 +15,7 @@ export default TestComponent;
 const styles = StyleSheet.create({
   textStyle: {
     top: 50,
-    left: "9%",
+    // left: "2%",
     height: "auto",
   },
 });

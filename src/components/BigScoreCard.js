@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   wrapperDetailPage: {
     margin: 5,
     backgroundColor: "white",
-    width: 330,
+    width: 380,
     height: 200,
     flexDirection: "column",
     borderRadius: 10,

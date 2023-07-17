@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import { COLORS } from "../utils/colors";
 
 export default function CustomSwitch({
   selectionMode,
@@ -21,19 +22,20 @@ export default function CustomSwitch({
       style={{
         height: 44,
         width: "100%",
-        backgroundColor: "#e4e4e4",
+        backgroundColor: "white",
         borderRadius: 10,
-        borderColor: "#AD40AF",
+        borderColor: COLORS.pink,
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-around",
       }}
     >
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => updateSwitchData(1)}
         style={{
-          flex: 1,
-          backgroundColor: getSelectionMode == 1 ? "#AD40AF" : "#e4e4e4",
+          width: 70,
+          backgroundColor:
+            getSelectionMode == 1 ? COLORS.pink : COLORS.buttonsBackgroundGray,
           borderRadius: 10,
           justifyContent: "center",
           alignItems: "center",
@@ -41,8 +43,9 @@ export default function CustomSwitch({
       >
         <Text
           style={{
-            color: getSelectionMode == 1 ? "white" : "#AD40AF",
+            color: getSelectionMode == 1 ? "white" : COLORS.textGrayButtons,
             fontSize: 14,
+            fontWeight: "500",
           }}
         >
           {option1}
@@ -52,8 +55,9 @@ export default function CustomSwitch({
         activeOpacity={1}
         onPress={() => updateSwitchData(2)}
         style={{
-          flex: 1,
-          backgroundColor: getSelectionMode == 2 ? "#AD40AF" : "#e4e4e4",
+          width: 70,
+          backgroundColor:
+            getSelectionMode == 2 ? COLORS.pink : COLORS.buttonsBackgroundGray,
           borderRadius: 10,
           justifyContent: "center",
           alignItems: "center",
@@ -61,8 +65,9 @@ export default function CustomSwitch({
       >
         <Text
           style={{
-            color: getSelectionMode == 2 ? "white" : "#AD40AF",
+            color: getSelectionMode == 2 ? "white" : COLORS.textGrayButtons,
             fontSize: 14,
+            fontWeight: "500",
           }}
         >
           {option2}
@@ -72,8 +77,9 @@ export default function CustomSwitch({
         activeOpacity={1}
         onPress={() => updateSwitchData(3)}
         style={{
-          flex: 1,
-          backgroundColor: getSelectionMode == 3 ? "#AD40AF" : "#e4e4e4",
+          width: 70,
+          backgroundColor:
+            getSelectionMode == 3 ? COLORS.pink : COLORS.buttonsBackgroundGray,
           borderRadius: 10,
           justifyContent: "center",
           alignItems: "center",
@@ -81,8 +87,9 @@ export default function CustomSwitch({
       >
         <Text
           style={{
-            color: getSelectionMode == 3 ? "white" : "#AD40AF",
+            color: getSelectionMode == 3 ? "white" : COLORS.textGrayButtons,
             fontSize: 14,
+            fontWeight: "500",
           }}
         >
           {option3}
@@ -92,8 +99,9 @@ export default function CustomSwitch({
         activeOpacity={1}
         onPress={() => updateSwitchData(4)}
         style={{
-          flex: 1,
-          backgroundColor: getSelectionMode == 4 ? "#AD40AF" : "#e4e4e4",
+          width: 70,
+          backgroundColor:
+            getSelectionMode == 4 ? COLORS.pink : COLORS.buttonsBackgroundGray,
           borderRadius: 10,
           justifyContent: "center",
           alignItems: "center",
@@ -101,8 +109,9 @@ export default function CustomSwitch({
       >
         <Text
           style={{
-            color: getSelectionMode == 4 ? "white" : "#AD40AF",
+            color: getSelectionMode == 4 ? "white" : COLORS.textGrayButtons,
             fontSize: 14,
+            fontWeight: "500",
           }}
         >
           {option4}
