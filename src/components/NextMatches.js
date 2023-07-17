@@ -701,17 +701,12 @@ const NextMatches = ({ navigation }) => {
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("Details", {
-            fixtureID: el.fixture.id,
+            fixtureID: el?.fixture?.id,
             typeOfMatch: "to be played",
           })
         }
-        key={el.fixture.id}
+        key={el?.fixture?.id}
       >
-        {/* <View style={styles.matchOutline}>
-          <Text>Arbitru: {el.fixture.referee}</Text>
-          <Text>{el.teams.home.name} : </Text>
-          <Text>{el.teams.away.name}</Text>
-        </View> */}
         <SmallScoreCard data={el} />
       </TouchableOpacity>
     );

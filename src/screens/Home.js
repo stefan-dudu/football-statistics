@@ -18,7 +18,7 @@ export default Home;
 const styles = StyleSheet.create({
   containerWrapper: {
     marginTop: 10,
-    marginLeft: 20,
+    marginLeft: 10,
     backgroundColor: backgroundGray,
   },
 });

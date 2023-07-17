@@ -708,7 +708,7 @@ const LiveMatches = ({ navigation }) => {
         }
         key={el.fixture.id}
       >
-        <BigScoreCard data={el} />
+        <BigScoreCard data={el} page={"home"} />
       </TouchableOpacity>
     );
   });

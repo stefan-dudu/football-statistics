@@ -2,43 +2,100 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { COLORS } from "../utils/colors";
 
-const BigScoreCard = ({ data }) => {
-  //   console.log(data.teams.away.logo);
+const BigScoreCard = ({ data, page }) => {
+  // console.log(data.fixture.venue.name);
 
   return (
-    <View style={styles.wrapper}>
-      <Text style={styles.headerStyle}>Competitie : {data.league.name}</Text>
-      <Text style={styles.weekSideStyle}>{data.league.round}</Text>
+    <View
+      style={[
+        page === "home" ? styles.wrapperHomePage : styles.wrapperDetailPage,
+      ]}
+    >
+      {page === "home" ? (
+        <Text style={styles.headerStyleHomePage}>
+          Competitie : {data?.league?.name}
+        </Text>
+      ) : (
+        <Text style={styles.headerStyleDetailPage}>
+          {data?.fixture?.venue?.name}
+        </Text>
+      )}
+
+      <Text style={styles.weekSideStyle}>{data?.league?.round}</Text>
 
       <View style={styles.teamsWrapper}>
         <View style={styles.homeWrapper}>
           {/* home */}
           <Image
-            style={styles.teamLogo}
+            style={[
+              page === "home"
+                ? styles.teamLogoHomePage
+                : styles.teamLogoDetailPage,
+            ]}
             // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
             source={require("../../assets/teamLogo.png")}
           />
-          <Text style={styles.teamName}>{data.teams.home.name}</Text>
+          <Text
+            style={[
+              page === "home"
+                ? styles.teamNameHomePage
+                : styles.teamNameDetailPage,
+            ]}
+          >
+            {data?.teams?.home?.name}
+          </Text>
           <Text style={styles.homeAway}>Home</Text>
         </View>
 
         {/* middle ( score and time) */}
         <View style={styles.middleWrapper}>
           <View style={styles.scoreWrapper}>
-            <Text style={styles.score}> {data.goals.home} :</Text>
-            <Text style={styles.score}> {data.goals.away}</Text>
+            <Text
+              style={[
+                page === "home" ? styles.scoreHomePage : styles.scoreDetailPage,
+              ]}
+            >
+              {" "}
+              {data?.goals?.home} :
+            </Text>
+            <Text
+              style={[
+                page === "home" ? styles.scoreHomePage : styles.scoreDetailPage,
+              ]}
+            >
+              {" "}
+              {data?.goals?.away}
+            </Text>
           </View>
-          <Text style={styles.time}>{data.fixture.status.elapsed}'</Text>
+          <Text
+            style={[
+              page === "home" ? styles.timeHomePage : styles.timeDetailPage,
+            ]}
+          >
+            {data?.fixture?.status?.elapsed}'
+          </Text>
         </View>
 
         <View style={styles.awayWrapper}>
           {/* away */}
           <Image
-            style={styles.teamLogo}
+            style={[
+              page === "home"
+                ? styles.teamLogoHomePage
+                : styles.teamLogoDetailPage,
+            ]}
             // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
             source={require("../../assets/teamLogo2.png")}
           />
-          <Text style={styles.teamName}>{data.teams.away.name}</Text>
+          <Text
+            style={[
+              page === "home"
+                ? styles.teamNameHomePage
+                : styles.teamNameDetailPage,
+            ]}
+          >
+            {data?.teams?.away?.name}
+          </Text>
           <Text style={styles.homeAway}>Away</Text>
         </View>
       </View>
@@ -49,25 +106,119 @@ const BigScoreCard = ({ data }) => {
 export default BigScoreCard;
 
 const styles = StyleSheet.create({
-  wrapper: {
+  // home page
+  wrapperHomePage: {
     margin: 5,
     backgroundColor: COLORS.purple,
     text: "white",
     width: 330,
     height: 300,
     flexDirection: "column",
-    borderRadius: 17,
+    borderRadius: 15,
     display: "flex",
     justifyContent: "center",
+    // left: 200,
   },
 
-  headerStyle: {
+  headerStyleHomePage: {
     textAlign: "center",
-    // backgroundColor: "white",
     fontSize: 20,
     fontWeight: 700,
     color: "white",
   },
+
+  scoreHomePage: {
+    fontSize: 30,
+    marginTop: 10,
+    textAlign: "center",
+    // fontSize: 20,
+    fontWeight: 700,
+    color: "white",
+  },
+
+  teamNameHomePage: {
+    marginTop: 10,
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: 700,
+    color: "white",
+  },
+
+  timeHomePage: {
+    textAlign: "center",
+    color: "white",
+    marginTop: 30,
+    backgroundColor: COLORS.lightPurple,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderRadius: 17,
+    borderColor: COLORS.pink,
+    borderWidth: 1.5,
+  },
+
+  teamLogoHomePage: {
+    width: "68%",
+    height: "35%",
+    resizeMode: "stretch",
+  },
+
+  // detail page
+
+  wrapperDetailPage: {
+    margin: 5,
+    backgroundColor: "white",
+    width: 330,
+    height: 200,
+    flexDirection: "column",
+    borderRadius: 10,
+    display: "flex",
+    justifyContent: "center",
+  },
+
+  headerStyleDetailPage: {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: 400,
+    color: "black",
+  },
+
+  scoreDetailPage: {
+    fontSize: 30,
+    marginTop: 10,
+    textAlign: "center",
+    // fontSize: 20,
+    fontWeight: 700,
+    color: "black",
+  },
+
+  teamNameDetailPage: {
+    marginTop: 10,
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: 700,
+    color: "black",
+  },
+
+  timeDetailPage: {
+    textAlign: "center",
+    color: COLORS.pink,
+    marginTop: 30,
+    backgroundColor: COLORS.lightPink,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderRadius: 17,
+    borderColor: COLORS.pink,
+    borderWidth: 1.5,
+  },
+
+  teamLogoDetailPage: {
+    width: "38%",
+    height: "35%",
+    resizeMode: "stretch",
+  },
+
+  // GENERAL items non dynamic
+
   weekSideStyle: {
     textAlign: "center",
     fontSize: 18,
@@ -87,7 +238,6 @@ const styles = StyleSheet.create({
   },
 
   homeWrapper: {
-    // backgroundColor: "yellow",
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
@@ -95,7 +245,6 @@ const styles = StyleSheet.create({
   },
 
   awayWrapper: {
-    // backgroundColor: "lightblue",
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
@@ -103,28 +252,15 @@ const styles = StyleSheet.create({
   },
 
   scoreWrapper: {
-    // backgroundColor: "white",
-    // flex: 1,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
 
-  score: {
-    fontSize: 30,
-    marginTop: 10,
-    textAlign: "center",
-    // fontSize: 20,
-    fontWeight: 700,
-    color: "white",
-  },
-
   middleWrapper: {
-    // backgroundColor: "red",
     justifyContent: "center",
     alignContent: "center",
     alignItems: "center",
-    // backgroundColor: "white",
   },
 
   teamsWrapper: {
@@ -135,33 +271,7 @@ const styles = StyleSheet.create({
     height: "70%",
   },
 
-  teamLogo: {
-    width: "68%",
-    height: "35%",
-    resizeMode: "stretch",
-  },
-
   textMarginTop: {
     marginTop: 10,
-  },
-
-  teamName: {
-    marginTop: 10,
-    textAlign: "center",
-    fontSize: 20,
-    fontWeight: 700,
-    color: "white",
-  },
-
-  time: {
-    textAlign: "center",
-    color: "white",
-    marginTop: 30,
-    backgroundColor: COLORS.lightPurple,
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-    borderRadius: 17,
-    borderColor: COLORS.pink,
-    borderWidth: 1.5,
   },
 });
