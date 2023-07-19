@@ -11,6 +11,7 @@ import React from "react";
 import LiveMatches from "../components/LiveMatches";
 import { COLORS } from "../utils/colors";
 import SmallScoreCard from "../components/SmallScoreCard";
+import NextMatches from "../components/NextMatches";
 
 const Home = ({ navigation }) => {
   const data = {
@@ -727,11 +728,11 @@ const Home = ({ navigation }) => {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
+    <SafeAreaView style={styles.containerCollapse}>
+      <View style={styles.containerCollapse}>
         <Animated.View
           style={[
-            styles.header,
+            styles.headerCollapse,
             {
               height: animateHeaderHeight,
             },
@@ -748,7 +749,6 @@ const Home = ({ navigation }) => {
           <ScrollView
             style={styles.scrollView}
             scrollEventThrottle={16}
-            //contentContainerStyle={{ paddingTop: Header_Maximum_Height }}
             onScroll={Animated.event(
               [{ nativeEvent: { contentOffset: { y: AnimatedHeaderValue } } }],
               { useNativeDriver: false }
@@ -769,27 +769,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 10,
     backgroundColor: COLORS.backgroundGray,
-  },
-
-  container: {
-    flex: 1,
-  },
-  header: {
-    justifyContent: "center",
-    alignItems: "center",
-    left: 0,
-    right: 0,
-  },
-  headerText: {
-    color: "#fff",
-    fontSize: 18,
-    textAlign: "center",
-  },
-  textStyle: {
-    textAlign: "center",
-    color: "#000",
-    fontSize: 18,
-    padding: 20,
   },
 
   matchOutline: {
@@ -820,4 +799,16 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     marginBottom: 15,
   },
+
+  // collapse
+  containerCollapse: {
+    flex: 1,
+  },
+  headerCollapse: {
+    justifyContent: "center",
+    alignItems: "center",
+    left: 0,
+    right: 0,
+  },
+  //
 });

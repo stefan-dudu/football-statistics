@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Animated,
   TouchableOpacity,
 } from "react-native";
 import React from "react";
@@ -696,6 +697,12 @@ const NextMatches = ({ navigation }) => {
     ],
   };
 
+  let AnimatedHeaderValue = new Animated.Value(0);
+  const Header_Maximum_Height = 380;
+  //Max Height of the Header
+  const Header_Minimum_Height = 0;
+  //Min Height of the Header
+
   const matchData = data.response.map((el) => {
     return (
       <TouchableOpacity
@@ -715,7 +722,16 @@ const NextMatches = ({ navigation }) => {
   return (
     <View style={styles.containerStyle}>
       <Text style={styles.textHeader}>Next matches</Text>
-      <ScrollView style={styles.scrollView}>{matchData}</ScrollView>
+      <ScrollView
+        style={styles.scrollView}
+        scrollEventThrottle={16}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: 0 } } }],
+          { useNativeDriver: false }
+        )}
+      >
+        {matchData}
+      </ScrollView>
     </View>
   );
 };
