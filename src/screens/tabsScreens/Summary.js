@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, ScrollView, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+  Image,
+} from "react-native";
 import React from "react";
 
 const Summary = () => {
@@ -375,7 +382,6 @@ const Summary = () => {
   const Timeline = data.response.map((el) => {
     return (
       <View style={styles.timelineContainer}>
-        <Text style={styles.timeStyling}>{el.time.elapsed}'</Text>
         <View
           style={[
             el.team.id == homeTeamID
@@ -383,10 +389,27 @@ const Summary = () => {
               : styles.eventWrapperAway,
           ]}
         >
-          <Text>Time: {el.time.elapsed}</Text>
-          <Text>Team: {el.team.name}</Text>
-          <Text>Type: {el.type}</Text>
-          <Text>Who : {el.player.name}</Text>
+          {/* left side info */}
+          <View>
+            <Text>Type: {el.type}</Text>
+            <Text>Who : {el.player.name}</Text>
+            <View style={{ flexDirection: "row" }}>
+              <Image
+                style={styles.teamLogo}
+                source={require("../../../assets/teamLogo.png")}
+              />
+              <Text> {el.team.name} </Text>
+            </View>
+          </View>
+
+          {/* right side info */}
+          <View>
+            <Text>Min: {el.time.elapsed}'</Text>
+            <Image
+              style={styles.playerPicture}
+              source={require("../../../assets/profile_pic.jpeg")}
+            />
+          </View>
         </View>
       </View>
     );
@@ -427,29 +450,54 @@ const styles = StyleSheet.create({
     marginBottom: -60,
   },
 
+  playerPicture: {
+    width: 40,
+    height: 40,
+    borderRadius: 50,
+    resizeMode: "stretch",
+  },
+
+  teamLogo: {
+    width: 20,
+    height: 20,
+    borderRadius: 50,
+    resizeMode: "stretch",
+  },
+
   eventWrapperHome: {
-    backgroundColor: "pink",
-    borderWidth: 3,
-    borderColor: "red",
-    width: 100,
-    display: "flex",
-    justifyContent: "center",
-    // position: "absolute",
-    // left: "5%",
-    marginLeft: 200,
-    marginVertical: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    borderRadius: 17,
+    width: Dimensions.get("window").width - 70,
+    backgroundColor: "white",
+    marginVertical: 5,
+    // shadow
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.17,
+    shadowRadius: 3.05,
+    elevation: 4,
   },
   eventWrapperAway: {
-    width: 100,
-    backgroundColor: "lightblue",
-    borderWidth: 3,
-    borderColor: "blue",
-    display: "flex",
-    position: "relative",
-    justifyContent: "center",
-    // left: "70%",
-    marginVertical: 10,
-    // marginLeft: Dimensions.get("window").width - 160,
-    marginRight: 200,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    borderRadius: 17,
+    width: Dimensions.get("window").width - 70,
+    backgroundColor: "white",
+    marginVertical: 5,
+    // shadow
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.17,
+    shadowRadius: 3.05,
+    elevation: 4,
   },
 });
