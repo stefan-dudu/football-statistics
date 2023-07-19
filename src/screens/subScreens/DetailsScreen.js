@@ -413,15 +413,18 @@ const styles = StyleSheet.create({
   bottomWrapper: {
     marginTop: 20,
     backgroundColor: "white",
-    justifyContent: "center",
+    // justifyContent: "center",
     borderRadius: 15,
-    // height: Dimensions.get("window").height,
-    // height: "100%",
+
+    // width: Dimensions.get("window").width,
+    // width: "100%",
   },
 
   resultsContainer: {
+    display: "flex",
     // backgroundColor: "lightblue",
-    justifyContent: "center",
+    position: "relative",
+    // justifyContent: ,
     marginHorizontal: 15,
   },
 });

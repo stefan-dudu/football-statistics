@@ -15,8 +15,8 @@ const BigScoreCard = ({ data, page }) => {
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
 
-  console.log("windowWidth", windowWidth);
-  console.log("windowHeight", windowHeight);
+  // console.log("windowWidth", windowWidth);
+  // console.log("windowHeight", windowHeight);
 
   return (
     <View
