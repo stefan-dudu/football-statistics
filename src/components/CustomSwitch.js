@@ -27,6 +27,7 @@ export default function CustomSwitch({
         borderColor: COLORS.pink,
         flexDirection: "row",
         justifyContent: "space-around",
+        marginVertical: 20,
       }}
     >
       <TouchableOpacity

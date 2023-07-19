@@ -1,9 +1,22 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  useWindowDimensions,
+  Dimensions,
+} from "react-native";
 import React from "react";
 import { COLORS } from "../utils/colors";
 
 const BigScoreCard = ({ data, page }) => {
   // console.log(data.fixture.venue.name);
+
+  const windowWidth = useWindowDimensions().width;
+  const windowHeight = useWindowDimensions().height;
+
+  console.log("windowWidth", windowWidth);
+  console.log("windowHeight", windowHeight);
 
   return (
     <View
@@ -111,7 +124,7 @@ const styles = StyleSheet.create({
     margin: 5,
     backgroundColor: COLORS.purple,
     text: "white",
-    width: 330,
+    width: Dimensions.get("window").width - 100,
     height: 300,
     flexDirection: "column",
     borderRadius: 15,
@@ -165,10 +178,10 @@ const styles = StyleSheet.create({
   // detail page
 
   wrapperDetailPage: {
-    margin: 5,
+    marginTop: 50,
     backgroundColor: "white",
-    width: 380,
-    height: 200,
+    width: Dimensions.get("window").width - 30,
+    height: 220,
     flexDirection: "column",
     borderRadius: 10,
     display: "flex",

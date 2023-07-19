@@ -310,9 +310,6 @@ const DetailsScreen = (params) => {
         )}
         scrollEventThrottle={16}
       >
-        {/* <Text style={styles.title}>This is Title</Text>
-         */}
-
         {/*  header view! */}
         <View>
           <BigScoreCard
@@ -320,6 +317,8 @@ const DetailsScreen = (params) => {
             page={"details"}
             style={styles.scoreCardStyle}
           />
+        </View>
+        <View style={styles.bottomWrapper}>
           <CustomSwitch
             selectionMode={1}
             option1={"Stats"}
@@ -328,12 +327,12 @@ const DetailsScreen = (params) => {
             option4={"H2H"}
             onSelectSwitch={onSelectSwitch}
           />
-        </View>
-        <View>
-          {detailsTab == 1 && <Text style={styles.content}>{StatsTab}</Text>}
-          {detailsTab == 2 && <Text style={styles.content}>{StatsTab2}</Text>}
-          {detailsTab == 3 && <Text style={styles.content}>{StatsTab3}</Text>}
-          {detailsTab == 4 && <Text style={styles.content}>{StatsTab4}</Text>}
+          <View style={styles.resultsContainer}>
+            {detailsTab == 1 && <Text style={styles.content}>{StatsTab}</Text>}
+            {detailsTab == 2 && <Text style={styles.content}>{StatsTab2}</Text>}
+            {detailsTab == 3 && <Text style={styles.content}>{StatsTab3}</Text>}
+            {detailsTab == 4 && <Text style={styles.content}>{StatsTab4}</Text>}
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -391,12 +390,12 @@ const styles = StyleSheet.create({
 
   customSwitchStyle: {
     // position: "absolute",
-    // marginTop: 80,
-    backgroundColor: "white",
-    borderRadius: 10,
-    width: "94%",
+    // marginTop: 800,
+    // backgroundColor: "red",
+    // borderRadius: 10,
+    // width: "94%",
     // top: 25,
-    height: 500,
+    // height: 500,
   },
 
   bottomContainer: {
@@ -409,5 +408,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10,
+  },
+
+  bottomWrapper: {
+    marginTop: 20,
+    backgroundColor: "white",
+    justifyContent: "center",
+    borderRadius: 15,
+    // height: Dimensions.get("window").height,
+    // height: "100%",
+  },
+
+  resultsContainer: {
+    // backgroundColor: "lightblue",
+    justifyContent: "center",
+    marginHorizontal: 15,
   },
 });
