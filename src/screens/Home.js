@@ -6,6 +6,7 @@ import {
   ScrollView,
   Text,
   SafeAreaView,
+  Dimensions,
 } from "react-native";
 import React from "react";
 import LiveMatches from "../components/LiveMatches";
@@ -699,15 +700,15 @@ const Home = ({ navigation }) => {
     ],
   };
 
-  let AnimatedHeaderValue = new Animated.Value(0);
-  const Header_Maximum_Height = 380;
-  //Max Height of the Header
-  const Header_Minimum_Height = 0;
-  //Min Height of the Header
+  const scrollY = new Animated.Value(0);
 
-  const animateHeaderHeight = AnimatedHeaderValue.interpolate({
-    inputRange: [0, Header_Maximum_Height - Header_Minimum_Height],
-    outputRange: [Header_Maximum_Height, Header_Minimum_Height],
+  const HEADER_EXPANDED_HEIGHT = 0;
+  const HEADER_COLLAPSED_HEIGHT = 0;
+  const { width: SCREEN_WIDTH } = Dimensions.get("screen");
+
+  const headerHeight = scrollY.interpolate({
+    inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+    outputRange: [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
     extrapolate: "clamp",
   });
 
@@ -728,43 +729,98 @@ const Home = ({ navigation }) => {
   });
 
   return (
-    <SafeAreaView style={styles.containerCollapse}>
-      <View style={styles.containerCollapse}>
-        <Animated.View
-          style={[
-            styles.headerCollapse,
-            {
-              height: animateHeaderHeight,
-            },
-          ]}
-        >
-          <View style={styles.containerWrapper}>
-            <LiveMatches navigation={navigation} />
-          </View>
-        </Animated.View>
+    // <SafeAreaView style={styles.containerCollapse}>
+    //   <View style={styles.containerCollapse}>
+    //     <Animated.View
+    //       style={[
+    //         styles.headerCollapse,
+    //         {
+    //           height: animateHeaderHeight,
+    //         },
+    //       ]}
+    //     >
+    //       <View style={styles.containerWrapper}>
+    //         <LiveMatches navigation={navigation} />
+    //       </View>
+    //     </Animated.View>
 
-        {/* my scrollable thing */}
+    //     {/* my scrollable thing */}
+    //     <View style={styles.containerStyle}>
+    //       <Text style={styles.textHeader}>Next matches</Text>
+    //       <ScrollView
+    //         style={styles.scrollView}
+    //         scrollEventThrottle={16}
+    //         onScroll={Animated.event(
+    //           [{ nativeEvent: { contentOffset: { y: AnimatedHeaderValue } } }],
+    //           { useNativeDriver: false }
+    //         )}
+    //       >
+    //         {matchData}
+    //       </ScrollView>
+    //     </View>
+    //   </View>
+    // </SafeAreaView>
+
+    <View style={styles.container}>
+      <Animated.View
+        style={{
+          height: headerHeight,
+          width: SCREEN_WIDTH,
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+      />
+      <ScrollView
+        contentContainerStyle={{
+          padding: 16,
+          paddingTop: HEADER_EXPANDED_HEIGHT,
+        }}
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  y: scrollY,
+                },
+              },
+            },
+          ],
+          { useNativeDriver: false }
+        )}
+        scrollEventThrottle={16}
+      >
+        <View style={styles.containerWrapper}>
+          <LiveMatches navigation={navigation} />
+        </View>
+
         <View style={styles.containerStyle}>
           <Text style={styles.textHeader}>Next matches</Text>
-          <ScrollView
-            style={styles.scrollView}
-            scrollEventThrottle={16}
-            onScroll={Animated.event(
-              [{ nativeEvent: { contentOffset: { y: AnimatedHeaderValue } } }],
-              { useNativeDriver: false }
-            )}
-          >
-            {matchData}
-          </ScrollView>
+          <ScrollView>{matchData}</ScrollView>
         </View>
-      </View>
-    </SafeAreaView>
+      </ScrollView>
+    </View>
   );
 };
 
 export default Home;
 
 const styles = StyleSheet.create({
+  // new strucutre
+
+  container: {
+    flex: 1,
+  },
+  scrollContainer: {
+    padding: 16,
+  },
+  title: {
+    fontSize: 24,
+    marginVertical: 16,
+  },
+
+  //
+
   containerWrapper: {
     marginTop: 30,
     marginLeft: 10,
