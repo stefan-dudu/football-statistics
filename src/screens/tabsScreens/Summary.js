@@ -427,11 +427,11 @@ export default Summary;
 const styles = StyleSheet.create({
   parentContainer: {
     // minHeight: "100%",
-    backgroundColor: "lightgreen",
+    // backgroundColor: "lightgreen",
     display: "flex",
     justifyContent: "space-between",
 
-    width: Dimensions.get("window").width - 50,
+    width: Dimensions.get("window").width - 60,
     // width: 300,
   },
 

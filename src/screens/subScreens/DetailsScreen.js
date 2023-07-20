@@ -425,6 +425,6 @@ const styles = StyleSheet.create({
     // backgroundColor: "lightblue",
     position: "relative",
     // justifyContent: ,
-    marginHorizontal: 15,
+    marginHorizontal: 5,
   },
 });

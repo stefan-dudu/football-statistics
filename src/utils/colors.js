@@ -5,6 +5,7 @@ export const COLORS = {
   backgroundGray: "#F7F7F7",
   titleDarkGray: "rgb(86,86,86)",
   orange: "rgb(255,117,58)",
+  powerOrange: "rgb(255,59,47)",
   gray: "rgb(142,142,142)",
   lightPink: "rgb(255,234,243)",
   buttonsBackgroundGray: "rgb(245,245,245)",
