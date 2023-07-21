@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 
-const Graphs = (params, { navigation }) => {
+const Statistics = (params, { navigation }) => {
   // // console.log("params", params.route.params.fixtureID);
 
   // // const fixtureID = params?.route?.params?.fixtureID;
@@ -24,6 +24,6 @@ const Graphs = (params, { navigation }) => {
   );
 };
 
-export default Graphs;
+export default Statistics;
 
 const styles = StyleSheet.create({});

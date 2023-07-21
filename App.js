@@ -6,27 +6,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import Home from "./src/screens/Home";
-import Explore from "./src/screens/Explore";
-import Graphs from "./src/screens/Graphs";
+import Standings from "./src/screens/Standings";
+import Statistics from "./src/screens/Statistics";
 import Settings from "./src/screens/Settings";
 
 import DetailsScreen from "./src/screens/subScreens/DetailsScreen";
-import Stats from "./src/screens/tabsScreens/Stats";
-import Summary from "./src/screens/tabsScreens/Summary";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-const TopTab = createMaterialTopTabNavigator();
-
-const TopTabNavigator = () => {
-  return (
-    // used if we want the top navs
-    <TopTab.Navigator style={styles.topBar}>
-      <TopTab.Screen name="Tab1" component={Stats} />
-      <TopTab.Screen name="Tab2" component={Summary} />
-    </TopTab.Navigator>
-  );
-};
 
 const HomeStack = () => (
   <Stack.Navigator>
@@ -35,7 +22,6 @@ const HomeStack = () => (
       component={Home}
       options={{ headerShown: false }}
     />
-    {/* <Stack.Screen name="Details" component={TopTabNavigator} /> */}
     <Stack.Screen
       name="Details"
       component={DetailsScreen}
@@ -53,10 +39,14 @@ const App = ({ navigation }) => {
           component={HomeStack}
           options={{ headerShown: false }}
         />
-        <Tab.Screen name="Explore" component={Explore} />
         <Tab.Screen
-          name="Graphs"
-          component={Graphs}
+          name="Standings"
+          component={Standings}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Statistics"
+          component={Statistics}
           navigation={navigation}
           screenOptions={{ headerTitle: "Test", headerShown: false }}
         />
@@ -78,7 +68,5 @@ const styles = StyleSheet.create({
     top: 200,
     elevation: 0,
     height: 20,
-    // bottom: 25,
-    // left: 20,
   },
 });
