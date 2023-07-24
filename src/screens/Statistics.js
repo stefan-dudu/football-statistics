@@ -1,24 +1,22 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
+import TeamStats from "./subScreens/TeamStats";
 
-const Statistics = (params, { navigation }) => {
-  // // console.log("params", params.route.params.fixtureID);
+const Statistics = (params) => {
+  console.log("params", params?.route?.params?.params);
 
-  // // const fixtureID = params?.route?.params?.fixtureID;
-
-  // console.log("params", params.navigation.getState());
-  // // console.log("navigation.getState();", navigation());
-
-  // const navigationNative = useNavigation();
-  // console.log("currentScreen", navigationNative);
-  // const isFocused = useIsFocused();
-  // console.log("isFocused", isFocused);
+  const clubName = params?.route?.params?.params?.name;
 
   return (
     <View>
       <View>
-        <Text>Clasament</Text>
+        <Text>Statistics</Text>
+        {clubName ? (
+          <TeamStats params={params?.route?.params?.params} />
+        ) : (
+          <Text>General stats</Text>
+        )}
       </View>
     </View>
   );

@@ -765,10 +765,6 @@ const standingsData = {
 const Table = () => {
   const navigation = useNavigation();
 
-  const onPress = () => {
-    navigation.navigate("Statistics", {});
-  };
-
   const TableHeader = () => (
     <View style={styles.tableRow}>
       <Text style={[styles.tableHeaderCell, { flex: 3 }]}>Nume</Text>
@@ -782,7 +778,12 @@ const Table = () => {
 
   const TableCell = ({ data }) => (
     <View style={styles.tableRow}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity
+        onPress={() => {
+          // console.log("team name : ", data.team.name);
+          navigation.navigate("Statistics", { params: data.team });
+        }}
+      >
         <Text style={[styles.tableCell, { width: 130 }]}>
           {data.rank}.{" "}
           <Image

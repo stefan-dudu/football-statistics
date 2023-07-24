@@ -11,7 +11,7 @@ import Statistics from "./src/screens/Statistics";
 import Settings from "./src/screens/Settings";
 
 import DetailsScreen from "./src/screens/subScreens/DetailsScreen";
-
+import TeamStats from "./src/screens/subScreens/TeamStats";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -26,6 +26,21 @@ const HomeStack = () => (
       name="Details"
       component={DetailsScreen}
       options={{ headerShown: false }}
+    />
+  </Stack.Navigator>
+);
+
+const StangingsStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Standings"
+      component={Standings}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name="Statistics"
+      component={Statistics}
+      options={{ headerShown: true }}
     />
   </Stack.Navigator>
 );
@@ -48,7 +63,15 @@ const App = ({ navigation }) => {
           name="Statistics"
           component={Statistics}
           navigation={navigation}
-          screenOptions={{ headerTitle: "Test", headerShown: false }}
+          screenOptions={{ headerTitle: "Test", headerShown: true }}
+          listeners={({ navigation }) => ({
+            tabPress: (e) => {
+              // console.log("e", e);
+              // console.log("navigation", navigation.isFocused());
+              navigation.isFocused() && navigation.navigate("Statistics"),
+                { screen: "Device" };
+            },
+          })}
         />
         <Tab.Screen
           name="Settings"
