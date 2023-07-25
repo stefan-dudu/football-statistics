@@ -1,4 +1,12 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Animated,
+  Dimensions,
+} from "react-native";
 import React, { useState } from "react";
 import CustomSwitch from "../../components/CustomSwitch";
 import Graphs from "../statisticsTabsScreens/Graphs";
@@ -9,6 +17,18 @@ const TeamStats = ({ params }) => {
   const teamName = params?.name;
   const teamId = params?.id;
   const [detailsTab, setDetailsTab] = useState(1);
+
+  const scrollY = new Animated.Value(0);
+
+  const HEADER_EXPANDED_HEIGHT = 0;
+  const HEADER_COLLAPSED_HEIGHT = 0;
+  const { width: SCREEN_WIDTH } = Dimensions.get("screen");
+
+  const headerHeight = scrollY.interpolate({
+    inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+    outputRange: [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
+    extrapolate: "clamp",
+  });
 
   // console.log("params team stats", params);
   // console.log("teamName", teamName);
@@ -380,27 +400,56 @@ const TeamStats = ({ params }) => {
   const StatsTab3 = <StatsTransfers />;
   // const StatsTab4 = <Head2Head />;
   return (
-    <View>
-      <View style={styles.topCard}>
-        {leftCard}
-        {rightCard}
-      </View>
-      <View style={styles.bottomWrapper}>
-        <CustomSwitch
-          selectionMode={1}
-          option1={"Stats"}
-          option2={"Line-up"}
-          option3={"Transfers"}
-          option4={"?"}
-          onSelectSwitch={onSelectSwitch}
-        />
-        <View style={styles.resultsContainer}>
-          {detailsTab == 1 && <Text>{StatsTab}</Text>}
-          {detailsTab == 2 && <Text>{StatsTab2}</Text>}
-          {detailsTab == 3 && <Text>{StatsTab3}</Text>}
-          {detailsTab == 4 && <Text>'test tabs 4'</Text>}
+    <View style={styles.container}>
+      <Animated.View
+        style={{
+          height: headerHeight,
+          width: SCREEN_WIDTH,
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+      />
+      <ScrollView
+        contentContainerStyle={{
+          padding: 16,
+          paddingTop: HEADER_EXPANDED_HEIGHT,
+        }}
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  y: scrollY,
+                },
+              },
+            },
+          ],
+          { useNativeDriver: false }
+        )}
+        scrollEventThrottle={16}
+      >
+        <View style={styles.topCard}>
+          {leftCard}
+          {rightCard}
         </View>
-      </View>
+        <View style={styles.bottomWrapper}>
+          <CustomSwitch
+            selectionMode={1}
+            option1={"Stats"}
+            option2={"Line-up"}
+            option3={"Transfers"}
+            option4={"?"}
+            onSelectSwitch={onSelectSwitch}
+          />
+          <View style={styles.resultsContainer}>
+            {detailsTab == 1 && <Text>{StatsTab}</Text>}
+            {detailsTab == 2 && <Text>{StatsTab2}</Text>}
+            {detailsTab == 3 && <Text>{StatsTab3}</Text>}
+            {detailsTab == 4 && <Text>'test tabs 4'</Text>}
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -408,6 +457,9 @@ const TeamStats = ({ params }) => {
 export default TeamStats;
 
 const styles = StyleSheet.create({
+  // container: {
+  //   flex: 1,
+  // },
   teamLogo: {
     width: 130,
     height: 130,

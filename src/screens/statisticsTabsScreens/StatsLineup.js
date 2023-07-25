@@ -5,6 +5,49 @@ const StatsLineup = () => {
   return (
     <View>
       <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
+      <Text>StatsLineup</Text>
     </View>
   );
 };

@@ -312,11 +312,7 @@ const DetailsScreen = (params) => {
       >
         {/*  header view! */}
         <View>
-          <BigScoreCard
-            data={data}
-            page={"details"}
-            style={styles.scoreCardStyle}
-          />
+          <BigScoreCard data={data} page={"details"} />
         </View>
         <View style={styles.bottomWrapper}>
           <CustomSwitch
