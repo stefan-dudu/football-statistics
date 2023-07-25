@@ -1,9 +1,14 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import CustomSwitch from "../../components/CustomSwitch";
+import Graphs from "../statisticsTabsScreens/Graphs";
+import StatsLineup from "../statisticsTabsScreens/StatsLineup";
+import StatsTransfers from "../statisticsTabsScreens/StatsTransfers";
 
 const TeamStats = ({ params }) => {
   const teamName = params?.name;
   const teamId = params?.id;
+  const [detailsTab, setDetailsTab] = useState(1);
 
   // console.log("params team stats", params);
   // console.log("teamName", teamName);
@@ -42,6 +47,10 @@ const TeamStats = ({ params }) => {
         },
       },
     ],
+  };
+
+  const onSelectSwitch = (value) => {
+    setDetailsTab(value);
   };
 
   const teamInfoData = teamInfo.response[0];
@@ -342,24 +351,56 @@ const TeamStats = ({ params }) => {
       },
     },
   };
-
-  return (
+  const leftCard = (
     <View>
+      {/* left card */}
       <Image
         style={styles.teamLogo}
         source={require("../../../assets/teamLogo3.png")}
       />
+    </View>
+  );
+  const rightCard = (
+    <View style={styles.rightCard}>
+      {/* right card */}
+
       <Text>{teamInfoData.team.name}</Text>
       <Text>Fondat: {teamInfoData.team.founded}</Text>
-      <Text>Diminutiv: {teamInfoData.team.code}</Text>
-      <Image
-        style={styles.venueStyle}
-        source={require("../../../assets/stadiumPhoto.png")}
-      />
+      <Text>Cod: {teamInfoData.team.code}</Text>
       <Text>
         Stadion: {teamInfoData.venue.name}, {teamInfoData.venue.city}
       </Text>
       <Text>Capacitate: {teamInfoData.venue.capacity}</Text>
+      <Text>Forma : wwwLL</Text>
+    </View>
+  );
+
+  const StatsTab = <Graphs />;
+  const StatsTab2 = <StatsLineup />;
+  const StatsTab3 = <StatsTransfers />;
+  // const StatsTab4 = <Head2Head />;
+  return (
+    <View>
+      <View style={styles.topCard}>
+        {leftCard}
+        {rightCard}
+      </View>
+      <View style={styles.bottomWrapper}>
+        <CustomSwitch
+          selectionMode={1}
+          option1={"Stats"}
+          option2={"Line-up"}
+          option3={"Transfers"}
+          option4={"?"}
+          onSelectSwitch={onSelectSwitch}
+        />
+        <View style={styles.resultsContainer}>
+          {detailsTab == 1 && <Text>{StatsTab}</Text>}
+          {detailsTab == 2 && <Text>{StatsTab2}</Text>}
+          {detailsTab == 3 && <Text>{StatsTab3}</Text>}
+          {detailsTab == 4 && <Text>'test tabs 4'</Text>}
+        </View>
+      </View>
     </View>
   );
 };
@@ -368,8 +409,8 @@ export default TeamStats;
 
 const styles = StyleSheet.create({
   teamLogo: {
-    width: 60,
-    height: 60,
+    width: 130,
+    height: 130,
     // borderRadius: 50,
     resizeMode: "stretch",
   },
@@ -378,5 +419,32 @@ const styles = StyleSheet.create({
     // height: 60,
     // borderRadius: 50,
     resizeMode: "stretch",
+  },
+
+  topCard: {
+    flexDirection: "row",
+    padding: 15,
+  },
+
+  rightCard: {
+    marginLeft: 15,
+  },
+
+  bottomWrapper: {
+    marginTop: 20,
+    backgroundColor: "white",
+    // justifyContent: "center",
+    borderRadius: 15,
+
+    // width: Dimensions.get("window").width,
+    // width: "100%",
+  },
+
+  resultsContainer: {
+    display: "flex",
+    // backgroundColor: "lightblue",
+    position: "relative",
+    // justifyContent: ,
+    marginHorizontal: 5,
   },
 });

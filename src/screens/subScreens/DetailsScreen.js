@@ -12,10 +12,10 @@ import React, { useState } from "react";
 import CustomSwitch from "../../components/CustomSwitch";
 import BigScoreCard from "../../components/BigScoreCard";
 import { COLORS } from "../../utils/colors";
-import Head2Head from "../tabsScreens/Head2Head";
-import LineUp from "../tabsScreens/LineUp";
-import Stats from "../tabsScreens/Stats";
-import Summary from "../tabsScreens/Summary";
+import Head2Head from "../homeTabsScreens/Head2Head";
+import LineUp from "../homeTabsScreens/LineUp";
+import Stats from "../homeTabsScreens/Stats";
+import Summary from "../homeTabsScreens/Summary";
 const DetailsScreen = (params) => {
   const [detailsTab, setDetailsTab] = useState(1);
 

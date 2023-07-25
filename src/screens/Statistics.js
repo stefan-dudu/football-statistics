@@ -4,14 +4,14 @@ import { useNavigation, useIsFocused } from "@react-navigation/native";
 import TeamStats from "./subScreens/TeamStats";
 
 const Statistics = (params) => {
-  console.log("params", params?.route?.params?.params);
+  // console.log("params", params?.route?.params?.params);
 
   const clubName = params?.route?.params?.params?.name;
 
   return (
     <View>
       <View>
-        <Text>Statistics</Text>
+        {/* <Text>Statistics</Text> */}
         {clubName ? (
           <TeamStats params={params?.route?.params?.params} />
         ) : (
