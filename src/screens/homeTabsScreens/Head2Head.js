@@ -817,12 +817,12 @@ const styles = StyleSheet.create({
   score: {
     fontSize: 35,
     color: COLORS.powerOrange,
-    fontWeight: 600,
+    fontWeight: "600",
   },
 
   teamsName: {
     fontSize: 18,
-    fontWeight: 500,
+    fontWeight: "500",
   },
 
   leftSide: {

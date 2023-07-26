@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   headerStyleHomePage: {
     textAlign: "center",
     fontSize: 20,
-    fontWeight: 700,
+    fontWeight: "700",
     color: "white",
   },
 
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: "center",
     // fontSize: 20,
-    fontWeight: 700,
+    fontWeight: "700",
     color: "white",
   },
 
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: "center",
     fontSize: 20,
-    fontWeight: 700,
+    fontWeight: "700",
     color: "white",
   },
 
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   headerStyleDetailPage: {
     textAlign: "center",
     fontSize: 20,
-    fontWeight: 400,
+    fontWeight: "400",
     color: "black",
   },
 
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: "center",
     // fontSize: 20,
-    fontWeight: 700,
+    fontWeight: "700",
     color: "black",
   },
 
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: "center",
     fontSize: 20,
-    fontWeight: 700,
+    fontWeight: "700",
     color: "black",
   },
 
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 10,
     fontSize: 15,
-    // fontWeight: 700,
+    // fontWeight: "700",
     color: "gray",
   },
 

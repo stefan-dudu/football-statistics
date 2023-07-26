@@ -611,7 +611,7 @@ const styles = StyleSheet.create({
   },
 
   teamName: {
-    fontWeight: 500,
+    fontWeight: "500",
   },
 
   teamFormation: {

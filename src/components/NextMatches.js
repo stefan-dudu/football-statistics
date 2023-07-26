@@ -764,7 +764,7 @@ const styles = StyleSheet.create({
   textHeader: {
     fontSize: 25,
     color: COLORS.titleDarkGray,
-    fontWeight: 600,
+    fontWeight: "600",
     marginBottom: 15,
   },
 });
