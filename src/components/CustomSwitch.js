@@ -74,50 +74,58 @@ export default function CustomSwitch({
           {option2}
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={() => updateSwitchData(3)}
-        style={{
-          width: 70,
-          backgroundColor:
-            getSelectionMode == 3 ? COLORS.pink : COLORS.buttonsBackgroundGray,
-          borderRadius: 10,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text
+      {option3 && (
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => updateSwitchData(3)}
           style={{
-            color: getSelectionMode == 3 ? "white" : COLORS.textGrayButtons,
-            fontSize: 14,
-            fontWeight: "500",
+            width: 70,
+            backgroundColor:
+              getSelectionMode == 3
+                ? COLORS.pink
+                : COLORS.buttonsBackgroundGray,
+            borderRadius: 10,
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          {option3}
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={() => updateSwitchData(4)}
-        style={{
-          width: 70,
-          backgroundColor:
-            getSelectionMode == 4 ? COLORS.pink : COLORS.buttonsBackgroundGray,
-          borderRadius: 10,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text
+          <Text
+            style={{
+              color: getSelectionMode == 3 ? "white" : COLORS.textGrayButtons,
+              fontSize: 14,
+              fontWeight: "500",
+            }}
+          >
+            {option3}
+          </Text>
+        </TouchableOpacity>
+      )}
+      {option4 && (
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => updateSwitchData(4)}
           style={{
-            color: getSelectionMode == 4 ? "white" : COLORS.textGrayButtons,
-            fontSize: 14,
-            fontWeight: "500",
+            width: 70,
+            backgroundColor:
+              getSelectionMode == 4
+                ? COLORS.pink
+                : COLORS.buttonsBackgroundGray,
+            borderRadius: 10,
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          {option4}
-        </Text>
-      </TouchableOpacity>
+          <Text
+            style={{
+              color: getSelectionMode == 4 ? "white" : COLORS.textGrayButtons,
+              fontSize: 14,
+              fontWeight: "500",
+            }}
+          >
+            {option4}
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

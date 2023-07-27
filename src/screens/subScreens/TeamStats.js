@@ -438,15 +438,15 @@ const TeamStats = ({ params }) => {
             selectionMode={1}
             option1={"Stats"}
             option2={"Line-up"}
-            option3={"Transfers"}
-            option4={"?"}
+            // option3={"Transfers"}
+            // option4={"?"}
             onSelectSwitch={onSelectSwitch}
           />
           <View style={styles.resultsContainer}>
             {detailsTab == 1 && <Text>{StatsTab}</Text>}
             {detailsTab == 2 && <Text>{StatsTab2}</Text>}
-            {detailsTab == 3 && <Text>{StatsTab3}</Text>}
-            {detailsTab == 4 && <Text>'test tabs 4'</Text>}
+            {/* {detailsTab == 3 && <Text>{StatsTab3}</Text>}
+            {detailsTab == 4 && <Text>'test tabs 4'</Text>} */}
           </View>
         </View>
       </ScrollView>
