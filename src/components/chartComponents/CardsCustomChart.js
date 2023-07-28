@@ -1,65 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import { BarChart } from "react-native-gifted-charts";
+import { COLORS } from "../../utils/colors";
 
 const CardsCustomChart = ({ cards }) => {
-  const barData = [
-    {
-      value: 80,
-      label: "Jan",
-      spacing: 2,
-      labelWidth: 30,
-      labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
-    },
-    { value: 20, frontColor: "#ED6665" },
-    {
-      value: 50,
-      label: "Feb",
-      spacing: 2,
-      labelWidth: 30,
-      labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
-    },
-    { value: 40, frontColor: "#ED6665" },
-    {
-      value: 75,
-      label: "Mar",
-      spacing: 2,
-      labelWidth: 30,
-      labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
-    },
-    { value: 25, frontColor: "#ED6665" },
-    {
-      value: 30,
-      label: "Apr",
-      spacing: 2,
-      labelWidth: 30,
-      labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
-    },
-    { value: 20, frontColor: "#ED6665" },
-    {
-      value: 60,
-      label: "May",
-      spacing: 2,
-      labelWidth: 30,
-      labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
-    },
-    { value: 40, frontColor: "#ED6665" },
-    {
-      value: 65,
-      label: "Jun",
-      spacing: 2,
-      labelWidth: 30,
-      labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
-    },
-    { value: 30, frontColor: "#ED6665" },
-  ];
-
   //   console.log("cards", cards);
 
   const cardsData = {
@@ -88,86 +32,80 @@ const CardsCustomChart = ({ cards }) => {
   const bardData2 = [
     {
       value: Object.values(cardsData.yellow)[0].total,
-      label: "0",
-      spacing: 2,
-      labelWidth: 30,
+      label: "0-15",
+      spacing: 1,
+      labelWidth: 50,
       labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
+      frontColor: COLORS.yellowCard,
     },
     {
       value: Object.values(cardsData.red)[0].total,
-      label: "0",
-      frontColor: "#ED6665",
+      frontColor: COLORS.redCard,
     },
 
     {
       value: Object.values(cardsData.yellow)[2].total,
-      label: "15",
-      spacing: 2,
-      labelWidth: 30,
+      label: "16-30",
+      spacing: 1,
+      labelWidth: 50,
       labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
+      frontColor: COLORS.yellowCard,
     },
     {
       value: Object.values(cardsData.red)[2].total,
-      label: "15",
-      frontColor: "#ED6665",
+      frontColor: COLORS.redCard,
     },
 
     {
       value: Object.values(cardsData.yellow)[3].total,
       label: "31-45",
       spacing: 2,
-      labelWidth: 30,
+      labelWidth: 50,
       labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
+      frontColor: COLORS.yellowCard,
     },
     {
       value: Object.values(cardsData.red)[3].total,
-      label: "31-45",
-      frontColor: "#ED6665",
+      frontColor: COLORS.redCard,
     },
 
     {
       value: Object.values(cardsData.yellow)[4].total,
       label: "46-60",
       spacing: 2,
-      labelWidth: 30,
+      labelWidth: 50,
       labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
+      frontColor: COLORS.yellowCard,
     },
     {
       value: Object.values(cardsData.red)[4].total,
-      label: "46-60",
-      frontColor: "#ED6665",
+      frontColor: COLORS.redCard,
     },
 
     {
       value: Object.values(cardsData.yellow)[5].total,
-      label: "~75",
+      label: "61-75",
       spacing: 2,
-      labelWidth: 30,
+      labelWidth: 50,
       labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
+      frontColor: COLORS.yellowCard,
     },
     {
       value: Object.values(cardsData.red)[5].total,
-      label: "~75",
-      frontColor: "#ED6665",
+      frontColor: COLORS.redCard,
     },
 
     {
       value: Object.values(cardsData.yellow)[6].total,
       label: "76-90",
       spacing: 2,
-      labelWidth: 30,
+      labelWidth: 50,
       labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
+      frontColor: COLORS.yellowCard,
     },
     {
       value: Object.values(cardsData.red)[6].total,
-      label: "76-90",
-      frontColor: "#ED6665",
+      frontColor: COLORS.redCard,
     },
     {
       value:
@@ -177,14 +115,13 @@ const CardsCustomChart = ({ cards }) => {
       spacing: 2,
       labelWidth: 30,
       labelTextStyle: { color: "gray" },
-      frontColor: "#177AD5",
+      frontColor: COLORS.yellowCard,
     },
     {
       value:
         Object.values(cardsData.red)[7].total +
         Object.values(cardsData.red)[1].total,
-      label: "90+",
-      frontColor: "#ED6665",
+      frontColor: COLORS.redCard,
     },
   ];
 
@@ -193,7 +130,7 @@ const CardsCustomChart = ({ cards }) => {
       <View style={{ marginVertical: 30 }}>
         <Text
           style={{
-            color: "white",
+            color: COLORS.titleDarkGray,
             fontSize: 20,
             fontWeight: "bold",
             textAlign: "center",
@@ -216,7 +153,7 @@ const CardsCustomChart = ({ cards }) => {
                 height: 12,
                 width: 12,
                 borderRadius: 6,
-                backgroundColor: "yellow",
+                backgroundColor: COLORS.yellowCard,
                 marginRight: 8,
               }}
             />
@@ -236,7 +173,7 @@ const CardsCustomChart = ({ cards }) => {
                 height: 12,
                 width: 12,
                 borderRadius: 6,
-                backgroundColor: "red",
+                backgroundColor: COLORS.redCard,
                 marginRight: 8,
               }}
             />
@@ -255,35 +192,38 @@ const CardsCustomChart = ({ cards }) => {
     );
   };
   return (
-    <View>
-      <View
-        style={{
-          backgroundColor: "#333340",
-          paddingBottom: 40,
-          borderRadius: 10,
-          width: 500,
-          height: 400,
-        }}
-      >
-        {renderTitle()}
-        <BarChart
-          data={bardData2}
-          barWidth={8}
-          spacing={24}
-          roundedTop
-          roundedBottom
-          hideRules
-          xAxisThickness={0}
-          yAxisThickness={0}
-          yAxisTextStyle={{ color: "gray" }}
-          noOfSections={3}
-          maxValue={25}
-        />
-      </View>
+    <View style={styles.parentWrapper}>
+      {renderTitle()}
+      <BarChart
+        data={bardData2}
+        barWidth={18}
+        barBorderRadius={4}
+        spacing={24}
+        // roundedTop
+        // roundedBottom
+        hideRules
+        xAxisThickness={1}
+        yAxisThickness={1}
+        yAxisTextStyle={{ color: "gray" }}
+        noOfSections={3}
+        maxValue={25}
+        width={Dimensions.get("window").width - 87}
+        initialSpacing={12}
+      />
     </View>
   );
 };
 
 export default CardsCustomChart;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  parentWrapper: {
+    // backgroundColor: COLORS.lightPink,
+    borderWidth: 1,
+    borderColor: COLORS.lightPurple,
+    paddingBottom: 40,
+    borderRadius: 10,
+    width: Dimensions.get("window").width - 40,
+    height: 400,
+  },
+});

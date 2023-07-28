@@ -1,22 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import React from "react";
 import { LineChart } from "react-native-gifted-charts";
+import { COLORS } from "../../utils/colors";
 
 const FormLinedChart = ({ form }) => {
-  const lineData = [
-    { value: 0, dataPointText: "0" },
-    { value: 20, dataPointText: "20" },
-    { value: 18, dataPointText: "18" },
-    { value: 40, dataPointText: "40" },
-    { value: 36, dataPointText: "36" },
-    { value: 60, dataPointText: "60" },
-    { value: 54, dataPointText: "54" },
-    { value: 85, dataPointText: "85" },
-  ];
-
-  //   console.log("form", form);
-  //   console.log(form.split(""));
-
   function transformStringToArray(inputString) {
     const resultArray = [];
     let previousValue = 0;
@@ -44,25 +31,29 @@ const FormLinedChart = ({ form }) => {
 
   return (
     <View>
-      <View style={{ backgroundColor: "#1A3461" }}>
+      <View style={styles.wrapperStyle}>
         <LineChart
-          //   isAnimated
+          // isAnimated
+          // hideDataPoints
+          areaChart
           curved
-          initialSpacing={0}
+          initialSpacing={20}
           data={resultArray}
-          spacing={30}
-          textColor1="yellow"
+          spacing={23}
+          textColor1={COLORS.gray}
           textShiftY={-8}
           textShiftX={-10}
           textFontSize={13}
-          thickness={5}
+          thickness={2}
           hideRules
-          hideYAxisText
-          yAxisColor="#0BA5A4"
-          //   showVerticalLines
-          verticalLinesColor="rgba(14,164,164,0.5)"
-          xAxisColor="#0BA5A4"
-          color="#0BA5A4"
+          yAxisColor={COLORS.pink}
+          xAxisColor={COLORS.pink}
+          color={COLORS.gray}
+          width={Dimensions.get("window").width - 93}
+          startFillColor={COLORS.pink}
+          startOpacity={0.8}
+          endFillColor={COLORS.backgroundGray}
+          endOpacity={0.3}
         />
       </View>
     </View>
@@ -71,4 +62,10 @@ const FormLinedChart = ({ form }) => {
 
 export default FormLinedChart;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  wrapperStyle: {
+    width: Dimensions.get("window").width - 40,
+    // backgroundColor: "#1A3461",
+    margin: 0,
+  },
+});

@@ -5967,13 +5967,13 @@ const Statistics = (params) => {
   // console.log("red", topRedCards.response[0].statistics[0].cards.red > 0);
 
   return (
-    <View>
+    <View style={styles.parentWrapper}>
       <ScrollView>
         <View>
           {clubName ? (
             <TeamStats params={params?.route?.params?.params} />
           ) : (
-            <View style={styles.parentWrapper}>
+            <View style={styles.leagueParentWrapper}>
               <Text>Statisticile Ligii 1</Text>
               <Text>Top marcatori</Text>
               <TopScorersAssists data={topScorerData} playerType={"scorer"} />
@@ -6003,8 +6003,9 @@ const Statistics = (params) => {
 export default Statistics;
 
 const styles = StyleSheet.create({
-  parentWrapper: {
+  parentWrapper: {},
+
+  leagueParentWrapper: {
     height: "100%",
-    // backgroundColor: "pink",
   },
 });

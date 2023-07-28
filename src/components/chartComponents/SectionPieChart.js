@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import { PieChart } from "react-native-gifted-charts";
+import { COLORS } from "../../utils/colors";
 
 const SectionPieChart = () => {
   const pieData = [
@@ -30,19 +31,12 @@ const SectionPieChart = () => {
 
   const RenderLegendComponent = () => {
     return (
-      <View
-        style={{
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          //   marginBottom: 10,
-          //   backgroundColor: "pink",
-        }}
-      >
+      <View style={styles.legendComponentStyling}>
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            width: 120,
+            width: "auto",
           }}
         >
           {renderDot("#006DFF")}
@@ -62,7 +56,7 @@ const SectionPieChart = () => {
 
   const PieChartElement = () => {
     return (
-      <View style={{ padding: 20, alignItems: "center" }}>
+      <View style={styles.pieChartStyling}>
         <PieChart
           data={pieData}
           donut
@@ -92,31 +86,37 @@ const SectionPieChart = () => {
     );
   };
   return (
-    <View
-      style={{
-        paddingVertical: 30,
-        // backgroundColor: "#34448B",
-        // flex: 1,
-        width: Dimensions.get("window").width - 50,
-        height: "auto",
-      }}
-    >
-      <View
-        style={{
-          //   margin: 20,
-          padding: 16,
-          borderRadius: 20,
-          backgroundColor: "#232B5D",
-          flexDirection: "row",
-        }}
-      >
-        <PieChartElement />
-        <RenderLegendComponent />
-      </View>
+    <View style={styles.parentWrapperStyling}>
+      <PieChartElement />
+      <RenderLegendComponent />
     </View>
   );
 };
 
 export default SectionPieChart;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  parentWrapperStyling: {
+    paddingVertical: 20,
+    width: Dimensions.get("window").width - 40,
+    height: "auto",
+    borderRadius: 20,
+    backgroundColor: COLORS.transparentPurple,
+    justifyContent: "space-evenly",
+    // justifyContent: "space-around",
+    // justifyContent: "space-between",
+    flexDirection: "row",
+  },
+
+  legendComponentStyling: {
+    flexDirection: "column",
+    justifyContent: "center",
+    // backgroundColor: "green",
+    width: "auto",
+  },
+
+  pieChartStyling: {
+    paddingTop: 10,
+    alignItems: "center",
+  },
+});

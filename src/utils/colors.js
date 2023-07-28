@@ -1,5 +1,6 @@
 export const COLORS = {
   purple: "rgba(55,0,60, 0.9)",
+  transparentPurple: "rgba(55,0,60, 0.5)",
   lightPurple: "rgb(101,55,102)",
   pink: "rgb(255,40,130)",
   backgroundGray: "#F7F7F7",
@@ -10,4 +11,6 @@ export const COLORS = {
   lightPink: "rgb(255,234,243)",
   buttonsBackgroundGray: "rgb(245,245,245)",
   textGrayButtons: "rgb(174,174,174)",
+  redCard: "#E50A24",
+  yellowCard: "#FFD301",
 };

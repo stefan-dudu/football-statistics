@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
 import React from "react";
 import SectionPieChart from "../../components/chartComponents/SectionPieChart";
@@ -6,6 +6,7 @@ import FormLinedChart from "../../components/chartComponents/FormLinedChart";
 import GoalsHorizontalBarChart from "../../components/chartComponents/GoalsHorizontalBarChart";
 import CardsCustomChart from "../../components/chartComponents/CardsCustomChart";
 import PenaltyDonutChart from "../../components/chartComponents/PenaltyDonutChart";
+import { COLORS } from "../../utils/colors";
 
 const Graphs = () => {
   const teamStats = {
@@ -308,29 +309,40 @@ const Graphs = () => {
   // console.log("form", teamStats.response.form);
 
   return (
-    <View>
-      <Text>Title</Text>
+    <View style={styles.wrapperStyle}>
       <View>
         <Text>Forma / Evolutie</Text>
         <FormLinedChart form={teamStats.response.form} />
         <Text>Rezultate</Text>
         <SectionPieChart />
 
-        <View>
-          <Text>Cea mai mare victorie 5-0</Text>
-          <Text>Cea mai mare infrangere 1-4</Text>
+        <View style={styles.textWrapper}>
+          <Text style={styles.textStyling}>
+            Cea mai clara victorie: <Text style={styles.textValue}>5-0</Text>
+          </Text>
+          <Text style={styles.textStyling}>
+            Cea mai clara infrangere:
+            <Text style={styles.textValue}> 1-4</Text>
+          </Text>
         </View>
-        {/* <Text>Goluri marcate acasa/deplasasre</Text> */}
+
+        <Text>Goluri marcate acasa/deplasasre</Text>
         <GoalsHorizontalBarChart />
 
-        {/* goluri primite acasa/deplasare */}
+        <Text>Goluri primite acasa/deplasasre</Text>
         <GoalsHorizontalBarChart />
 
         <CardsCustomChart cards={teamStats.response.cards} />
 
-        <Text>Nr. meciuri fara gol primit : 13</Text>
-        <Text>Nr. meciuri fara a inscrie : 5</Text>
-
+        <View style={styles.textWrapper}>
+          <Text style={styles.textStyling}>
+            Nr. meciuri fara gol primit :{" "}
+            <Text style={styles.textValue}>13</Text>
+          </Text>
+          <Text style={styles.textStyling}>
+            Nr. meciuri fara a inscrie : <Text style={styles.textValue}>5</Text>
+          </Text>
+        </View>
         <PenaltyDonutChart />
       </View>
     </View>
@@ -339,4 +351,23 @@ const Graphs = () => {
 
 export default Graphs;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  wrapperStyle: {
+    width: Dimensions.get("window").width - 160,
+    // backgroundColor: "red",
+  },
+
+  textWrapper: {
+    marginVertical: 20,
+    width: Dimensions.get("window").width - 40,
+  },
+
+  textStyling: {
+    fontSize: 20,
+  },
+
+  textValue: {
+    color: COLORS.powerOrange,
+    fontWeight: "600",
+  },
+});
