@@ -706,7 +706,7 @@ const Head2Head = () => {
       options
     );
     return (
-      <View style={styles.h2hContainer}>
+      <View style={styles.h2hContainer} key={el.fixture.id}>
         <View style={styles.dayStyle}>
           {/* date */}
           <Text style={styles.date}>{dayOfEvent}</Text>

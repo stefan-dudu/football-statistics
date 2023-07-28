@@ -705,7 +705,7 @@ const StatsLineup = () => {
     return position.map((el) => {
       // console.log("el", el);
       return (
-        <View style={styles.playerCardWrapper}>
+        <View style={styles.playerCardWrapper} key={el.id}>
           <View style={styles.playerTopPart}>
             {/* top part */}
             <Image

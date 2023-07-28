@@ -68,9 +68,10 @@ const TopScorersAssists = ({ data, playerType }) => {
 
   const PlayerCard = () => {
     return data.response.slice(0, 3).map((el, i) => {
+      // console.log(el);
       //   console.log("el", el.statistics[0].games.position);
       return (
-        <View style={styles.playerCardWrapper}>
+        <View style={styles.playerCardWrapper} key={el.player.id}>
           <View style={styles.playerPicture}>
             {/* <Text>{i + 1}</Text> */}
             <Image

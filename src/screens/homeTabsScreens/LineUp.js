@@ -455,7 +455,7 @@ const LineUp = () => {
     // console.log("i : el", i, el);
     // console.log("i", i);
     return (
-      <View style={styles.nameFormationLogoStyle}>
+      <View key={el.team.id} style={styles.nameFormationLogoStyle}>
         <View style={styles.teamFormationLogoWrapper}>
           {i == 0 ? (
             <View style={styles.teamFormationLogoWrapper}>
@@ -491,13 +491,15 @@ const LineUp = () => {
 
   const Manager = data.response.map((el) => {
     return (
-      <Text style={styles.playerManagerStylingWrapper}>{el.coach.name}</Text>
+      <Text style={styles.playerManagerStylingWrapper} key={el.coach.id}>
+        {el.coach.name}
+      </Text>
     );
   });
 
   const Starting11Home = data.response[0].startXI.map((el) => {
     return (
-      <View style={styles.playerManagerStylingWrapper}>
+      <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
         <View style={styles.playerNumberNameStyle}>
           {/* <Text>{el.player.number}</Text> */}
           <Text>{el.player.name}</Text>
@@ -509,7 +511,7 @@ const LineUp = () => {
 
   const Starting11Away = data.response[1].startXI.map((el) => {
     return (
-      <View style={styles.playerManagerStylingWrapper}>
+      <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
         <View style={styles.playerNumberNameStyle}>
           {/* <Text>{el.player.number}</Text> */}
           <Text>{el.player.name}</Text>
@@ -521,7 +523,7 @@ const LineUp = () => {
 
   const SubsHome = data.response[0].substitutes.map((el) => {
     return (
-      <View style={styles.playerManagerStylingWrapper}>
+      <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
         <View style={styles.playerNumberNameStyle}>
           {/* <Text>{el.player.number}</Text> */}
           <Text>{el.player.name}</Text>
@@ -533,7 +535,7 @@ const LineUp = () => {
 
   const SubsAway = data.response[1].substitutes.map((el) => {
     return (
-      <View style={styles.playerManagerStylingWrapper}>
+      <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
         <View style={styles.playerNumberNameStyle}>
           {/* <Text>{el.player.number}</Text> */}
           <Text>{el.player.name}</Text>

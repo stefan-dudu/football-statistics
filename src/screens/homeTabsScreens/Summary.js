@@ -381,7 +381,10 @@ const Summary = () => {
 
   const Timeline = data.response.map((el) => {
     return (
-      <View style={styles.timelineContainer}>
+      <View
+        key={el.time.elapsed + el.player.id}
+        style={styles.timelineContainer}
+      >
         <View
           style={[
             el.team.id == homeTeamID
