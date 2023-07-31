@@ -548,14 +548,14 @@ const LineUp = () => {
   return (
     <View style={styles.parentWrapperStyle}>
       <View style={styles.rowStyle}>{TeamLogoNameFormation}</View>
-      <Text style={styles.middleTitles}>Manager</Text>
+      <Text style={styles.middleTitles}>Antrenor</Text>
       <View style={styles.rowStyle}>{Manager}</View>
-      <Text style={styles.middleTitles}>Starting XI</Text>
+      <Text style={styles.middleTitles}>Primul 11</Text>
       <View style={styles.rowStyle}>
         <View>{Starting11Home}</View>
         <View>{Starting11Away}</View>
       </View>
-      <Text style={styles.middleTitles}>Subs</Text>
+      <Text style={styles.middleTitles}>Rezerve</Text>
       <View style={styles.rowStyle}>
         <View>{SubsHome}</View>
         <View>{SubsAway}</View>
@@ -573,14 +573,16 @@ const styles = StyleSheet.create({
     // justifyContent: "space-between",
     // width: "100%",
     // marginHorizontal: 120,
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
+    // height: "auto",
+    paddingTop: 20,
     width: Dimensions.get("window").width - 40,
   },
 
   rowStyle: {
     flexDirection: "row",
     justifyContent: "space-between",
-    // backgroundColor: "pink",
+    // backgroundColor: "pink",/
   },
 
   teamWrapperStyle: {
@@ -592,32 +594,35 @@ const styles = StyleSheet.create({
   },
 
   teamLogoStyle: {
-    width: 50,
-    height: 50,
-    resizeMode: "stretch",
+    width: 60,
+    height: 60,
+    // resizeMode: "stretch",
   },
   middleTitles: {
     color: "red",
     fontSize: 20,
-    marginLeft: 120,
     marginVertical: 5,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    textAlign: "center",
   },
 
   nameFormationStyle: {
     backgroundColor: "white",
     alignItems: "center",
     alignContent: "center",
+    paddingHorizontal: -10,
   },
 
   teamName: {
     fontWeight: "500",
+    fontSize: 17,
   },
 
   teamFormation: {
     color: COLORS.gray,
+    fontSize: 16,
   },
 
   logoWrapperHomeStyle: {
@@ -640,10 +645,11 @@ const styles = StyleSheet.create({
   },
 
   nameFormationLogoStyle: {
-    // backgroundColor: "red",
+    // backgroundColor: "green",
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
+    // marginTop: 10,
   },
 
   playerManagerStylingWrapper: {

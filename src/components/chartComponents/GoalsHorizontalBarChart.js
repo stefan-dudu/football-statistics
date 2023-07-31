@@ -27,9 +27,11 @@ const GoalsHorizontalBarChart = () => {
       <View style={styles.wrapper}>
         <BarChart
           // isAnimated
+          height={160}
+          // width={300}
           horizontal
           barWidth={20}
-          noOfSections={3}
+          noOfSections={2}
           barBorderRadius={4}
           frontColor="lightgray"
           data={barData}
@@ -37,6 +39,18 @@ const GoalsHorizontalBarChart = () => {
           xAxisThickness={0}
           hideRules
         />
+
+        {/* <BarChart
+          horizontal
+          height={140}
+          barWidth={22}
+          noOfSections={3}
+          barBorderRadius={4}
+          frontColor="lightgray"
+          data={barData}
+          yAxisThickness={0}
+          xAxisThickness={0}
+        /> */}
       </View>
     </View>
   );
@@ -50,6 +64,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     height: 150,
     paddingTop: 50,
+    // top: 10,
     // alignItems: "center",
   },
 

@@ -715,7 +715,7 @@ const LiveMatches = ({ navigation }) => {
 
   return (
     <View style={styles.containerStyle}>
-      <Text style={styles.textHeader}>Live matches</Text>
+      <Text style={styles.textHeader}>Meciuri live</Text>
       <ScrollView horizontal>{matchData}</ScrollView>
     </View>
   );
@@ -726,10 +726,13 @@ export default LiveMatches;
 const styles = StyleSheet.create({
   containerStyle: {
     // backgroundColor: "pink",
+    paddingTop: 25,
     flexDirection: "column",
   },
 
   textHeader: {
+    marginLeft: 16,
+    marginBottom: 16,
     fontSize: 25,
     color: COLORS.titleDarkGray,
     fontWeight: "600",

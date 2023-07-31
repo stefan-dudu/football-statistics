@@ -311,9 +311,9 @@ const Graphs = () => {
   return (
     <View style={styles.wrapperStyle}>
       <View>
-        <Text>Forma / Evolutie</Text>
+        <Text style={styles.graphSubtitle}>Evolutie</Text>
         <FormLinedChart form={teamStats.response.form} />
-        <Text>Rezultate</Text>
+        <Text style={styles.graphSubtitle}>Rezultate</Text>
         <SectionPieChart />
 
         <View style={styles.textWrapper}>
@@ -326,10 +326,14 @@ const Graphs = () => {
           </Text>
         </View>
 
-        <Text>Goluri marcate acasa/deplasasre</Text>
+        <Text style={styles.graphSubtitle}>
+          Goluri marcate acasa/deplasasre
+        </Text>
         <GoalsHorizontalBarChart />
 
-        <Text>Goluri primite acasa/deplasasre</Text>
+        <Text style={styles.graphSubtitle}>
+          Goluri primite acasa/deplasasre
+        </Text>
         <GoalsHorizontalBarChart />
 
         <CardsCustomChart cards={teamStats.response.cards} />
@@ -358,16 +362,29 @@ const styles = StyleSheet.create({
   },
 
   textWrapper: {
-    marginVertical: 20,
+    marginVertical: 30,
     width: Dimensions.get("window").width - 40,
+    marginLeft: 20,
   },
 
   textStyling: {
     fontSize: 20,
+    marginBottom: 10,
   },
 
   textValue: {
     color: COLORS.powerOrange,
     fontWeight: "600",
+  },
+
+  graphSubtitle: {
+    color: "gray",
+    fontSize: 20,
+    fontWeight: "600",
+    borderBottomWidth: 2,
+    borderBottomColor: "gray",
+    width: Dimensions.get("window").width - 40,
+    paddingBottom: 5,
+    marginBottom: 15,
   },
 });

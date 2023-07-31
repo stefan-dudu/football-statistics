@@ -32,7 +32,7 @@ const CardsCustomChart = ({ cards }) => {
   const bardData2 = [
     {
       value: Object.values(cardsData.yellow)[0].total,
-      label: "0-15",
+      label: "0-15'",
       spacing: 1,
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
@@ -45,7 +45,7 @@ const CardsCustomChart = ({ cards }) => {
 
     {
       value: Object.values(cardsData.yellow)[2].total,
-      label: "16-30",
+      label: "16-30'",
       spacing: 1,
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
@@ -58,7 +58,7 @@ const CardsCustomChart = ({ cards }) => {
 
     {
       value: Object.values(cardsData.yellow)[3].total,
-      label: "31-45",
+      label: "31-45'",
       spacing: 2,
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
@@ -71,7 +71,7 @@ const CardsCustomChart = ({ cards }) => {
 
     {
       value: Object.values(cardsData.yellow)[4].total,
-      label: "46-60",
+      label: "46-60'",
       spacing: 2,
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
@@ -84,7 +84,7 @@ const CardsCustomChart = ({ cards }) => {
 
     {
       value: Object.values(cardsData.yellow)[5].total,
-      label: "61-75",
+      label: "61-75'",
       spacing: 2,
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
@@ -97,7 +97,7 @@ const CardsCustomChart = ({ cards }) => {
 
     {
       value: Object.values(cardsData.yellow)[6].total,
-      label: "76-90",
+      label: "76-90'",
       spacing: 2,
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
@@ -111,7 +111,7 @@ const CardsCustomChart = ({ cards }) => {
       value:
         Object.values(cardsData.yellow)[7].total +
         Object.values(cardsData.yellow)[1].total,
-      label: "90+",
+      label: "90'+",
       spacing: 2,
       labelWidth: 30,
       labelTextStyle: { color: "gray" },

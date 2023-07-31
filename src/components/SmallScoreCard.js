@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   teamLogo: {
     width: 80,
     height: 80,
-    resizeMode: "stretch",
   },
 
   left: {
@@ -84,10 +83,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    // backgroundColor: "red",
+    // flexWrap: "wrap",
   },
   teamLogo: {
-    width: "35%",
-    height: "50%",
+    width: 50,
+    height: 50,
     resizeMode: "stretch",
   },
 

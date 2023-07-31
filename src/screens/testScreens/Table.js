@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../../utils/colors";
+import { ScrollView } from "react-native";
 
 const standingsData = {
   get: "standings",
@@ -767,38 +768,51 @@ const Table = () => {
 
   const TableHeader = () => (
     <View style={styles.tableRow}>
-      <Text style={[styles.tableHeaderCell, { flex: 3 }]}>Nume</Text>
+      <Text style={[styles.tableHeaderCell, { width: 30 }]}>Loc</Text>
+      <Text style={[styles.tableHeaderCell, { width: 150 }]}>Nume</Text>
       <Text style={[styles.tableHeaderCell, { flex: 1 }]}>MP</Text>
       <Text style={[styles.tableHeaderCell, { flex: 1 }]}>W</Text>
       <Text style={[styles.tableHeaderCell, { flex: 1 }]}>D</Text>
       <Text style={[styles.tableHeaderCell, { flex: 1 }]}>L</Text>
-      <Text style={[styles.tableHeaderCell, { flex: 1 }]}>Puncte</Text>
+      <Text style={[styles.tableHeaderCell, { flex: 1 }]}>Pct</Text>
     </View>
   );
 
   const TableCell = ({ data }) => (
-    <View style={styles.tableRow}>
+    <View style={styles.tableCellWrapper}>
+      <View style={styles.teamRowWrapper}>
+        <Text style={[{ width: 30 }, styles.teamTableCell]}>{data.rank}</Text>
+      </View>
+
       <TouchableOpacity
+        style={styles.teamButtonStyle}
         onPress={() => {
           // console.log("team name : ", data.team.name);
-          navigation.navigate("Statistics", { params: data.team });
+          navigation.navigate("Statistici", { params: data.team });
         }}
       >
-        <Text style={[styles.tableCell, { width: 130 }]}>
-          {data.rank}.{" "}
-          <Image
-            style={styles.teamLogoStyle}
-            source={require("../../../assets/teamLogo2.png")}
-          />{" "}
-          {data.team.name}
-        </Text>
+        <Image
+          style={styles.teamLogoStyle}
+          source={require("../../../assets/teamLogo2.png")}
+        />
+        <Text style={styles.teamNameStyle}>{data.team.name}</Text>
       </TouchableOpacity>
 
-      <Text style={[styles.tableCell, { flex: 1 }]}>{data.all.played}</Text>
-      <Text style={[styles.tableCell, { flex: 1 }]}>{data.points}</Text>
-      <Text style={[styles.tableCell, { flex: 1 }]}>{data.points}</Text>
-      <Text style={[styles.tableCell, { flex: 1 }]}>{data.points}</Text>
-      <Text style={[styles.tableCell, { flex: 1 }]}>{data.points}</Text>
+      <View style={styles.teamRowWrapper}>
+        <Text style={styles.teamTableCell}>{data.all.played}</Text>
+      </View>
+      <View style={styles.teamRowWrapper}>
+        <Text style={styles.teamTableCell}>{data.all.played}</Text>
+      </View>
+      <View style={styles.teamRowWrapper}>
+        <Text style={styles.teamTableCell}>{data.all.played}</Text>
+      </View>
+      <View style={styles.teamRowWrapper}>
+        <Text style={styles.teamTableCell}>{data.all.played}</Text>
+      </View>
+      <View style={styles.teamRowWrapper}>
+        <Text style={styles.teamTableCell}>{data.all.played}</Text>
+      </View>
     </View>
   );
 
@@ -819,32 +833,102 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Dimensions.get("window").width,
     padding: 10,
-    backgroundColor: "#ffffff",
+    // backgroundColor: "#ffffff",
   },
   tableRow: {
     flexDirection: "row",
-    // paddingVertical: 10,
-    // alignItems: 'center',
+    paddingVertical: 10,
+    alignItems: "center",
+
     // alignContent: "center",
     // justifyContent: "center",
   },
   tableCell: {
-    // borderWidth: 1,
     borderBottomWidth: 1,
-    borderColor: COLORS.gray,
-    padding: 10,
+    borderColor: "white",
+    // paddingBottom: 2,
+    // padding: 10,
+    backgroundColor: "pink",
+    height: 50,
+    // height: "auto",
+    borderWidth: 1,
+    borderColor: "red",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // alignSelf: "center",
+    // alignContent: "center",
+    textAlign: "center",
+    flex: 1,
   },
   tableHeaderCell: {
     fontWeight: "bold",
     color: COLORS.textGrayButtons,
     // borderWidth: 1,
     // borderColor: "red",
+    textAlign: "center",
   },
   teamLogoStyle: {
-    width: 20,
-    height: 20,
-    resizeMode: "stretch",
-    backgroundColor: "red",
+    width: 40,
+    height: 40,
+    // backgroundColor: "red",
+  },
+
+  teamButtonStyle: {
+    flexDirection: "row",
+    // backgroundColor: "pink",
+    alignItems: "center",
+    justifyContent: "space-around",
+    // justifyContent: "space-evenly",
+    // justifyContent: "space-between",
+    // justifyContent: "center",
+    // alignContent: "center",
+    // alignSelf: "center",
+    // width: 150,
+    width: 140,
+  },
+
+  teamNameStyle: {
+    // paddingHorizontal: 10,
+
+    // backgroundColor: "gray",
+    flexWrap: "wrap",
+    maxHeight: 50,
+    width: 80,
+  },
+
+  teamRowWrapper: {
+    // backgroundColor: "lightgray",
+    justifyContent: "center",
+    alignContent: "center",
+    alignSelf: "center",
+    height: 50,
+    flex: 1,
+  },
+
+  teamRowWrapperSecond: {
+    // backgroundColor: "lightgray",
+
+    justifyContent: "center",
+    alignContent: "center",
+    alignSelf: "center",
+    height: 50,
+    flex: 1,
+  },
+
+  teamTableCell: {
+    textAlign: "center",
+    // backgroundColor: "lightgray",
+  },
+
+  tableCellWrapper: {
+    backgroundColor: "white",
+    borderRadius: 16,
+    flexDirection: "row",
+    paddingVertical: 10,
+    alignItems: "center",
+    marginVertical: 5,
+    // borderWidth: 1,
+    // borderColor: "red",
   },
 });
 

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import TeamStats from "./subScreens/TeamStats";
@@ -5974,14 +5974,15 @@ const Statistics = (params) => {
             <TeamStats params={params?.route?.params?.params} />
           ) : (
             <View style={styles.leagueParentWrapper}>
-              <Text>Statisticile Ligii 1</Text>
-              <Text>Top marcatori</Text>
+              <Text style={styles.subTitleStyle}>Top marcatori</Text>
               <TopScorersAssists data={topScorerData} playerType={"scorer"} />
-              <Text>Top assisturi</Text>
+              <Text style={styles.subTitleStyle}>Top assisturi</Text>
               <TopScorersAssists data={topAssistsData} playerType={"assists"} />
               {topRedCards.response[0].statistics[0].cards.yellow > 0 && (
                 <View>
-                  <Text>Top cartonase galbene</Text>
+                  <Text style={styles.subTitleStyle}>
+                    Top cartonase galbene
+                  </Text>
                   <TopScorersAssists
                     data={topYellowCards}
                     playerType={"cards"}
@@ -5990,7 +5991,7 @@ const Statistics = (params) => {
               )}
 
               {topRedCards.response[0].statistics[0].cards.red > 0 && (
-                <Text>Top cartonase rosii</Text>
+                <Text style={styles.subTitleStyle}>Top cartonase rosii</Text>
               )}
             </View>
           )}
@@ -6007,5 +6008,16 @@ const styles = StyleSheet.create({
 
   leagueParentWrapper: {
     height: "100%",
+    marginTop: 20,
+  },
+
+  subTitleStyle: {
+    marginLeft: 10,
+    color: "gray",
+    fontSize: 20,
+    fontWeight: "600",
+    borderBottomWidth: 2,
+    borderBottomColor: "gray",
+    width: Dimensions.get("window").width,
   },
 });

@@ -420,7 +420,7 @@ const styles = StyleSheet.create({
     display: "flex",
     // backgroundColor: "lightblue",
     position: "relative",
-    // justifyContent: ,
     marginHorizontal: 5,
+    width: Dimensions.get("window").width - 35,
   },
 });

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import { COLORS } from "../../utils/colors";
 
@@ -66,7 +66,7 @@ const Stats = ({ data }) => {
   };
 
   return (
-    <View>
+    <View style={styles.parentWRapper}>
       <RowBuilder number={9} text={"Posesie"} />
       <RowBuilder number={16} text={"Sanse De Gol"} />
       <RowBuilder number={6} text={"Faulturi"} />
@@ -82,8 +82,8 @@ const Stats = ({ data }) => {
       <RowBuilder number={4} text={"Suturi din afara careului"} />
       <RowBuilder number={5} text={"Suturi din careu"} />
       <RowBuilder number={12} text={"Mingii aparate"} />
-      <RowBuilder number={13} text={"Numar total de pase"} />
-      <RowBuilder number={14} text={"Numar pase cu success"} />
+      <RowBuilder number={13} text={"Nr total de pase"} />
+      <RowBuilder number={14} text={"Nr pase finalizate"} />
     </View>
   );
 };
@@ -91,11 +91,12 @@ const Stats = ({ data }) => {
 export default Stats;
 
 const styles = StyleSheet.create({
+  parentWRapper: { width: Dimensions.get("window").width - 40 },
+
   statRowWrapper: {
     // backgroundColor: "pink",
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10,
-    // marginLeft: 20,
   },
 });

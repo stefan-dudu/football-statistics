@@ -9,7 +9,7 @@ const TopScorersAssists = ({ data, playerType }) => {
       case "scorer":
         return (
           <ImageBackground
-            source={require("../../../assets/ratingCardBlack.png")}
+            source={require("../../../assets/ratingCardGreen.png")}
             style={styles.cardStyling}
           >
             <View style={styles.cardTextWrapper}>
@@ -23,11 +23,11 @@ const TopScorersAssists = ({ data, playerType }) => {
       case "assists":
         return (
           <ImageBackground
-            source={require("../../../assets/ratingCardGreen.png")}
+            source={require("../../../assets/ratingTopAssist.png")}
             style={styles.cardStyling}
           >
             <View style={styles.cardTextWrapper}>
-              <Text style={styles.ratingTextStyle}>
+              <Text style={styles.ratingBronzeTextStyle}>
                 {el?.statistics[0]?.games?.rating?.slice(0, -4) || "-"}
               </Text>
             </View>
@@ -53,15 +53,45 @@ const TopScorersAssists = ({ data, playerType }) => {
   const MatchDetails = ({ el }) => {
     return playerType !== "cards" ? (
       <View style={styles.playerMatchDetails}>
-        <Text>Goals: {el.statistics[0].goals.total}</Text>
-        <Text>Assists: {el.statistics[0].goals.assists}</Text>
-        <Text>Appearences: {el.statistics[0].games.appearences}</Text>
+        <Text>
+          Goals:{" "}
+          <Text style={styles.detailsHighlighted}>
+            {el.statistics[0].goals.total || "-"}
+          </Text>
+        </Text>
+        <Text>
+          Assists:{" "}
+          <Text style={styles.detailsHighlighted}>
+            {el.statistics[0].goals.assists || "-"}
+          </Text>
+        </Text>
+        <Text>
+          Meciuri:{" "}
+          <Text style={styles.detailsHighlighted}>
+            {el.statistics[0].games.appearences || "-"}
+          </Text>
+        </Text>
       </View>
     ) : (
       <View style={styles.playerMatchDetails}>
-        <Text>Cartonase: {el.statistics[0].cards.yellow}</Text>
-        <Text>Faulturi: {el.statistics[0].fouls.committed}</Text>
-        <Text>Appearences: {el.statistics[0].games.appearences}</Text>
+        <Text>
+          Cartonase:{" "}
+          <Text style={styles.detailsHighlighted}>
+            {el.statistics[0].cards.yellow || "-"}
+          </Text>
+        </Text>
+        <Text>
+          Faulturi:{" "}
+          <Text style={styles.detailsHighlighted}>
+            {el.statistics[0].fouls.committed || "-"}
+          </Text>
+        </Text>
+        <Text>
+          Meciuri:{" "}
+          <Text style={styles.detailsHighlighted}>
+            {el.statistics[0].games.appearences || "-"}
+          </Text>
+        </Text>
       </View>
     );
   };
@@ -80,8 +110,8 @@ const TopScorersAssists = ({ data, playerType }) => {
             />
           </View>
           <View style={styles.playerNamePosition}>
-            <Text>{el.player.firstname}</Text>
-            <Text>{el.player.lastname}</Text>
+            <Text style={styles.nume}>{el.player.firstname}</Text>
+            <Text style={styles.prenume}>{el.player.lastname}</Text>
             <Text>{el.statistics[0].games.position}</Text>
           </View>
           <MatchDetails el={el} />
@@ -175,5 +205,20 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "600",
     fontSize: 18,
+  },
+
+  nume: {
+    fontSize: 25,
+    fontWeight: "800",
+  },
+
+  prenume: {
+    fontSize: 20,
+    fontWeight: "500",
+  },
+
+  detailsHighlighted: {
+    fontSize: 25,
+    fontWeight: "800",
   },
 });

@@ -729,38 +729,6 @@ const Home = ({ navigation }) => {
   });
 
   return (
-    // <SafeAreaView style={styles.containerCollapse}>
-    //   <View style={styles.containerCollapse}>
-    //     <Animated.View
-    //       style={[
-    //         styles.headerCollapse,
-    //         {
-    //           height: animateHeaderHeight,
-    //         },
-    //       ]}
-    //     >
-    //       <View style={styles.containerWrapper}>
-    //         <LiveMatches navigation={navigation} />
-    //       </View>
-    //     </Animated.View>
-
-    //     {/* my scrollable thing */}
-    //     <View style={styles.containerStyle}>
-    //       <Text style={styles.textHeader}>Next matches</Text>
-    //       <ScrollView
-    //         style={styles.scrollView}
-    //         scrollEventThrottle={16}
-    //         onScroll={Animated.event(
-    //           [{ nativeEvent: { contentOffset: { y: AnimatedHeaderValue } } }],
-    //           { useNativeDriver: false }
-    //         )}
-    //       >
-    //         {matchData}
-    //       </ScrollView>
-    //     </View>
-    //   </View>
-    // </SafeAreaView>
-
     <View style={styles.container}>
       <Animated.View
         style={{
@@ -773,7 +741,6 @@ const Home = ({ navigation }) => {
       />
       <ScrollView
         contentContainerStyle={{
-          padding: 16,
           paddingTop: HEADER_EXPANDED_HEIGHT,
         }}
         onScroll={Animated.event(
@@ -795,7 +762,7 @@ const Home = ({ navigation }) => {
         </View>
 
         <View style={styles.containerStyle}>
-          <Text style={styles.textHeader}>Next matches</Text>
+          <Text style={styles.textHeader}>Urmatoarele meciuri</Text>
           <ScrollView>{matchData}</ScrollView>
         </View>
       </ScrollView>
@@ -810,6 +777,7 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+    // backgroundColor: "green",
   },
   scrollContainer: {
     padding: 16,
@@ -823,7 +791,9 @@ const styles = StyleSheet.create({
 
   containerWrapper: {
     marginTop: 30,
-    marginLeft: 10,
+    marginLeft: 0,
+    // width: 500,
+    width: Dimensions.get("window").width,
     backgroundColor: COLORS.backgroundGray,
   },
 
@@ -842,6 +812,7 @@ const styles = StyleSheet.create({
 
   containerStyle: {
     marginTop: 15,
+    padding: 16,
     flexDirection: "column",
   },
 

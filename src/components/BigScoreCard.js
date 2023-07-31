@@ -170,9 +170,9 @@ const styles = StyleSheet.create({
   },
 
   teamLogoHomePage: {
-    width: "68%",
-    height: "35%",
-    resizeMode: "stretch",
+    width: 70,
+    height: 70,
+    // resizeMode: "stretch",
   },
 
   // detail page
@@ -225,9 +225,9 @@ const styles = StyleSheet.create({
   },
 
   teamLogoDetailPage: {
-    width: "38%",
-    height: "35%",
-    resizeMode: "stretch",
+    width: 70,
+    height: 70,
+    // resizeMode: "stretch",
   },
 
   // GENERAL items non dynamic

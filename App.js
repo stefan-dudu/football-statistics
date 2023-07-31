@@ -25,21 +25,6 @@ const HomeStack = () => (
     <Stack.Screen
       name="Details"
       component={DetailsScreen}
-      options={{ headerShown: false }}
-    />
-  </Stack.Navigator>
-);
-
-const StangingsStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen
-      name="Standings"
-      component={Standings}
-      options={{ headerShown: false }}
-    />
-    <Stack.Screen
-      name="Statistics"
-      component={Statistics}
       options={{ headerShown: true }}
     />
   </Stack.Navigator>
@@ -55,20 +40,23 @@ const App = ({ navigation }) => {
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name="Standings"
+          name="Clasament"
           component={Standings}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Tab.Screen
-          name="Statistics"
+          name="Statistici"
           component={Statistics}
           navigation={navigation}
-          screenOptions={{ headerTitle: "Test", headerShown: true }}
+          screenOptions={{
+            headerTitle: "Test",
+            headerShown: true,
+          }}
           listeners={({ navigation }) => ({
             tabPress: (e) => {
               // console.log("e", e);
               // console.log("navigation", navigation.isFocused());
-              navigation.isFocused() && navigation.navigate("Statistics"),
+              navigation.isFocused() && navigation.navigate("Statistici"),
                 { screen: "Device" };
             },
           })}

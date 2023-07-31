@@ -751,7 +751,9 @@ const Head2Head = () => {
 
   return (
     <View style={styles.parentWrapper}>
-      <Text>Rezultatatele in ultimele {data.results} infruntari</Text>
+      <Text style={styles.titleStyling}>
+        Rezultatatele in ultimele {data.results} infruntari
+      </Text>
       {h2h}
     </View>
   );
@@ -770,7 +772,7 @@ const styles = StyleSheet.create({
     // borderWidth: 3,
     // borderColor: "lightblue",
     backgroundColor: "white",
-    marginVertical: 15,
+    marginVertical: 10,
     marginHorizontal: 5,
     borderRadius: 17,
     // padding: 10,
@@ -787,13 +789,11 @@ const styles = StyleSheet.create({
   leagueLogoStyle: {
     width: 30,
     height: 30,
-    resizeMode: "stretch",
   },
 
   teamLogoStyle: {
     width: 40,
     height: 40,
-    resizeMode: "stretch",
   },
 
   dayStyle: {
@@ -853,5 +853,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     marginBottom: 10,
+  },
+
+  titleStyling: {
+    color: COLORS.titleDarkGray,
+    fontSize: 18,
+    fontWeight: "500",
   },
 });

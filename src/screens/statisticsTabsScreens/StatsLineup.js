@@ -769,7 +769,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "lightgray",
     borderRadius: 16,
-    width: "44%",
+    width: "43%",
     height: "auto",
     // paddingBottom: 20,
     // backgroundColor: "red",
