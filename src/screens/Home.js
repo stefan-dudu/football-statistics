@@ -714,17 +714,19 @@ const Home = ({ navigation }) => {
 
   const matchData = data.response.map((el) => {
     return (
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("Details", {
-            fixtureID: el?.fixture?.id,
-            typeOfMatch: "to be played",
-          })
-        }
-        key={el?.fixture?.id}
-      >
-        <SmallScoreCard data={el} />
-      </TouchableOpacity>
+      // <TouchableOpacity
+      //   onPress={() =>
+      //     navigation.navigate("Details", {
+      //       fixtureID: el?.fixture?.id,
+      //       typeOfMatch: "to be played",
+      //     })
+      //   }
+      //   key={el?.fixture?.id}
+      // >
+      //    </TouchableOpacity>
+
+      // here to lead to details tab that ahs only h2h and previous amtch hsitory
+      <SmallScoreCard data={el} key={el?.fixture?.id} />
     );
   });
 
@@ -805,15 +807,16 @@ const styles = StyleSheet.create({
     height: 270,
     flexDirection: "column",
     justifyContent: "center",
-    // backgroundColor: "lightblue",
+
     flex: 1,
     bottom: 0,
   },
 
   containerStyle: {
     marginTop: 15,
-    padding: 16,
+    padding: 3,
     flexDirection: "column",
+    // backgroundColor: "lightblue",
   },
 
   scrollView: {
@@ -821,6 +824,7 @@ const styles = StyleSheet.create({
   },
 
   textHeader: {
+    marginLeft: 10,
     fontSize: 25,
     color: COLORS.titleDarkGray,
     fontWeight: "600",

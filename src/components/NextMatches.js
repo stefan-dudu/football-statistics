@@ -705,17 +705,17 @@ const NextMatches = ({ navigation }) => {
 
   const matchData = data.response.map((el) => {
     return (
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("Details", {
-            fixtureID: el?.fixture?.id,
-            typeOfMatch: "to be played",
-          })
-        }
-        key={el?.fixture?.id}
-      >
-        <SmallScoreCard data={el} />
-      </TouchableOpacity>
+      // <TouchableOpacity
+      //   onPress={() =>
+      //     navigation.navigate("Details", {
+      //       fixtureID: el?.fixture?.id,
+      //       typeOfMatch: "to be played",
+      //     })
+      //   }
+      //   key={el?.fixture?.id}
+      // >
+      // </TouchableOpacity>
+      <SmallScoreCard data={el} />
     );
   });
 
@@ -747,7 +747,7 @@ const styles = StyleSheet.create({
     height: 270,
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "lightblue",
+
     flex: 1,
     bottom: 0,
   },

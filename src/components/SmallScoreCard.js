@@ -1,21 +1,38 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../utils/colors";
 
 const SmallScoreCard = ({ data }) => {
-  //   console.log("data", data);
+  // console.log("data", data.teams.home.name);
+  const navigation = useNavigation();
   return (
     <View>
       <View style={styles.matchOutline}>
         {/* left */}
-        <View style={styles.left}>
-          <Text style={styles.teamName}>Man City</Text>
-          <Image
-            style={styles.teamLogo}
-            // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-            source={require("../../assets/teamLogo.png")}
-          />
-        </View>
+        <TouchableOpacity
+          style={styles.teamButtonStyle}
+          onPress={() => {
+            // console.log("team name : ", data.team.name);
+            navigation.navigate("Statistici", { params: data.teams.home });
+          }}
+        >
+          <View style={styles.left}>
+            <Text style={styles.teamName}>Man City </Text>
+            <Image
+              style={styles.teamLogo}
+              // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
+              source={require("../../assets/teamLogo.png")}
+            />
+          </View>
+        </TouchableOpacity>
 
         {/* middle */}
         <View style={styles.middle}>
@@ -24,14 +41,23 @@ const SmallScoreCard = ({ data }) => {
         </View>
 
         {/* right */}
-        <View style={styles.right}>
-          <Image
-            style={styles.teamLogo}
-            // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-            source={require("../../assets/teamLogo2.png")}
-          />
-          <Text style={styles.teamName}> Palace</Text>
-        </View>
+
+        <TouchableOpacity
+          style={styles.teamButtonStyle}
+          onPress={() => {
+            // console.log("team name : ", data.team.name);
+            navigation.navigate("Statistici", { params: data.teams.away });
+          }}
+        >
+          <View style={styles.right}>
+            <Image
+              style={styles.teamLogo}
+              // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
+              source={require("../../assets/teamLogo2.png")}
+            />
+            <Text style={styles.teamName}> Palace </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -45,6 +71,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: "blue",
     height: 100,
+    width: Dimensions.get("window").width - 15,
     flexDirection: "column",
     justifyContent: "center",
     backgroundColor: "white",
@@ -67,24 +94,33 @@ const styles = StyleSheet.create({
   },
 
   left: {
-    flex: 2,
+    // flex: 3,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    alignContent: "center",
+    width: Dimensions.get("window").width * 0.4,
+    height: 100,
+    flexWrap: "wrap",
   },
   middle: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    // backgroundColor: "lightyellow",
+    width: Dimensions.get("window").width * 0.2,
+    height: 100,
   },
   right: {
-    flex: 2,
+    // flex: 3,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "red",
-    // flexWrap: "wrap",
+    alignContent: "center",
+    width: Dimensions.get("window").width * 0.4,
+    height: 100,
+    flexWrap: "wrap",
   },
   teamLogo: {
     width: 50,
@@ -104,5 +140,9 @@ const styles = StyleSheet.create({
 
   date: {
     color: COLORS.gray,
+  },
+
+  teamButtonStyle: {
+    // backgroundColor: "lightgray",
   },
 });

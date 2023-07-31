@@ -12,20 +12,34 @@ import Settings from "./src/screens/Settings";
 
 import DetailsScreen from "./src/screens/subScreens/DetailsScreen";
 import TeamStats from "./src/screens/subScreens/TeamStats";
+import { COLORS } from "./src/utils/colors";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const HomeStack = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="HomeStack"
+      name="Acasa"
       component={Home}
       options={{ headerShown: false }}
     />
     <Stack.Screen
       name="Details"
       component={DetailsScreen}
-      options={{ headerShown: true }}
+      options={
+        ({ headerShown: true },
+        { headerLargeTitle: true },
+        {
+          title: "Detalii meci",
+          headerStyle: {
+            backgroundColor: COLORS.pink,
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })
+      }
     />
   </Stack.Navigator>
 );

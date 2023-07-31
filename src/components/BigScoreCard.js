@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   // detail page
 
   wrapperDetailPage: {
-    marginTop: 50,
+    marginTop: 15,
     backgroundColor: "white",
     width: Dimensions.get("window").width - 30,
     height: 220,
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   },
 
   scoreDetailPage: {
-    fontSize: 30,
+    fontSize: 40,
     marginTop: 10,
     textAlign: "center",
     // fontSize: 20,

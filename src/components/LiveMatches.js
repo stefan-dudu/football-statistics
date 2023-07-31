@@ -697,6 +697,8 @@ const LiveMatches = ({ navigation }) => {
     ],
   };
 
+  const data2 = null;
+
   const matchData = data.response.map((el) => {
     return (
       <TouchableOpacity
@@ -715,8 +717,12 @@ const LiveMatches = ({ navigation }) => {
 
   return (
     <View style={styles.containerStyle}>
-      <Text style={styles.textHeader}>Meciuri live</Text>
-      <ScrollView horizontal>{matchData}</ScrollView>
+      {data && (
+        <>
+          <Text style={styles.textHeader}>Meciuri live</Text>
+          <ScrollView horizontal>{matchData}</ScrollView>
+        </>
+      )}
     </View>
   );
 };
