@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 import React from "react";
 
-const TopScorersAssists = ({ data, playerType }) => {
+const TopPlayerByCategory = ({ data, playerType }) => {
   // console.log("type", playerType);
 
   const CardType = ({ el }) => {
@@ -130,7 +130,7 @@ const TopScorersAssists = ({ data, playerType }) => {
   );
 };
 
-export default TopScorersAssists;
+export default TopPlayerByCategory;
 
 const styles = StyleSheet.create({
   // wrappers

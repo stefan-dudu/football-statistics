@@ -6,3 +6,8 @@ export default axios.create({
     "x-apisports-key": "13e62d9b05d6a2943e4605b902033228",
   },
 });
+
+// export default axios.create({
+//   baseURL: "https://dummyjson.com",
+//   headers: { "Content-Type": "application/json" },
+// });
