@@ -764,8 +764,11 @@ const Home = ({ navigation }) => {
         </View>
 
         <View style={styles.containerStyle}>
-          <Text style={styles.textHeader}>Urmatoarele meciuri</Text>
-          <ScrollView>{matchData}</ScrollView>
+          <Text style={styles.textHeader}>Urmatoarele 10 meciuri</Text>
+          {/* <ScrollView>{matchData}</ScrollView> */}
+          <ScrollView>
+            <NextMatches />
+          </ScrollView>
         </View>
       </ScrollView>
     </View>

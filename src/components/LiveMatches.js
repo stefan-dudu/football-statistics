@@ -10,9 +10,35 @@ import React, { useEffect, useState } from "react";
 import apiSports from "../api/api-sports";
 import BigScoreCard from "./BigScoreCard";
 import { COLORS } from "../utils/colors";
+import { useNavigation } from "@react-navigation/native";
 
-const LiveMatches = ({ navigation }) => {
-  const data = {
+const LiveMatches = () => {
+  const navigation = useNavigation();
+
+  const [loading, setLoading] = useState(true);
+  const [liveMatchesData, setLiveMatchesData] = useState(null);
+  const [isError, setIsError] = useState("");
+
+  const getLiveMatches = async () => {
+    try {
+      const response = await apiSports.get("/fixtures", {
+        params: {
+          league: 283,
+          season: 2023,
+          live: "all",
+        },
+      });
+      response?.data.errors.requests.includes &&
+        setIsError("Max limit for today been reached");
+
+      response?.data.results > 0 && setLiveMatchesData(response?.data);
+      setLoading(false);
+    } catch (err) {
+      console.log("error : ", err);
+    }
+  };
+
+  const data3 = {
     response: [
       {
         fixture: {
@@ -697,9 +723,7 @@ const LiveMatches = ({ navigation }) => {
     ],
   };
 
-  const data2 = null;
-
-  const matchData = data.response.map((el) => {
+  const matchData = liveMatchesData?.response?.map((el) => {
     return (
       <TouchableOpacity
         onPress={() =>
@@ -715,14 +739,33 @@ const LiveMatches = ({ navigation }) => {
     );
   });
 
+  useEffect(() => {
+    getLiveMatches();
+  }, []);
+
   return (
     <View style={styles.containerStyle}>
-      {data && (
-        <>
-          <Text style={styles.textHeader}>Meciuri live</Text>
-          <ScrollView horizontal>{matchData}</ScrollView>
-        </>
-      )}
+      {
+        loading ? (
+          // Show a loading spinner or message while waiting for data
+          <Text>Loading...</Text>
+        ) : (
+          liveMatchesData && (
+            // Render the data when it's available
+            <>
+              <Text style={styles.textHeader}>Meciuri live</Text>
+              <ScrollView horizontal>{matchData}</ScrollView>
+            </>
+          )
+        )
+        // : isError ? (
+        //   // Handle the case when no data is available or an error occurred
+        //   <Text> </Text>
+        // ) : (
+        //   // Handle the case when no data is available or an error occurred
+        //   <Text>Some other error</Text>
+        // )
+      }
     </View>
   );
 };

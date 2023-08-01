@@ -11,7 +11,18 @@ import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../utils/colors";
 
 const SmallScoreCard = ({ data }) => {
-  // console.log("data", data.teams.home.name);
+  const ExtractHourOfEvent = () => {
+    const date = new Date(data.fixture.date);
+    return date.getHours() + ":" + date.getMinutes();
+  };
+
+  const ExtractDayOfEvent = () => {
+    const date = new Date(data.fixture.date);
+    const options = { month: "short", day: "numeric" };
+    const dayOfEvent = date.toLocaleDateString("ro-RO", options);
+    return dayOfEvent;
+  };
+
   const navigation = useNavigation();
   return (
     <View>
@@ -25,19 +36,19 @@ const SmallScoreCard = ({ data }) => {
           }}
         >
           <View style={styles.left}>
-            <Text style={styles.teamName}>Man City </Text>
+            <Text style={styles.teamName}>{data.teams.home.name} </Text>
             <Image
               style={styles.teamLogo}
               // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-              source={require("../../assets/teamLogo.png")}
+              source={{ uri: data.teams.home.logo }}
             />
           </View>
         </TouchableOpacity>
 
         {/* middle */}
         <View style={styles.middle}>
-          <Text style={styles.hour}>06:30</Text>
-          <Text style={styles.date}>30 Oct</Text>
+          <Text style={styles.hour}>{ExtractHourOfEvent()}</Text>
+          <Text style={styles.date}>{ExtractDayOfEvent()}</Text>
         </View>
 
         {/* right */}
@@ -53,9 +64,9 @@ const SmallScoreCard = ({ data }) => {
             <Image
               style={styles.teamLogo}
               // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-              source={require("../../assets/teamLogo2.png")}
+              source={{ uri: data.teams.away.logo }}
             />
-            <Text style={styles.teamName}> Palace </Text>
+            <Text style={styles.teamName}> {data.teams.away.name} </Text>
           </View>
         </TouchableOpacity>
       </View>

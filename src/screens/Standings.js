@@ -1,32 +1,33 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import apiSports from "../api/api-sports";
 import Table from "./testScreens/Table";
 
 const Standings = () => {
+  const [loading, setLoading] = useState(true);
+  const [standingsData, setStandingsData] = useState(null);
+  const [isError, setIsError] = useState("");
+
   const getStandings = async () => {
     try {
       const response = await apiSports.get("/standings", {
         params: {
           league: 283,
-          season: 2022,
+          season: 2023,
         },
       });
-      // console.log("response", response.data.response[0].league.standings[2]);
-      // console.log("data is fetched");
-      setData(response.data.response[0].league.standings[2]);
+
+      response?.data.errors.requests.includes &&
+        setIsError("Max limit for today been reached");
+
+      response?.data.results > 0 && setStandingsData(response?.data);
+      setLoading(false);
     } catch (err) {
-      console.log("error : ", err);
+      alert(err);
     }
   };
 
-  const data = {
+  const data2 = {
     get: "standings",
     parameters: {
       league: "283",
@@ -779,12 +780,27 @@ const Standings = () => {
   // champiosnhip [0]
   // relegation [1]
   // last year regular season was [2]
-
   // regular season as of july 2023
+
+  useEffect(() => {
+    getStandings();
+  }, []);
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Table />
+      {loading ? (
+        // Show a loading spinner or message while waiting for data
+        <Text>Loading...</Text>
+      ) : standingsData ? (
+        // Render the data when it's available
+        <Table data={standingsData} />
+      ) : isError ? (
+        // Handle the case when no data is available or an error occurred
+        <Text>{isError}</Text>
+      ) : (
+        // Handle the case when no data is available or an error occurred
+        <Text>Some other error</Text>
+      )}
     </View>
   );
 };
