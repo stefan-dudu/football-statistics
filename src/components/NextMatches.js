@@ -11,6 +11,7 @@ import React, { useState, useEffect } from "react";
 import { COLORS } from "../utils/colors";
 import apiSports from "../api/api-sports";
 import SmallScoreCard from "./SmallScoreCard";
+import LimitAlert from "../screens/settingsScreens/LimitAlert";
 
 const NextMatches = () => {
   const [loading, setLoading] = useState(true);
@@ -760,8 +761,9 @@ const NextMatches = () => {
         </ScrollView>
       ) : isError ? (
         // Handle the case when no data is available or an error occurred
-        <Text>S-a atins limita pentru azi</Text>
+        <LimitAlert />
       ) : (
+        // <Text>S-a atins limita pentru azi</Text>
         // Handle the case when no data is available or an error occurred
         <Text>Some other error</Text>
       )}
