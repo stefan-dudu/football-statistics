@@ -10,12 +10,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../utils/colors";
 
-const SmallScoreCard = ({ data }) => {
-  const ExtractHourOfEvent = () => {
-    const date = new Date(data.fixture.date);
-    return date.getHours() + ":" + date.getMinutes();
-  };
-
+const SmallScoreCardPreviousMatches = ({ data }) => {
   const ExtractDayOfEvent = () => {
     const date = new Date(data.fixture.date);
     const options = { month: "short", day: "numeric" };
@@ -23,44 +18,43 @@ const SmallScoreCard = ({ data }) => {
     return dayOfEvent;
   };
 
+  //   console.log("data", data);
+
   const navigation = useNavigation();
   return (
     <View>
-      <View style={styles.matchOutline}>
-        {/* left */}
-        <TouchableOpacity
-          style={styles.teamButtonStyle}
-          onPress={() => {
-            // console.log("team name : ", data.team.name);
-            navigation.navigate("Statistici", { params: data.teams.home });
-          }}
-        >
-          <View style={styles.left}>
-            <Text style={styles.teamName}>{data.teams.home.name} </Text>
+      <TouchableOpacity
+        style={styles.teamButtonStyle}
+        onPress={() => {
+          // console.log("team name : ", data.team.name);
+          navigation.navigate("Details", {
+            finishedMatchID: data.fixture.id,
+          });
+        }}
+      >
+        <View style={styles.matchOutline}>
+          {/* left */}
+
+          <View style={styles.teamWrapper}>
             <Image
               style={styles.teamLogo}
               // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
               source={{ uri: data.teams.home.logo }}
             />
+            <Text style={styles.teamName}>{data.teams.home.name} </Text>
           </View>
-        </TouchableOpacity>
 
-        {/* middle */}
-        <View style={styles.middle}>
-          <Text style={styles.hour}>{ExtractHourOfEvent()}</Text>
-          <Text style={styles.date}>{ExtractDayOfEvent()}</Text>
-        </View>
+          {/* middle */}
+          <View style={styles.middle}>
+            <Text style={styles.hour}>
+              {data.score.fulltime.home} - {data.score.fulltime.away}
+            </Text>
+            <Text style={styles.date}>{ExtractDayOfEvent()}</Text>
+          </View>
 
-        {/* right */}
+          {/* right */}
 
-        <TouchableOpacity
-          style={styles.teamButtonStyle}
-          onPress={() => {
-            // console.log("team name : ", data.team.name);
-            navigation.navigate("Statistici", { params: data.teams.away });
-          }}
-        >
-          <View style={styles.right}>
+          <View style={styles.teamWrapper}>
             <Image
               style={styles.teamLogo}
               // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
@@ -68,13 +62,13 @@ const SmallScoreCard = ({ data }) => {
             />
             <Text style={styles.teamName}> {data.teams.away.name} </Text>
           </View>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
 
-export default SmallScoreCard;
+export default SmallScoreCardPreviousMatches;
 
 const styles = StyleSheet.create({
   matchOutline: {
@@ -133,6 +127,17 @@ const styles = StyleSheet.create({
     height: 100,
     flexWrap: "wrap",
   },
+
+  teamWrapper: {
+    // flex: 3,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    width: Dimensions.get("window").width * 0.4,
+    height: 100,
+    flexWrap: "wrap",
+  },
   teamLogo: {
     width: 50,
     height: 50,
@@ -140,13 +145,14 @@ const styles = StyleSheet.create({
   },
 
   teamName: {
+    marginTop: 5,
     fontWeight: "500",
   },
 
   hour: {
     fontWeight: "600",
     color: COLORS.orange,
-    fontSize: 20,
+    fontSize: 26,
   },
 
   date: {

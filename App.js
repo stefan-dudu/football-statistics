@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -13,9 +13,10 @@ import Settings from "./src/screens/Settings";
 import DetailsScreen from "./src/screens/subScreens/DetailsScreen";
 import TeamStats from "./src/screens/subScreens/TeamStats";
 import { COLORS } from "./src/utils/colors";
+
+import { useNavigation } from "@react-navigation/native";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 const HomeStack = () => (
   <Stack.Navigator>
     <Stack.Screen
@@ -23,24 +24,7 @@ const HomeStack = () => (
       component={Home}
       options={{ headerShown: false }}
     />
-    <Stack.Screen
-      name="Details"
-      component={DetailsScreen}
-      options={
-        ({ headerShown: true },
-        { headerLargeTitle: true },
-        {
-          title: "Detalii meci",
-          headerStyle: {
-            backgroundColor: COLORS.pink,
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        })
-      }
-    />
+    <Stack.Screen name="Details" component={DetailsScreen} />
   </Stack.Navigator>
 );
 
@@ -62,9 +46,8 @@ const App = ({ navigation }) => {
           name="Statistici"
           component={Statistics}
           navigation={navigation}
-          screenOptions={{
-            headerTitle: "Test",
-            headerShown: true,
+          options={{
+            headerShown: false,
           }}
           listeners={({ navigation }) => ({
             tabPress: (e) => {

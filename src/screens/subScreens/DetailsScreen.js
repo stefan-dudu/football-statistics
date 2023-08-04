@@ -16,8 +16,15 @@ import Head2Head from "../homeTabsScreens/Head2Head";
 import LineUp from "../homeTabsScreens/LineUp";
 import Stats from "../homeTabsScreens/Stats";
 import Summary from "../homeTabsScreens/Summary";
+import ScreenHeader from "../../components/ScreenHeader";
+import ScreenHeaderLeague from "../../components/ScreenHeaderLeague";
 const DetailsScreen = (params) => {
   const [detailsTab, setDetailsTab] = useState(1);
+
+  const liveMatchFixtureID = params?.route?.params?.fixtureData?.fixture?.id;
+  const finishedMatchFixtureID = params?.route?.params?.finishedMatchID;
+
+  // console.log("finishedMatchFixtureID", finishedMatchFixtureID);
 
   // console.log("params", params.route.params.fixtureData);
 
@@ -286,7 +293,7 @@ const DetailsScreen = (params) => {
         style={{
           height: headerHeight,
           width: SCREEN_WIDTH,
-          position: "absolute",
+          // position: "absolute",
           top: 0,
           left: 0,
         }}
@@ -312,6 +319,7 @@ const DetailsScreen = (params) => {
       >
         {/*  header view! */}
         <View>
+          <ScreenHeaderLeague />
           <BigScoreCard data={data} page={"details"} />
         </View>
         <View style={styles.bottomWrapper}>
@@ -419,7 +427,7 @@ const styles = StyleSheet.create({
   resultsContainer: {
     display: "flex",
     // backgroundColor: "lightblue",
-    position: "relative",
+    // position: "relative",
     marginHorizontal: 5,
     width: Dimensions.get("window").width - 35,
   },

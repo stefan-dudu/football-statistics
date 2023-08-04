@@ -844,7 +844,6 @@ const styles = StyleSheet.create({
     borderColor: "white",
     // paddingBottom: 2,
     // padding: 10,
-    backgroundColor: "pink",
     height: 50,
     // height: "auto",
     borderWidth: 1,
@@ -864,8 +863,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   teamLogoStyle: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+
     // backgroundColor: "red",
   },
 
@@ -902,8 +903,6 @@ const styles = StyleSheet.create({
   },
 
   teamRowWrapperSecond: {
-    // backgroundColor: "lightgray",
-
     justifyContent: "center",
     alignContent: "center",
     alignSelf: "center",
@@ -918,7 +917,7 @@ const styles = StyleSheet.create({
 
   tableCellWrapper: {
     backgroundColor: "white",
-    borderRadius: 16,
+    borderRadius: 8,
     flexDirection: "row",
     paddingVertical: 10,
     alignItems: "center",

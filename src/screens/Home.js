@@ -8,13 +8,16 @@ import {
   SafeAreaView,
   Dimensions,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import LiveMatches from "../components/LiveMatches";
 import { COLORS } from "../utils/colors";
-import SmallScoreCard from "../components/SmallScoreCard";
+import SmallScoreCardNextMatches from "../components/SmallScoreCardNextMatches";
 import NextMatches from "../components/NextMatches";
+import CustomSwitch from "../components/CustomSwitch";
+import PreviousMatches from "../components/PreviousMatches";
 
 const Home = ({ navigation }) => {
+  const [detailsTab, setDetailsTab] = useState(1);
   const data = {
     response: [
       {
@@ -700,6 +703,10 @@ const Home = ({ navigation }) => {
     ],
   };
 
+  const onSelectSwitch = (value) => {
+    setDetailsTab(value);
+  };
+
   const scrollY = new Animated.Value(0);
 
   const HEADER_EXPANDED_HEIGHT = 0;
@@ -726,9 +733,16 @@ const Home = ({ navigation }) => {
       //    </TouchableOpacity>
 
       // here to lead to details tab that ahs only h2h and previous amtch hsitory
-      <SmallScoreCard data={el} key={el?.fixture?.id} />
+      <SmallScoreCardNextMatches data={el} key={el?.fixture?.id} />
     );
   });
+
+  const NextMatchesTab = (
+    <ScrollView>
+      <NextMatches />
+    </ScrollView>
+  );
+  const PreviousMatchesTab = <PreviousMatches />;
 
   return (
     <View style={styles.container}>
@@ -764,11 +778,18 @@ const Home = ({ navigation }) => {
         </View>
 
         <View style={styles.containerStyle}>
-          <Text style={styles.textHeader}>Urmatoarele 10 meciuri</Text>
-          {/* <ScrollView>{matchData}</ScrollView> */}
-          <ScrollView>
-            <NextMatches />
-          </ScrollView>
+          <View style={styles.bottomWrapper}>
+            <CustomSwitch
+              selectionMode={1}
+              option1={"Next matches"}
+              option2={"Previous matches"}
+              onSelectSwitch={onSelectSwitch}
+            />
+            <View style={styles.resultsContainer}>
+              {detailsTab == 1 && <Text>{NextMatchesTab}</Text>}
+              {detailsTab == 2 && <Text>{PreviousMatchesTab}</Text>}
+            </View>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -816,7 +837,7 @@ const styles = StyleSheet.create({
   },
 
   containerStyle: {
-    marginTop: 15,
+    // marginTop: 15,
     padding: 3,
     flexDirection: "column",
     // backgroundColor: "lightblue",
@@ -845,4 +866,14 @@ const styles = StyleSheet.create({
     right: 0,
   },
   //
+
+  bottomWrapper: {
+    marginTop: 20,
+    backgroundColor: "white",
+    // justifyContent: "center",
+    borderRadius: 15,
+
+    // width: Dimensions.get("window").width,
+    // width: "100%",
+  },
 });

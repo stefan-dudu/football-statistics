@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Dimensions, Button } from "react-native";
 import React, { useEffect, useState } from "react";
 import TeamStats from "./subScreens/TeamStats";
 import TopPlayerByCategory from "../components/statsComponents/TopPlayerByCategory";
@@ -8,17 +8,28 @@ import TopAssistsData from "../api/data/TopAssistsData";
 import TopYellowCards from "../api/data/TopYellowCards";
 import TopRedCards from "../api/data/TopRedCards";
 import apiSports from "../api/api-sports";
+import Superliga23TeamsInformation from "../api/data/Superliga23TeamsInformation";
+import { useNavigation } from "@react-navigation/native";
+import ScreenHeader from "../components/ScreenHeader";
 
 const Statistics = (params) => {
-  const clubName = params?.route?.params?.params?.name;
+  const navigation = useNavigation();
+  const clubID = params?.route?.params?.params.id;
   // console.log("params", params?.route?.params?.params);
+  // console.log("club id", params?.route?.params?.params.id);
+
+  // console.log("teams all data", Superliga23TeamsInformation.response);
   // console.log("red", topRedCards.response[0].statistics[0].cards.red > 0);
+
+  const selectedTeamData = Superliga23TeamsInformation.response.filter(
+    (el) => el.team.id === clubID
+  );
 
   const [topScorer, setTopScorer] = useState(null);
   const [topAssist, setTopAssist] = useState(null);
   const [topYellowCard, setTopYellowCard] = useState(null);
   const [topRedCard, setTopRedCard] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState("");
 
   const fetchAllData = async () => {
@@ -71,7 +82,7 @@ const Statistics = (params) => {
   };
 
   useEffect(() => {
-    fetchAllData();
+    // fetchAllData();
   }, []);
 
   return (
@@ -81,12 +92,11 @@ const Statistics = (params) => {
           {loading ? (
             // Show a loading spinner or message while waiting for data
             <Text>Loading...</Text>
-          ) : clubName ? (
-            // Handle the case when no data is available or an error occurred
-            <TeamStats params={params?.route?.params?.params} />
+          ) : clubID ? (
+            // IF CLUB IS SELECTED SHOW TEAM STATITICS
+            <TeamStats params={selectedTeamData} />
           ) : topScorer ? (
-            // Render the data when it's available
-
+            // IF NO CLUB SELECTED SHOW TOP PLAYERS
             <LeagueTopPlayers />
           ) : isError ? (
             // Handle the case when no data is available or an error occurred

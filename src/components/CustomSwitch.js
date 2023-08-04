@@ -34,7 +34,9 @@ export default function CustomSwitch({
         activeOpacity={1}
         onPress={() => updateSwitchData(1)}
         style={{
-          width: 70,
+          // width: 70,
+          flex: 1,
+          marginHorizontal: 5,
           backgroundColor:
             getSelectionMode == 1 ? COLORS.pink : COLORS.buttonsBackgroundGray,
           borderRadius: 10,
@@ -56,7 +58,9 @@ export default function CustomSwitch({
         activeOpacity={1}
         onPress={() => updateSwitchData(2)}
         style={{
-          width: 70,
+          // width: 70,
+          flex: 1,
+          marginHorizontal: 5,
           backgroundColor:
             getSelectionMode == 2 ? COLORS.pink : COLORS.buttonsBackgroundGray,
           borderRadius: 10,
@@ -79,7 +83,9 @@ export default function CustomSwitch({
           activeOpacity={1}
           onPress={() => updateSwitchData(3)}
           style={{
-            width: 70,
+            // width: 70,
+            flex: 1,
+            marginHorizontal: 5,
             backgroundColor:
               getSelectionMode == 3
                 ? COLORS.pink
@@ -105,7 +111,9 @@ export default function CustomSwitch({
           activeOpacity={1}
           onPress={() => updateSwitchData(4)}
           style={{
-            width: 70,
+            // width: 70,
+            flex: 1,
+            marginHorizontal: 5,
             backgroundColor:
               getSelectionMode == 4
                 ? COLORS.pink

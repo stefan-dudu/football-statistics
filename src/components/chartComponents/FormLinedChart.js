@@ -13,11 +13,11 @@ const FormLinedChart = ({ form }) => {
       let currentValue = previousValue;
 
       if (currentChar === "L") {
-        currentValue += 0;
+        currentValue -= 1;
       } else if (currentChar === "D") {
-        currentValue += 1;
+        currentValue += 0;
       } else if (currentChar === "W") {
-        currentValue += 3;
+        currentValue += 2;
       }
 
       resultArray.push({ value: currentValue, dataPointText: currentChar });
@@ -46,6 +46,7 @@ const FormLinedChart = ({ form }) => {
           textFontSize={13}
           thickness={2}
           hideRules
+          hideYAxisText
           yAxisColor={COLORS.pink}
           xAxisColor={COLORS.pink}
           color={COLORS.gray}
@@ -54,6 +55,7 @@ const FormLinedChart = ({ form }) => {
           startOpacity={0.8}
           endFillColor={COLORS.backgroundGray}
           endOpacity={0.3}
+          noOfSectionsBelowXAxis={3}
         />
       </View>
     </View>

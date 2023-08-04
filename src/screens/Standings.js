@@ -4,7 +4,7 @@ import apiSports from "../api/api-sports";
 import Table from "./testScreens/Table";
 
 const Standings = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [standingsData, setStandingsData] = useState(null);
   const [isError, setIsError] = useState("");
 
@@ -783,7 +783,7 @@ const Standings = () => {
   // regular season as of july 2023
 
   useEffect(() => {
-    getStandings();
+    // getStandings();
   }, []);
 
   return (
@@ -791,10 +791,11 @@ const Standings = () => {
       {loading ? (
         // Show a loading spinner or message while waiting for data
         <Text>Loading...</Text>
-      ) : standingsData ? (
+      ) : data2 ? (
         // Render the data when it's available
-        <Table data={standingsData} />
-      ) : isError ? (
+        <Table data={data2} />
+      ) : // <Text> If all works fine</Text>
+      isError ? (
         // Handle the case when no data is available or an error occurred
         <Text>{isError}</Text>
       ) : (

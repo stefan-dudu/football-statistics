@@ -681,7 +681,8 @@ const StatsLineup = () => {
           {/* top part */}
           <Image
             style={styles.playerPicStyle}
-            source={require("../../../assets/coach.png")}
+            // source={require("../../../assets/coach.png")}
+            source={{ uri: coachData.response[0].photo }}
           />
           <View style={styles.playerTopRight}>
             {/* details - right side */}
@@ -710,7 +711,8 @@ const StatsLineup = () => {
             {/* top part */}
             <Image
               style={styles.playerPicStyle}
-              source={require("../../../assets/gk.png")}
+              // source={require("../../../assets/gk.png")}
+              source={{ uri: el.photo }}
             />
             <View style={styles.playerTopRight}>
               {/* details - right side */}

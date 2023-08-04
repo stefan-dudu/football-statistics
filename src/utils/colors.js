@@ -13,4 +13,8 @@ export const COLORS = {
   textGrayButtons: "rgb(174,174,174)",
   redCard: "#E50A24",
   yellowCard: "#FFD301",
+  formGreenWin: "#00DB74",
+  formGrayDraw: "#C3B3C5",
+  formRedLoose: "#E0085E",
+  leagueRedBackground: "#ea0f09",
 };
