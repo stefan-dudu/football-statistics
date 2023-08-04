@@ -144,7 +144,8 @@ const CardsCustomChart = ({ cards }) => {
             flexDirection: "row",
             justifyContent: "space-evenly",
             marginTop: 24,
-            // backgroundColor: "yellow",
+            width: Dimensions.get("window").width * 0.94,
+            backgroundColor: "blue",
           }}
         >
           <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -159,9 +160,10 @@ const CardsCustomChart = ({ cards }) => {
             />
             <Text
               style={{
-                width: 60,
-                height: 16,
-                color: "lightgray",
+                width: 100,
+                height: 30,
+                color: COLORS.darkGray,
+                fontSize: 20,
               }}
             >
               Galbene
@@ -179,9 +181,10 @@ const CardsCustomChart = ({ cards }) => {
             />
             <Text
               style={{
-                width: 60,
-                height: 16,
-                color: "lightgray",
+                width: 100,
+                height: 30,
+                color: COLORS.darkGray,
+                fontSize: 20,
               }}
             >
               Rosii
@@ -204,7 +207,8 @@ const CardsCustomChart = ({ cards }) => {
         hideRules
         xAxisThickness={1}
         yAxisThickness={1}
-        yAxisTextStyle={{ color: "gray" }}
+        yAxisColor={COLORS.darkGreen}
+        xAxisColor={COLORS.darkGreen}
         noOfSections={3}
         maxValue={25}
         width={Dimensions.get("window").width - 87}
@@ -218,12 +222,11 @@ export default CardsCustomChart;
 
 const styles = StyleSheet.create({
   parentWrapper: {
-    // backgroundColor: COLORS.lightPink,
-    borderWidth: 1,
-    borderColor: COLORS.lightPurple,
+    borderWidth: 2,
+    borderColor: COLORS.lightGreen,
     paddingBottom: 40,
     borderRadius: 10,
-    width: Dimensions.get("window").width - 40,
+    width: Dimensions.get("window").width * 0.94,
     height: 400,
   },
 });

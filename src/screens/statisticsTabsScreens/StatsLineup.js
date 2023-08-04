@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native";
+import { COLORS } from "../../utils/colors";
 
 const StatsLineup = () => {
   const coachData = {
@@ -686,7 +687,7 @@ const StatsLineup = () => {
           />
           <View style={styles.playerTopRight}>
             {/* details - right side */}
-            <Text>Ani</Text>
+            <Text style={styles.playerCardGraySubtitle}>Ani</Text>
             <Text style={styles.playerAgeNumber}>
               {coachData.response[0].age}
             </Text>
@@ -695,7 +696,7 @@ const StatsLineup = () => {
 
         <View style={styles.playerBottomPart}>
           <Text style={styles.playerName}>{coachData.response[0].name}</Text>
-          <Text>Antrenor</Text>
+          <Text style={styles.playerCardGraySubtitle}>Antrenor</Text>
         </View>
       </View>
     );
@@ -716,16 +717,16 @@ const StatsLineup = () => {
             />
             <View style={styles.playerTopRight}>
               {/* details - right side */}
-              <Text>Ani</Text>
+              <Text style={styles.playerCardGraySubtitle}>Ani</Text>
               <Text style={styles.playerAgeNumber}>{el.age}</Text>
-              <Text>Nr</Text>
+              <Text style={styles.playerCardGraySubtitle}>Nr</Text>
               <Text style={styles.playerAgeNumber}>{el.number}</Text>
             </View>
           </View>
 
           <View style={styles.playerBottomPart}>
             <Text style={styles.playerName}>{el.name}</Text>
-            <Text>{el.position}</Text>
+            <Text style={styles.playerCardGraySubtitle}>{el.position}</Text>
           </View>
         </View>
       );
@@ -760,8 +761,9 @@ export default StatsLineup;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: Dimensions.get("window").width,
+    width: Dimensions.get("window").width * 0.94,
     // height: 500,
+    // backgroundColor: "red",
   },
 
   playerCardWrapper: {
@@ -769,10 +771,10 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 5,
     borderWidth: 2,
-    borderColor: "lightgray",
+    borderColor: COLORS.lightGreen,
     borderRadius: 16,
     width: "43%",
-    height: "auto",
+    // height: "auto",
     // paddingBottom: 20,
     // backgroundColor: "red",
   },
@@ -785,7 +787,7 @@ const styles = StyleSheet.create({
   categoryWrapper: {
     // backgroundColor: "lightgreen",
     flexDirection: "row",
-    width: Dimensions.get("window").width - 40,
+    width: Dimensions.get("window").width,
     // backgroundColor: "red",
     flexWrap: "wrap",
   },
@@ -801,16 +803,22 @@ const styles = StyleSheet.create({
   },
 
   playerAgeNumber: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "600",
+    color: COLORS.darkGray,
   },
 
   positionTitleStyle: {
-    color: "gray",
+    color: COLORS.darkGreen,
     fontSize: 20,
     fontWeight: "600",
     borderBottomWidth: 2,
-    borderBottomColor: "gray",
-    width: Dimensions.get("window").width - 40,
+    borderBottomColor: COLORS.mediumGray,
+    // width: Dimensions.get("window").width - 40,
+    width: Dimensions.get("window").width * 0.94,
+  },
+
+  playerCardGraySubtitle: {
+    color: COLORS.mediumGray,
   },
 });

@@ -1,23 +1,22 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import { BarChart } from "react-native-gifted-charts";
+import { COLORS } from "../../utils/colors";
 
 const GoalsHorizontalBarChart = () => {
   const barData = [
     {
       value: 21,
       label: "Ho",
-      labelComponent: () => (
-        <Text style={{ color: "blue", fontSize: 18, width: 20 }}>🏠</Text>
-      ),
+      labelComponent: () => <Text style={{ fontSize: 18, width: 20 }}>🏠</Text>,
       topLabelComponent: () => <Text style={styles.topLabelStyle}>21</Text>,
-      frontColor: "#177AD5",
+      frontColor: COLORS.lightGreen,
     },
     {
       value: 16,
       label: "Aw",
       labelComponent: () => (
-        <Text style={{ color: "blue", fontSize: 18, width: 20 }}>➡️</Text>
+        <Text style={{ fontSize: 16, width: 22, height: 20 }}>➡️</Text>
       ),
       topLabelComponent: () => <Text style={styles.topLabelStyle}>16</Text>,
     },
@@ -33,7 +32,7 @@ const GoalsHorizontalBarChart = () => {
           barWidth={20}
           noOfSections={2}
           barBorderRadius={4}
-          frontColor="lightgray"
+          frontColor={COLORS.mediumGray}
           data={barData}
           yAxisThickness={0}
           xAxisThickness={0}
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
 
   topLabelStyle: {
     // backgroundColor: "green",
-    color: "red",
+    color: COLORS.darkGray,
     fontSize: 18,
     marginLeft: 16,
     width: 20,

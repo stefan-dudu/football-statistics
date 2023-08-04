@@ -1,5 +1,13 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  Dimensions,
+} from "react-native";
 import React from "react";
+import { COLORS } from "../../utils/colors";
 
 const TopPlayerByCategory = ({ data, playerType }) => {
   // console.log("type", playerType);
@@ -53,19 +61,19 @@ const TopPlayerByCategory = ({ data, playerType }) => {
   const MatchDetails = ({ el }) => {
     return playerType !== "cards" ? (
       <View style={styles.playerMatchDetails}>
-        <Text>
+        <Text style={styles.playerMatchDetailTitles}>
           Goals:{" "}
           <Text style={styles.detailsHighlighted}>
             {el.statistics[0].goals.total || "-"}
           </Text>
         </Text>
-        <Text>
+        <Text style={styles.playerMatchDetailTitles}>
           Assists:{" "}
           <Text style={styles.detailsHighlighted}>
             {el.statistics[0].goals.assists || "-"}
           </Text>
         </Text>
-        <Text>
+        <Text style={styles.playerMatchDetailTitles}>
           Meciuri:{" "}
           <Text style={styles.detailsHighlighted}>
             {el.statistics[0].games.appearences || "-"}
@@ -74,19 +82,19 @@ const TopPlayerByCategory = ({ data, playerType }) => {
       </View>
     ) : (
       <View style={styles.playerMatchDetails}>
-        <Text>
+        <Text style={styles.playerMatchDetailTitles}>
           Cartonase:{" "}
           <Text style={styles.detailsHighlighted}>
             {el.statistics[0].cards.yellow || "-"}
           </Text>
         </Text>
-        <Text>
+        <Text style={styles.playerMatchDetailTitles}>
           Faulturi:{" "}
           <Text style={styles.detailsHighlighted}>
             {el.statistics[0].fouls.committed || "-"}
           </Text>
         </Text>
-        <Text>
+        <Text style={styles.playerMatchDetailTitles}>
           Meciuri:{" "}
           <Text style={styles.detailsHighlighted}>
             {el.statistics[0].games.appearences || "-"}
@@ -105,6 +113,10 @@ const TopPlayerByCategory = ({ data, playerType }) => {
           <View style={styles.playerPicture}>
             {/* <Text>{i + 1}</Text> */}
             <Image
+              style={styles.clubPicStyle}
+              source={require("../../../assets/teamLogo2.png")}
+            />
+            <Image
               style={styles.profilePicStyle}
               source={require("../../../assets/topScorer.png")}
             />
@@ -112,10 +124,12 @@ const TopPlayerByCategory = ({ data, playerType }) => {
           <View style={styles.playerNamePosition}>
             <Text style={styles.nume}>{el.player.firstname}</Text>
             <Text style={styles.prenume}>{el.player.lastname}</Text>
-            <Text>{el.statistics[0].games.position}</Text>
+            <Text style={styles.playerPosition}>
+              {el.statistics[0].games.position}
+            </Text>
           </View>
           <MatchDetails el={el} />
-          <View>
+          <View style={styles.playerRating}>
             <CardType el={el} />
           </View>
         </View>
@@ -135,6 +149,7 @@ export default TopPlayerByCategory;
 const styles = StyleSheet.create({
   // wrappers
   parentWrapper: {
+    marginBottom: 20,
     // backgroundColor: "pink",
   },
 
@@ -142,41 +157,62 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 10,
     borderWidth: 1,
-    borderColor: "lightgreen",
+    borderColor: COLORS.lightGreen,
     borderRadius: 15,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
     height: "auto",
+    width: Dimensions.get("window").width * 0.95,
   },
 
   playerPicture: {
     // backgroundColor: "red",
-    flex: 1,
+    // flex: 1,
+    height: 120,
+    width: Dimensions.get("window").width * 0.18,
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "space-around",
+    marginRight: 5,
   },
   playerNamePosition: {
-    //  backgroundColor: "yellow",
-    flex: 2,
+    // backgroundColor: "yellow",
+    // flex: 2,
+    marginRight: 10,
+    width: Dimensions.get("window").width * 0.3,
   },
   playerMatchDetails: {
     // backgroundColor: "blue",
-    flex: 2,
+    // flex: 2,
+    width: Dimensions.get("window").width * 0.3,
   },
+
   playerRating: {
     // backgroundColor: "green",
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "blue",
-    borderRadius: "50% 50% 50% 50% / 12% 12% 88% 88%",
+    // flex: 1,
+    width: Dimensions.get("window").width * 0.17,
+  },
+
+  playerMatchDetailTitles: {
+    color: COLORS.darkGray,
+    fontSize: 16,
   },
 
   //   components
 
   profilePicStyle: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: 50,
     // resizeMode: "stretch",
+  },
+
+  clubPicStyle: {
+    width: 40,
+    height: 40,
+    // borderRadius: 50,
+    resizeMode: "contain",
   },
 
   cardStyling: {
@@ -202,7 +238,7 @@ const styles = StyleSheet.create({
   },
 
   ratingBronzeTextStyle: {
-    color: "black",
+    color: COLORS.darkGreen,
     fontWeight: "600",
     fontSize: 18,
   },
@@ -210,15 +246,23 @@ const styles = StyleSheet.create({
   nume: {
     fontSize: 25,
     fontWeight: "800",
+    color: COLORS.darkGreen,
   },
 
   prenume: {
     fontSize: 20,
     fontWeight: "500",
+    color: COLORS.darkGreen,
   },
 
   detailsHighlighted: {
     fontSize: 25,
     fontWeight: "800",
+    color: COLORS.darkGreen,
+  },
+
+  playerPosition: {
+    color: COLORS.mediumGray,
+    fontSize: 18,
   },
 });

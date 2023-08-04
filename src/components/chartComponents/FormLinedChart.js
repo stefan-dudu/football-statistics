@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions, Text } from "react-native";
 import React from "react";
 import { LineChart } from "react-native-gifted-charts";
 import { COLORS } from "../../utils/colors";
@@ -32,6 +32,17 @@ const FormLinedChart = ({ form }) => {
   return (
     <View>
       <View style={styles.wrapperStyle}>
+        <View style={styles.legendWrapper}>
+          <Text style={{ color: COLORS.formGreenWin, fontSize: 15 }}>
+            W = Victorie
+          </Text>
+          <Text style={{ color: COLORS.formGrayDraw, fontSize: 15 }}>
+            D = Egal
+          </Text>
+          <Text style={{ color: COLORS.formRedLoose, fontSize: 15 }}>
+            L = Infrangere
+          </Text>
+        </View>
         <LineChart
           // isAnimated
           // hideDataPoints
@@ -47,11 +58,11 @@ const FormLinedChart = ({ form }) => {
           thickness={2}
           hideRules
           hideYAxisText
-          yAxisColor={COLORS.pink}
-          xAxisColor={COLORS.pink}
-          color={COLORS.gray}
-          width={Dimensions.get("window").width - 93}
-          startFillColor={COLORS.pink}
+          yAxisColor={COLORS.darkGreen}
+          xAxisColor={COLORS.darkGreen}
+          color={COLORS.lightGreen}
+          width={Dimensions.get("window").width * 0.86}
+          startFillColor={COLORS.mainGreen}
           startOpacity={0.8}
           endFillColor={COLORS.backgroundGray}
           endOpacity={0.3}
@@ -66,8 +77,15 @@ export default FormLinedChart;
 
 const styles = StyleSheet.create({
   wrapperStyle: {
-    width: Dimensions.get("window").width - 40,
+    width: Dimensions.get("window").width * 1,
     // backgroundColor: "#1A3461",
-    margin: 0,
+    marginLeft: -20,
+  },
+  legendWrapper: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    width: Dimensions.get("window").width * 0.94,
+    marginLeft: 30,
+    // backgroundColor: "red",
   },
 });

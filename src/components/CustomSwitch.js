@@ -24,7 +24,7 @@ export default function CustomSwitch({
         width: "100%",
         backgroundColor: "white",
         borderRadius: 10,
-        borderColor: COLORS.pink,
+        // borderColor: COLORS.pink,
         flexDirection: "row",
         justifyContent: "space-around",
         marginVertical: 20,
@@ -38,7 +38,9 @@ export default function CustomSwitch({
           flex: 1,
           marginHorizontal: 5,
           backgroundColor:
-            getSelectionMode == 1 ? COLORS.pink : COLORS.buttonsBackgroundGray,
+            getSelectionMode == 1
+              ? COLORS.mainGreen
+              : COLORS.buttonsBackgroundGray,
           borderRadius: 10,
           justifyContent: "center",
           alignItems: "center",
@@ -47,7 +49,7 @@ export default function CustomSwitch({
         <Text
           style={{
             color: getSelectionMode == 1 ? "white" : COLORS.textGrayButtons,
-            fontSize: 14,
+            fontSize: 17,
             fontWeight: "500",
           }}
         >
@@ -62,7 +64,9 @@ export default function CustomSwitch({
           flex: 1,
           marginHorizontal: 5,
           backgroundColor:
-            getSelectionMode == 2 ? COLORS.pink : COLORS.buttonsBackgroundGray,
+            getSelectionMode == 2
+              ? COLORS.mainGreen
+              : COLORS.buttonsBackgroundGray,
           borderRadius: 10,
           justifyContent: "center",
           alignItems: "center",
@@ -71,7 +75,7 @@ export default function CustomSwitch({
         <Text
           style={{
             color: getSelectionMode == 2 ? "white" : COLORS.textGrayButtons,
-            fontSize: 14,
+            fontSize: 17,
             fontWeight: "500",
           }}
         >
@@ -88,7 +92,7 @@ export default function CustomSwitch({
             marginHorizontal: 5,
             backgroundColor:
               getSelectionMode == 3
-                ? COLORS.pink
+                ? COLORS.mainGreen
                 : COLORS.buttonsBackgroundGray,
             borderRadius: 10,
             justifyContent: "center",
@@ -98,7 +102,7 @@ export default function CustomSwitch({
           <Text
             style={{
               color: getSelectionMode == 3 ? "white" : COLORS.textGrayButtons,
-              fontSize: 14,
+              fontSize: 17,
               fontWeight: "500",
             }}
           >
@@ -116,7 +120,7 @@ export default function CustomSwitch({
             marginHorizontal: 5,
             backgroundColor:
               getSelectionMode == 4
-                ? COLORS.pink
+                ? COLORS.mainGreen
                 : COLORS.buttonsBackgroundGray,
             borderRadius: 10,
             justifyContent: "center",
@@ -126,7 +130,7 @@ export default function CustomSwitch({
           <Text
             style={{
               color: getSelectionMode == 4 ? "white" : COLORS.textGrayButtons,
-              fontSize: 14,
+              fontSize: 17,
               fontWeight: "500",
             }}
           >

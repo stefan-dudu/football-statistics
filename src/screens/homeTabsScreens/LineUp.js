@@ -573,16 +573,16 @@ const styles = StyleSheet.create({
     // justifyContent: "space-between",
     // width: "100%",
     // marginHorizontal: 120,
-    paddingHorizontal: 5,
+    paddingHorizontal: 15,
     // height: "auto",
     paddingTop: 20,
-    width: Dimensions.get("window").width - 40,
+    width: Dimensions.get("window").width * 0.94,
   },
 
   rowStyle: {
     flexDirection: "row",
     justifyContent: "space-between",
-    // backgroundColor: "pink",/
+    // backgroundColor: "pink",
   },
 
   teamWrapperStyle: {
@@ -599,7 +599,7 @@ const styles = StyleSheet.create({
     // resizeMode: "stretch",
   },
   middleTitles: {
-    color: "red",
+    color: COLORS.mainGreen,
     fontSize: 20,
     marginVertical: 5,
     flexDirection: "row",
@@ -618,10 +618,11 @@ const styles = StyleSheet.create({
   teamName: {
     fontWeight: "500",
     fontSize: 17,
+    color: COLORS.darkGray,
   },
 
   teamFormation: {
-    color: COLORS.gray,
+    color: COLORS.mediumGray,
     fontSize: 16,
   },
 
@@ -655,7 +656,8 @@ const styles = StyleSheet.create({
   playerManagerStylingWrapper: {
     // backgroundColor: "pink",
     borderBottomWidth: 1,
-    borderColor: "lightgray",
+    borderColor: COLORS.lightGreen,
+    paddingBottom: 5,
     marginBottom: 15,
   },
 

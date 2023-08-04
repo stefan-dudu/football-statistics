@@ -7,21 +7,29 @@ const SectionPieChart = () => {
   const pieData = [
     {
       value: 16,
-      color: "#009FFF",
-      gradientCenterColor: "#006DFF",
+      color: COLORS.mainGreen,
+      gradientCenterColor: COLORS.lightGray,
       focused: true,
     },
-    { value: 4, color: "#93FCF8", gradientCenterColor: "#3BE9DE" },
-    { value: 19, color: "#BDB2FA", gradientCenterColor: "#8F80F3" },
+    {
+      value: 4,
+      color: COLORS.mediumGray,
+      gradientCenterColor: COLORS.lightGray,
+    },
+    {
+      value: 19,
+      color: COLORS.leagueRedBackground,
+      gradientCenterColor: COLORS.lightGray,
+    },
   ];
 
   const renderDot = (color) => {
     return (
       <View
         style={{
-          height: 10,
-          width: 10,
-          borderRadius: 5,
+          height: 20,
+          width: 20,
+          borderRadius: 50,
           backgroundColor: color,
           marginRight: 10,
         }}
@@ -37,18 +45,19 @@ const SectionPieChart = () => {
             flexDirection: "row",
             alignItems: "center",
             width: "auto",
+            // padding: 10,
           }}
         >
-          {renderDot("#006DFF")}
-          <Text style={{ color: "white" }}>Victorii</Text>
+          {renderDot(COLORS.mainGreen)}
+          <Text style={styles.legendText}>Victorii</Text>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          {renderDot("#3BE9DE")}
-          <Text style={{ color: "white" }}>Egaluri</Text>
+          {renderDot(COLORS.mediumGray)}
+          <Text style={styles.legendText}>Egaluri</Text>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          {renderDot("#8F80F3")}
-          <Text style={{ color: "white" }}>Infrangeri</Text>
+          {renderDot(COLORS.leagueRedBackground)}
+          <Text style={styles.legendText}>Infrangeri</Text>
         </View>
       </View>
     );
@@ -64,20 +73,22 @@ const SectionPieChart = () => {
           sectionAutoFocus
           radius={90}
           innerRadius={60}
-          innerCircleColor={"#232B5D"}
+          innerCircleColor={COLORS.lightGray}
           centerLabelComponent={() => {
             return (
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text
                   style={{
-                    fontSize: 22,
-                    color: "white",
+                    fontSize: 25,
+                    color: COLORS.darkGray,
                     fontWeight: "bold",
                   }}
                 >
                   16
                 </Text>
-                <Text style={{ fontSize: 14, color: "white" }}>Victorii</Text>
+                <Text style={{ fontSize: 20, color: COLORS.darkGray }}>
+                  Victorii
+                </Text>
               </View>
             );
           }}
@@ -98,10 +109,10 @@ export default SectionPieChart;
 const styles = StyleSheet.create({
   parentWrapperStyling: {
     paddingVertical: 20,
-    width: Dimensions.get("window").width - 40,
+    width: Dimensions.get("window").width * 0.94,
     height: "auto",
     borderRadius: 20,
-    backgroundColor: COLORS.transparentPurple,
+    backgroundColor: COLORS.lightGray,
     justifyContent: "space-evenly",
     // justifyContent: "space-around",
     // justifyContent: "space-between",
@@ -119,4 +130,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     alignItems: "center",
   },
+
+  legendText: { color: COLORS.darkGray, fontSize: 20, marginVertical: 10 },
 });

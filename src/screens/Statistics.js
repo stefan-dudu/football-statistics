@@ -11,6 +11,7 @@ import apiSports from "../api/api-sports";
 import Superliga23TeamsInformation from "../api/data/Superliga23TeamsInformation";
 import { useNavigation } from "@react-navigation/native";
 import ScreenHeader from "../components/ScreenHeader";
+import { COLORS } from "../utils/colors";
 
 const Statistics = (params) => {
   const navigation = useNavigation();
@@ -95,7 +96,7 @@ const Statistics = (params) => {
           ) : clubID ? (
             // IF CLUB IS SELECTED SHOW TEAM STATITICS
             <TeamStats params={selectedTeamData} />
-          ) : topScorer ? (
+          ) : TopScorerData ? (
             // IF NO CLUB SELECTED SHOW TOP PLAYERS
             <LeagueTopPlayers />
           ) : isError ? (
@@ -118,13 +119,14 @@ const styles = StyleSheet.create({
 
   leagueParentWrapper: {
     height: "100%",
-    marginTop: 20,
+    // backgroundColor: "pink",
+    marginTop: 50,
   },
 
   subTitleStyle: {
     marginLeft: 10,
-    color: "gray",
-    fontSize: 20,
+    color: COLORS.darkGray,
+    fontSize: 24,
     fontWeight: "600",
     borderBottomWidth: 2,
     borderBottomColor: "gray",

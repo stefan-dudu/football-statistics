@@ -17,9 +17,9 @@ const Settings = () => {
   ];
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={styles.textStyle}>Settings! x</Text>
+      <Text style={styles.textStyle}>Pagina in constructii ⚒️👷</Text>
       {/* <BarChart data={barData} /> */}
-      <View style={{ backgroundColor: "#1A3461" }}>
+      {/* <View style={{ backgroundColor: "#1A3461" }}>
         <LineChart
           isAnimated
           initialSpacing={0}
@@ -38,7 +38,7 @@ const Settings = () => {
           xAxisColor="#0BA5A4"
           color="#0BA5A4"
         />
-      </View>
+      </View> */}
     </View>
   );
 };

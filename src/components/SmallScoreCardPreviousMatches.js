@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
 
   hour: {
     fontWeight: "600",
-    color: COLORS.orange,
+    color: COLORS.mainGreen,
     fontSize: 26,
   },
 

@@ -338,7 +338,7 @@ const TeamStats = ({ params }) => {
   const FromComponent = () => {
     return TeamForm.map((el, i) => {
       return (
-        <View style={{ padding: 3 }} key={i}>
+        <View style={{ padding: 2 }} key={i}>
           <View
             style={[
               el == "W" && styles.winFormWrapper,
@@ -411,12 +411,7 @@ const TeamStats = ({ params }) => {
       </View>
       {params && (
         <View style={styles.teamDataWrapper}>
-          <Text style={styles.teamDescriptionTitle}>
-            Forma:{" "}
-            {/* <Text style={styles.teamDescriptionValue}>
-              WWWW LLL
-            </Text> */}
-          </Text>
+          <Text style={styles.teamDescriptionTitle}>Forma: </Text>
           <FromComponent />
         </View>
       )}
@@ -438,7 +433,7 @@ const TeamStats = ({ params }) => {
       />
       <ScrollView
         contentContainerStyle={{
-          padding: 16,
+          padding: 8,
           paddingTop: HEADER_EXPANDED_HEIGHT,
         }}
         onScroll={Animated.event(
@@ -482,9 +477,10 @@ const TeamStats = ({ params }) => {
 export default TeamStats;
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  // },
+  container: {
+    flex: 1,
+    // backgroundColor: "blue",
+  },
   teamLogo: {
     width: 130,
     height: 130,
@@ -500,7 +496,8 @@ const styles = StyleSheet.create({
 
   topCard: {
     flexDirection: "row",
-    paddingTop: 15,
+    // paddingTop: 15,
+    width: Dimensions.get("window").width * 0.95,
     // backgroundColor: "pink",
   },
 
@@ -509,15 +506,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     alignSelf: "center",
+    width: Dimensions.get("window").width * 0.35,
   },
   rightCard: {
     marginLeft: 15,
+    width: Dimensions.get("window").width * 0.45,
+    justifyContent: "flex-start",
   },
 
   teamName: {
     fontSize: 26,
     fontWeight: "800",
-    color: COLORS.purple,
+    color: COLORS.darkGray,
     marginBottom: 10,
     width: Dimensions.get("window").width - 180,
   },
@@ -525,38 +525,39 @@ const styles = StyleSheet.create({
   teamDataWrapper: {
     // backgroundColor: "lightgray",
     flexDirection: "row",
-    width: Dimensions.get("window").width - 180,
+    width: Dimensions.get("window").width * 0.55,
     // alignItems: "center",
     // alignContent: "center",
     // alignSelf: "center",
   },
 
   teamDescriptionTitle: {
-    color: "red",
-    fontSize: 15,
+    color: COLORS.mainGreen,
+    fontSize: 17,
     fontWeight: "500",
     // marginBottom: 10,
     paddingVertical: 5,
     // backgroundColor: "green",
-    alignItems: "center",
-    alignContent: "center",
-    alignSelf: "center",
-    textAlign: "center",
+    // alignItems: "center",
+    // alignContent: "center",
+    // alignSelf: "center",
+    // textAlign: "center",
     textAlignVertical: "center",
   },
 
   teamDescriptionValue: {
-    color: "black",
+    color: COLORS.darkGray,
     fontWeight: "400",
   },
 
   bottomWrapper: {
     marginTop: 20,
     backgroundColor: "white",
+    // backgroundColor: "blue",
     // justifyContent: "center",
     borderRadius: 15,
 
-    // width: Dimensions.get("window").width,
+    width: Dimensions.get("window").width * 0.96,
     // width: "100%",
   },
 
@@ -569,7 +570,7 @@ const styles = StyleSheet.create({
   },
 
   formWrapper: {
-    backgroundColor: "lightblue",
+    // backgroundColor: "lightblue",
   },
 
   winFormWrapper: {
@@ -577,7 +578,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     borderColor: "lightgray",
-    backgroundColor: COLORS.formGreenWin,
+    backgroundColor: COLORS.lightGreen,
   },
 
   drawFormWrapper: {

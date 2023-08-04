@@ -291,7 +291,7 @@ const LiveMatches = () => {
           data3 && (
             // Render the data when it's available
             <>
-              <Text style={styles.textHeader}>Meciuri live</Text>
+              <Text style={styles.textHeader}>Meciuri live ⚽</Text>
               <ScrollView horizontal>{matchData}</ScrollView>
             </>
           )
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginBottom: 16,
     fontSize: 25,
-    color: COLORS.titleDarkGray,
+    color: COLORS.mainGreen,
     fontWeight: "600",
   },
 });

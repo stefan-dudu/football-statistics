@@ -15,6 +15,11 @@ import TeamStats from "./src/screens/subScreens/TeamStats";
 import { COLORS } from "./src/utils/colors";
 
 import { useNavigation } from "@react-navigation/native";
+
+import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { EvilIcons } from "@expo/vector-icons";
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeStack = () => (
@@ -24,23 +29,49 @@ const HomeStack = () => (
       component={Home}
       options={{ headerShown: false }}
     />
-    <Stack.Screen name="Details" component={DetailsScreen} />
+    <Stack.Screen
+      name="Details"
+      component={DetailsScreen}
+      options={{ headerShown: false }}
+    />
   </Stack.Navigator>
 );
 
 const App = ({ navigation }) => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          // tabBarShowLabel: false,
+          tabBarStyle: {
+            // backgroundColor: COLORS.mainGreen,
+          },
+          tabBarActiveTintColor: COLORS.mainGreen,
+        }}
+      >
         <Tab.Screen
           name="Home"
           component={HomeStack}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+            tabBarBadge: 3,
+            tabBarBadgeStyle: {
+              // backgroundColor: COLORS.mainGreen,
+            },
+            tabBarIcon: ({ color }) => (
+              <AntDesign name="home" size={24} color={color} />
+            ),
+          }}
         />
         <Tab.Screen
           name="Clasament"
           component={Standings}
-          options={{ headerShown: true }}
+          options={{
+            headerShown: true,
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="podium-outline" size={24} color={color} />
+            ),
+          }}
         />
         <Tab.Screen
           name="Statistici"
@@ -48,6 +79,9 @@ const App = ({ navigation }) => {
           navigation={navigation}
           options={{
             headerShown: false,
+            tabBarIcon: ({ color }) => (
+              <AntDesign name="barschart" size={24} color={color} />
+            ),
           }}
           listeners={({ navigation }) => ({
             tabPress: (e) => {
@@ -61,7 +95,12 @@ const App = ({ navigation }) => {
         <Tab.Screen
           name="Settings"
           component={Settings}
-          options={{ headerShown: true }}
+          options={{
+            headerShown: true,
+            tabBarIcon: ({ color }) => (
+              <AntDesign name="setting" size={24} color={color} />
+            ),
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>

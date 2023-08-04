@@ -715,23 +715,23 @@ const Head2Head = () => {
           {/* 2nd row */}
           <View style={styles.leftSide}>
             {/* left side */}
-            <Text style={styles.teamsName}>{el.teams.home.name}</Text>
             <Image
               style={styles.teamLogoStyle}
               source={require("../../../assets/teamLogo.png")}
             />
-            <Text style={styles.score}>{el.goals.home}</Text>
+            <Text style={styles.teamsName}>{el.teams.home.name}</Text>
           </View>
           <View style={styles.middle}>
+            <Text style={styles.score}>{el.goals.home}</Text>
             {/* middle ( score + league logo) */}
             <Image
               style={styles.leagueLogoStyle}
               source={require("../../../assets/premierLeague.png")}
             />
+            <Text style={styles.score}>{el.goals.home}</Text>
           </View>
           <View style={styles.rightSide}>
             {/* right side */}
-            <Text style={styles.score}>{el.goals.home}</Text>
             <Image
               style={styles.teamLogoStyle}
               source={require("../../../assets/teamLogo2.png")}
@@ -764,7 +764,8 @@ export default Head2Head;
 const styles = StyleSheet.create({
   parentWrapper: {
     // backgroundColor: "pink",
-    width: Dimensions.get("window").width - 40,
+    paddingHorizontal: 5,
+    width: Dimensions.get("window").width * 0.94,
   },
 
   h2hContainer: {
@@ -772,6 +773,7 @@ const styles = StyleSheet.create({
     // borderWidth: 3,
     // borderColor: "lightblue",
     backgroundColor: "white",
+    // backgroundColor: "lightblue",
     marginVertical: 10,
     marginHorizontal: 5,
     borderRadius: 17,
@@ -787,13 +789,13 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   leagueLogoStyle: {
-    width: 30,
-    height: 30,
+    width: 45,
+    height: 45,
   },
 
   teamLogoStyle: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
   },
 
   dayStyle: {
@@ -807,6 +809,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     height: 80,
+    // backgroundColor: "lightgray",
     // width: Dimensions.get("screen").width,
   },
 
@@ -815,7 +818,7 @@ const styles = StyleSheet.create({
   },
 
   score: {
-    fontSize: 35,
+    fontSize: 40,
     color: COLORS.powerOrange,
     fontWeight: "600",
   },
@@ -826,24 +829,24 @@ const styles = StyleSheet.create({
   },
 
   leftSide: {
-    // backgroundColor: "lightred",
+    // backgroundColor: "lightgreen",
     flex: 2,
-    flexDirection: "row",
+    // flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
   },
   middle: {
     // backgroundColor: "lightyellow",
-    // flex: 1,
+    flex: 2,
     paddingHorizontal: 5,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
   rightSide: {
     // backgroundColor: "lightblue",
     flex: 2,
-    flexDirection: "row",
+    // flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
   },
@@ -852,11 +855,13 @@ const styles = StyleSheet.create({
     // backgroundColor: "white",
     flexDirection: "row",
     justifyContent: "center",
-    marginBottom: 10,
+    marginTop: 10,
+    marginBottom: 15,
   },
 
   titleStyling: {
     color: COLORS.titleDarkGray,
+    marginLeft: 10,
     fontSize: 18,
     fontWeight: "500",
   },

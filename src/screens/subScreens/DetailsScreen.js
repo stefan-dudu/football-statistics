@@ -300,7 +300,7 @@ const DetailsScreen = (params) => {
       />
       <ScrollView
         contentContainerStyle={{
-          padding: 16,
+          padding: 10,
           paddingTop: HEADER_EXPANDED_HEIGHT,
         }}
         onScroll={Animated.event(
@@ -420,15 +420,15 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
     borderRadius: 15,
 
-    // width: Dimensions.get("window").width,
+    width: Dimensions.get("window").width * 0.94,
     // width: "100%",
   },
 
   resultsContainer: {
     display: "flex",
+    width: Dimensions.get("window").width * 0.94,
     // backgroundColor: "lightblue",
     // position: "relative",
-    marginHorizontal: 5,
-    width: Dimensions.get("window").width - 35,
+    // marginHorizontal: 5,
   },
 });

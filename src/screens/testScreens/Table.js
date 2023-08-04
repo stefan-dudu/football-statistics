@@ -795,19 +795,29 @@ const Table = ({ data }) => {
       </TouchableOpacity>
 
       <View style={styles.teamRowWrapper}>
-        <Text style={styles.teamTableCell}>{data.all.played}</Text>
+        <Text style={[styles.teamTableCell, {}]}>{data.all.played}</Text>
       </View>
       <View style={styles.teamRowWrapper}>
-        <Text style={styles.teamTableCell}>{data.all.win}</Text>
+        <Text style={[styles.teamTableCell, { color: COLORS.mainGreen }]}>
+          {data.all.win}
+        </Text>
       </View>
       <View style={styles.teamRowWrapper}>
-        <Text style={styles.teamTableCell}>{data.all.draw}</Text>
+        <Text style={[styles.teamTableCell, { color: COLORS.mediumGray }]}>
+          {data.all.draw}
+        </Text>
       </View>
       <View style={styles.teamRowWrapper}>
-        <Text style={styles.teamTableCell}>{data.all.lose}</Text>
+        <Text
+          style={[styles.teamTableCell, { color: COLORS.leagueRedBackground }]}
+        >
+          {data.all.lose}
+        </Text>
       </View>
       <View style={styles.teamRowWrapper}>
-        <Text style={styles.teamTableCell}>{data.points}</Text>
+        <Text style={[styles.teamTableCell, { color: COLORS.darkGreen }]}>
+          {data.points}
+        </Text>
       </View>
     </View>
   );
@@ -857,7 +867,7 @@ const styles = StyleSheet.create({
   },
   tableHeaderCell: {
     fontWeight: "bold",
-    color: COLORS.textGrayButtons,
+    color: COLORS.mediumGray,
     // borderWidth: 1,
     // borderColor: "red",
     textAlign: "center",
@@ -912,6 +922,8 @@ const styles = StyleSheet.create({
 
   teamTableCell: {
     textAlign: "center",
+    fontSize: 17,
+    fontWeight: "600",
     // backgroundColor: "lightgray",
   },
 

@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     zIndex: 5,
     // marginTop: 15,
     backgroundColor: "white",
+    // backgroundColor: "blue",
     width: Dimensions.get("window").width * 0.94,
     height: 250,
     flexDirection: "column",
@@ -97,16 +98,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "400",
-    color: "black",
+    color: COLORS.darkGray,
   },
 
   scoreStyle: {
-    fontSize: 40,
+    fontSize: 50,
     marginTop: 10,
     textAlign: "center",
     // fontSize: 20,
     fontWeight: "700",
-    color: "black",
+    color: COLORS.darkGreen,
   },
 
   teamName: {
@@ -114,19 +115,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "700",
-    color: "black",
+    color: COLORS.darkGray,
   },
 
   matchTimePassedStyle: {
     textAlign: "center",
-    color: COLORS.pink,
+    color: COLORS.mainGreen,
     marginTop: 30,
-    backgroundColor: COLORS.lightPink,
+    // backgroundColor: COLORS.lightPink,
     paddingVertical: 5,
     paddingHorizontal: 15,
     borderRadius: 17,
-    borderColor: COLORS.pink,
+    borderColor: COLORS.mainGreen,
     borderWidth: 1.5,
+    fontSize: 18,
   },
 
   teamLogo: {
@@ -141,7 +143,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
     // fontWeight: "700",
-    color: "gray",
+    color: COLORS.mediumGray,
   },
 
   underTeamType: {
@@ -150,13 +152,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 10,
     fontSize: 15,
-    color: "gray",
+    color: COLORS.mediumGray,
   },
 
   homeWrapper: {
     // flex: 2,
     // width: "30%",
-    width: Dimensions.get("window").width * 0.38,
+    width: Dimensions.get("window").width * 0.36,
     height: 150,
     flexDirection: "column",
     justifyContent: "center",
@@ -177,13 +179,13 @@ const styles = StyleSheet.create({
   middleWrapper: {
     // flex: 1,
     // width: "10%",
-    width: 40,
-    width: Dimensions.get("window").width * 0.18,
+    // width: 40,
+    width: Dimensions.get("window").width * 0.2,
     height: 150,
     justifyContent: "center",
     alignContent: "center",
     alignItems: "center",
-    // backgroundColor: "white",
+    backgroundColor: "white",
   },
 
   scoreWrapper: {

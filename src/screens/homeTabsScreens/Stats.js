@@ -13,22 +13,24 @@ const Stats = ({ data }) => {
     const styles2 = StyleSheet.create({
       homeAdvantageStyle: {
         borderLeftWidth: 5,
-        borderLeftColor: COLORS.pink,
+        borderLeftColor: COLORS.mainGreen,
         fontSize: 20,
         paddingHorizontal: 10,
-        color: COLORS.pink,
+        color: COLORS.mainGreen,
+        fontWeight: "600",
       },
 
       awayAdvantageStyle: {
         borderRightWidth: 5,
-        borderRightColor: COLORS.pink,
+        borderRightColor: COLORS.mainGreen,
         fontSize: 20,
         paddingHorizontal: 10,
-        color: COLORS.pink,
+        color: COLORS.mainGreen,
+        fontWeight: "600",
       },
 
       defaultValueTextStyle: {
-        color: COLORS.purple,
+        color: COLORS.mediumGray,
         fontSize: 20,
         paddingHorizontal: 10,
       },
@@ -36,7 +38,7 @@ const Stats = ({ data }) => {
       rowTitleStyle: {
         fontSize: 20,
         paddingHorizontal: 10,
-        color: COLORS.titleDarkGray,
+        color: COLORS.darkGray,
       },
     });
 
@@ -91,7 +93,8 @@ const Stats = ({ data }) => {
 export default Stats;
 
 const styles = StyleSheet.create({
-  parentWRapper: { width: Dimensions.get("window").width - 40 },
+  parentWRapper: { width: Dimensions.get("window").width * 0.94 },
+  // parentWRapper: { width: Dimensions.get("window").width - 40 },
 
   statRowWrapper: {
     // backgroundColor: "pink",

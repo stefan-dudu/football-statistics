@@ -580,14 +580,7 @@ const Summary = () => {
         key={el.time.elapsed + el.player.id}
         style={styles.timelineContainer}
       >
-        <View
-          // style={[
-          //   el.team.id == homeTeamID
-          //     ? styles.eventWrapperHome
-          //     : styles.eventWrapperAway,
-          // ]}
-          style={styles.eventWrapper}
-        >
+        <View style={styles.eventWrapper}>
           <TypeOfAction data={el} />
         </View>
       </View>
@@ -607,7 +600,7 @@ const styles = StyleSheet.create({
   parentContainer: {
     display: "flex",
     justifyContent: "center",
-    width: Dimensions.get("window").width - 40,
+    width: Dimensions.get("window").width * 0.94,
   },
 
   timelineContainer: {
@@ -621,14 +614,16 @@ const styles = StyleSheet.create({
   },
 
   playerPicture: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     borderRadius: 50,
+    resizeMode: "contain",
   },
 
   teamLogo: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
+    resizeMode: "contain",
   },
 
   eventWrapperHome: {
@@ -673,7 +668,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 10,
     borderRadius: 17,
-    width: Dimensions.get("window").width - 50,
+    // width: Dimensions.get("window").width * 0.94,
+    width: Dimensions.get("window").width * 0.89,
     backgroundColor: "white",
     marginVertical: 10,
     // shadow
@@ -696,8 +692,9 @@ const styles = StyleSheet.create({
   imageActionWrapper: { flexDirection: "row", alignItems: "center" },
   actionText: {
     fontSize: 16,
-    fontWeight: "500",
+    fontWeight: "600",
     marginLeft: 5,
+    color: COLORS.darkGray,
   },
 
   teamLogoName: {
@@ -708,7 +705,7 @@ const styles = StyleSheet.create({
 
   teamName: {
     fontSize: 16,
-    color: COLORS.textGrayButtons,
+    color: COLORS.mediumGray,
     fontWeight: "500",
   },
 

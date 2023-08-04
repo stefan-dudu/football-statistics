@@ -86,7 +86,7 @@ export default HomeOtherCards;
 const styles = StyleSheet.create({
   parentWrapper: {
     margin: 5,
-    backgroundColor: "lightgray",
+    backgroundColor: COLORS.lightGray,
     text: "white",
     width: 300,
     height: 300,
@@ -101,11 +101,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "700",
-    color: "white",
+    color: COLORS.darkGreen,
   },
 
   scoreStyle: {
-    fontSize: 30,
+    fontSize: 50,
     marginTop: 10,
     textAlign: "center",
     // fontSize: 20,
@@ -118,7 +118,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "700",
-    color: "green",
+    color: COLORS.mainGreen,
+    color: COLORS.darkGreen,
+    color: COLORS.mainGreen,
     // width: 50,
     flexWrap: "wrap",
     // flexWrap: "wrap",
@@ -126,14 +128,15 @@ const styles = StyleSheet.create({
 
   matchTimePassedStyle: {
     textAlign: "center",
-    color: "white",
+    color: COLORS.lightGreen,
     marginTop: 30,
-    backgroundColor: COLORS.lightPurple,
+    // backgroundColor: COLORS.lightPurple,
     paddingVertical: 5,
     paddingHorizontal: 15,
     borderRadius: 17,
-    borderColor: COLORS.pink,
+    borderColor: "white",
     borderWidth: 1.5,
+    fontSize: 18,
   },
 
   teamLogoStyle: {
@@ -148,7 +151,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 15,
     // fontWeight: "700",
-    color: "gray",
+    color: COLORS.darkGray,
   },
 
   underTeamType: {
@@ -157,7 +160,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 10,
     fontSize: 15,
-    color: "gray",
+    color: COLORS.darkGray,
   },
 
   homeWrapper: {

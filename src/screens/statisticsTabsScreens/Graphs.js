@@ -327,12 +327,14 @@ const Graphs = ({ teamStatsData }) => {
         </View>
 
         <Text style={styles.graphSubtitle}>
-          Goluri marcate acasa/deplasasre
+          Goluri <Text style={{ color: COLORS.darkGreen }}>marcate</Text>{" "}
+          acasa/deplasasre
         </Text>
         <GoalsHorizontalBarChart />
 
         <Text style={styles.graphSubtitle}>
-          Goluri primite acasa/deplasasre
+          Goluri <Text style={{ color: COLORS.darkGreen }}>primite</Text>{" "}
+          acasa/deplasasre
         </Text>
         <GoalsHorizontalBarChart />
 
@@ -363,27 +365,28 @@ const styles = StyleSheet.create({
 
   textWrapper: {
     marginVertical: 30,
-    width: Dimensions.get("window").width - 40,
-    marginLeft: 20,
+    width: Dimensions.get("window").width * 0.94,
+    marginLeft: 10,
   },
 
   textStyling: {
-    fontSize: 20,
+    fontSize: 25,
     marginBottom: 10,
+    color: COLORS.mainGreen,
   },
 
   textValue: {
-    color: COLORS.powerOrange,
+    color: COLORS.darkGray,
     fontWeight: "600",
   },
 
   graphSubtitle: {
-    color: "gray",
+    color: COLORS.mediumGray,
     fontSize: 20,
     fontWeight: "600",
     borderBottomWidth: 2,
-    borderBottomColor: "gray",
-    width: Dimensions.get("window").width - 40,
+    borderBottomColor: COLORS.lightGreen,
+    width: Dimensions.get("window").width * 0.94,
     paddingBottom: 5,
     marginBottom: 15,
   },

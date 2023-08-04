@@ -5,8 +5,8 @@ import { COLORS } from "../../utils/colors";
 
 const PenaltyDonutChart = () => {
   const pieData = [
-    { value: 70, color: "#177AD5" },
-    { value: 30, color: "lightgray" },
+    { value: 70, color: COLORS.mainGreen },
+    { value: 30, color: COLORS.lightGray },
   ];
   return (
     <View style={styles.parentWrapper}>
@@ -16,7 +16,9 @@ const PenaltyDonutChart = () => {
         innerRadius={80}
         data={pieData}
         centerLabelComponent={() => {
-          return <Text style={{ fontSize: 30 }}>70%</Text>;
+          return (
+            <Text style={{ fontSize: 30, color: COLORS.mainGreen }}>70%</Text>
+          );
         }}
       />
       <Text style={styles.legendStyle}>Pentaly-uri transformate cu succes</Text>
@@ -29,9 +31,9 @@ export default PenaltyDonutChart;
 const styles = StyleSheet.create({
   parentWrapper: {
     borderWidth: 2,
-    borderColor: "green",
+    borderColor: COLORS.lightGreen,
     borderRadius: 16,
-    width: Dimensions.get("window").width - 40,
+    width: Dimensions.get("window").width * 0.94,
     height: "auto",
     // backgroundColor: "lightgreen",
     justifyContent: "center",
@@ -42,7 +44,8 @@ const styles = StyleSheet.create({
   legendStyle: {
     // backgroundColor: "green",
     maxWidth: Dimensions.get("window").width - 250,
-    color: COLORS.textGrayButtons,
+    color: COLORS.darkGray,
     flexWrap: "wrap",
+    fontSize: 20,
   },
 });

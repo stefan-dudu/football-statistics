@@ -17,4 +17,10 @@ export const COLORS = {
   formGrayDraw: "#C3B3C5",
   formRedLoose: "#E0085E",
   leagueRedBackground: "#ea0f09",
+  lightGray: "#e0e0e0",
+  mediumGray: "#b0b0b0",
+  darkGray: "#505050",
+  mainGreen: "#00a651",
+  lightGreen: "#32bf6f",
+  darkGreen: "#005c30",
 };
