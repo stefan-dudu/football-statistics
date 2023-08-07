@@ -23,4 +23,7 @@ export const COLORS = {
   mainGreen: "#00a651",
   lightGreen: "#32bf6f",
   darkGreen: "#005c30",
+  goldCard: "#CEAA5F",
+  silverCard: "#9199A1",
+  bronzeCard: "#A88776",
 };
