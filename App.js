@@ -12,6 +12,7 @@ import Settings from "./src/screens/Settings";
 
 import DetailsScreen from "./src/screens/subScreens/DetailsScreen";
 import TeamStats from "./src/screens/subScreens/TeamStats";
+import DetailedPlayerScreen from "./src/screens/statisticsTabsScreens/DetailedPlayerScreen";
 import { COLORS } from "./src/utils/colors";
 
 import { useNavigation } from "@react-navigation/native";
@@ -22,6 +23,7 @@ import { EvilIcons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
 const HomeStack = () => (
   <Stack.Navigator>
     <Stack.Screen
@@ -32,6 +34,21 @@ const HomeStack = () => (
     <Stack.Screen
       name="Details"
       component={DetailsScreen}
+      options={{ headerShown: false }}
+    />
+  </Stack.Navigator>
+);
+
+const SatisticsStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Statistici"
+      component={Statistics}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name="PlayerDetailsStatistics"
+      component={DetailedPlayerScreen}
       options={{ headerShown: false }}
     />
   </Stack.Navigator>
@@ -74,8 +91,8 @@ const App = ({ navigation }) => {
           }}
         />
         <Tab.Screen
-          name="Statistici"
-          component={Statistics}
+          name="Statistics"
+          component={SatisticsStack}
           navigation={navigation}
           options={{
             headerShown: false,
