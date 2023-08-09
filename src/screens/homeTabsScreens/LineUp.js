@@ -1,8 +1,34 @@
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
-import React from "react";
 import { COLORS } from "../../utils/colors";
+import React, { useEffect, useState } from "react";
+import apiSports from "../../api/api-sports";
 
-const LineUp = () => {
+const LineUp = ({ fixtureID }) => {
+  const [loading, setLoading] = useState(true);
+  const [fixtureLineup, setFixtureLineup] = useState(null);
+  const [isError, setIsError] = useState("");
+
+  const getFixtureLineup = async () => {
+    try {
+      const response = await apiSports.get("/fixtures/lineups", {
+        params: {
+          fixture: fixtureID,
+        },
+      });
+      response?.data?.errors?.requests?.includes &&
+        setIsError("Max limit for today been reached");
+
+      response?.data.results > 0 && setFixtureLineup(response?.data);
+      setLoading(false);
+    } catch (err) {
+      console.log("error : ", err);
+    }
+  };
+
+  useEffect(() => {
+    getFixtureLineup();
+  }, []);
+
   const data = {
     get: "fixtures/lineups",
     parameters: {
@@ -451,7 +477,7 @@ const LineUp = () => {
     }
   };
 
-  const TeamLogoNameFormation = data.response.map((el, i) => {
+  const TeamLogoNameFormation = fixtureLineup?.response?.map((el, i) => {
     // console.log("i : el", i, el);
     // console.log("i", i);
     return (
@@ -462,7 +488,8 @@ const LineUp = () => {
               <View style={styles.logoWrapperHomeStyle}>
                 <Image
                   style={styles.teamLogoStyle}
-                  source={require("../../../assets/teamLogo.png")}
+                  // source={require("../../../assets/teamLogo.png")}
+                  source={{ uri: el.team.logo }}
                 />
               </View>
               <View style={styles.nameFormationStyle}>
@@ -479,7 +506,8 @@ const LineUp = () => {
               <View style={styles.logoWrapperAwayStyle}>
                 <Image
                   style={styles.teamLogoStyle}
-                  source={require("../../../assets/teamLogo2.png")}
+                  // source={require("../../../assets/teamLogo2.png")}
+                  source={{ uri: el.team.logo }}
                 />
               </View>
             </View>
@@ -489,7 +517,7 @@ const LineUp = () => {
     );
   });
 
-  const Manager = data.response.map((el) => {
+  const Manager = fixtureLineup?.response?.map((el) => {
     return (
       <Text style={styles.playerManagerStylingWrapper} key={el.coach.id}>
         {el.coach.name}
@@ -497,7 +525,7 @@ const LineUp = () => {
     );
   });
 
-  const Starting11Home = data.response[0].startXI.map((el) => {
+  const Starting11Home = fixtureLineup?.response[0]?.startXI.map((el) => {
     return (
       <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
         <View style={styles.playerNumberNameStyle}>
@@ -509,7 +537,7 @@ const LineUp = () => {
     );
   });
 
-  const Starting11Away = data.response[1].startXI.map((el) => {
+  const Starting11Away = fixtureLineup?.response[1]?.startXI.map((el) => {
     return (
       <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
         <View style={styles.playerNumberNameStyle}>
@@ -521,7 +549,7 @@ const LineUp = () => {
     );
   });
 
-  const SubsHome = data.response[0].substitutes.map((el) => {
+  const SubsHome = fixtureLineup?.response[0]?.substitutes.map((el) => {
     return (
       <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
         <View style={styles.playerNumberNameStyle}>
@@ -533,7 +561,7 @@ const LineUp = () => {
     );
   });
 
-  const SubsAway = data.response[1].substitutes.map((el) => {
+  const SubsAway = fixtureLineup?.response[1]?.substitutes.map((el) => {
     return (
       <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
         <View style={styles.playerNumberNameStyle}>
@@ -547,7 +575,7 @@ const LineUp = () => {
 
   return (
     <View style={styles.parentWrapperStyle}>
-      <View style={styles.rowStyle}>{TeamLogoNameFormation}</View>
+      {/* <View style={styles.rowStyle}>{TeamLogoNameFormation}</View>
       <Text style={styles.middleTitles}>Antrenor</Text>
       <View style={styles.rowStyle}>{Manager}</View>
       <Text style={styles.middleTitles}>Primul 11</Text>
@@ -559,7 +587,36 @@ const LineUp = () => {
       <View style={styles.rowStyle}>
         <View>{SubsHome}</View>
         <View>{SubsAway}</View>
-      </View>
+      </View> */}
+
+      {loading ? (
+        // Show a loading spinner or message while waiting for data
+        <Text>Loading...</Text>
+      ) : fixtureLineup ? (
+        // Render the data when it's available
+        <View>
+          <View style={styles.rowStyle}>{TeamLogoNameFormation}</View>
+          <Text style={styles.middleTitles}>Antrenor</Text>
+          <View style={styles.rowStyle}>{Manager}</View>
+          <Text style={styles.middleTitles}>Primul 11</Text>
+          <View style={styles.rowStyle}>
+            <View>{Starting11Home}</View>
+            <View>{Starting11Away}</View>
+          </View>
+          <Text style={styles.middleTitles}>Rezerve</Text>
+          <View style={styles.rowStyle}>
+            <View>{SubsHome}</View>
+            <View>{SubsAway}</View>
+          </View>
+        </View>
+      ) : // <Text> If all works fine</Text>
+      isError ? (
+        // Handle the case when no data is available or an error occurred
+        <Text>{isError}</Text>
+      ) : (
+        // Handle the case when no data is available or an error occurred
+        <Text>Some other error</Text>
+      )}
     </View>
   );
 };

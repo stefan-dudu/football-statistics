@@ -35,7 +35,7 @@ const TeamStats = ({ params }) => {
   };
 
   const teamInfoData = params[0];
-  // console.log("teamInfoData", teamInfoData);
+  // console.log("teamInfoData", teamInfoData.team.id);
 
   const teamStats = {
     get: "teams/statistics",
@@ -419,7 +419,7 @@ const TeamStats = ({ params }) => {
   );
 
   const StatsTab = <Graphs teamStatsData={teamStats} />;
-  const StatsTab2 = <StatsLineup />;
+  const StatsTab2 = <StatsLineup teamID={teamInfoData.team.id} />;
   return (
     <View style={styles.container}>
       <Animated.View

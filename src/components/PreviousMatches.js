@@ -15,12 +15,12 @@ import LimitAlert from "../screens/settingsScreens/LimitAlert";
 import SmallScoreCardPreviousMatches from "./SmallScoreCardPreviousMatches";
 
 const PreviousMatches = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [previousMatches, setPreviousMatches] = useState(null);
   const [isError, setIsError] = useState("");
   const scrollY = new Animated.Value(0);
 
-  const data = {
+  const dummyData = {
     get: "fixtures",
     parameters: {
       league: "283",
@@ -733,7 +733,7 @@ const PreviousMatches = () => {
       //     "reached the request limit for the day"
       //   )
       // );
-      response?.data.errors.requests.includes &&
+      response?.data?.errors?.requests?.includes &&
         setIsError("Max limit for today been reached");
       response?.data.results > 0 && setPreviousMatches(response?.data);
       setLoading(false);
@@ -743,10 +743,10 @@ const PreviousMatches = () => {
   };
 
   useEffect(() => {
-    // getPreviousMatches();
+    getPreviousMatches();
   }, []);
 
-  const matchData = data?.response?.map((el) => {
+  const matchData = previousMatches?.response?.map((el) => {
     return <SmallScoreCardPreviousMatches data={el} key={el?.fixture?.id} />;
   });
 
@@ -755,7 +755,7 @@ const PreviousMatches = () => {
       {loading ? (
         // Show a loading spinner or message while waiting for data
         <Text>Loading...</Text>
-      ) : data ? (
+      ) : previousMatches ? (
         // Render the data when it's available
         <ScrollView
           style={styles.scrollView}

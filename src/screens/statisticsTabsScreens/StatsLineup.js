@@ -1,10 +1,45 @@
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
-import React from "react";
-import { ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import apiSports from "../../api/api-sports";
 import { COLORS } from "../../utils/colors";
 
-const StatsLineup = () => {
-  const coachData = {
+const StatsLineup = ({ teamID }) => {
+  // console.log("teamID", teamID);
+  const [loading, setLoading] = useState(true);
+  const [coachData, setCoachData] = useState(null);
+  const [playersData, setPlayersData] = useState(null);
+  const [isError, setIsError] = useState("");
+
+  const fetchCoachPlayersData = async () => {
+    try {
+      // Use Promise.all to fetch data from multiple APIs concurrently
+      const [response1, response2] = await Promise.all([
+        apiSports.get(`/coachs/?team=${teamID}`),
+        apiSports.get(`/players/squads?team=${teamID}`),
+      ]);
+
+      response1?.data?.errors?.requests?.includes &&
+        setIsError("Max limit for today been reached");
+      // console.log("response1", response1.data.response[0]);
+      // console.log("response2?.data.results", response2?.data);
+
+      // console.log("response1", response1.data.response[0]);
+
+      // Set the state variables with the fetched data
+      response1?.data.results > 0 && setCoachData(response1.data);
+      response2?.data.results > 0 && setPlayersData(response2.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCoachPlayersData();
+  }, [teamID]);
+
+  const coachDummy = {
     get: "coachs",
     parameters: {
       team: "2598",
@@ -350,7 +385,7 @@ const StatsLineup = () => {
     ],
   };
 
-  const players = {
+  const playersDummy = {
     get: "players/squads",
     parameters: {
       team: "2598",
@@ -654,25 +689,21 @@ const StatsLineup = () => {
     ],
   };
 
-  const coach = coachData.response[0];
-
-  const goalkeepers = players.response[0].players.filter(
+  const goalkeepers = playersData?.response[0].players.filter(
     (pos) => pos.position == "Goalkeeper"
   );
 
-  const defenders = players.response[0].players.filter(
+  const defenders = playersData?.response[0].players.filter(
     (pos) => pos.position == "Defender"
   );
 
-  const midfielderers = players.response[0].players.filter(
+  const midfielderers = playersData?.response[0].players.filter(
     (pos) => pos.position == "Midfielder"
   );
 
-  const attackers = players.response[0].players.filter(
+  const attackers = playersData?.response[0].players.filter(
     (pos) => pos.position == "Attacker"
   );
-
-  // console.log("goalkeepers", goalkeepers);
 
   const CoachCard = () => {
     // console.log("coach", coachData.response[0].name);
@@ -683,19 +714,19 @@ const StatsLineup = () => {
           <Image
             style={styles.playerPicStyle}
             // source={require("../../../assets/coach.png")}
-            source={{ uri: coachData.response[0].photo }}
+            source={{ uri: coachData?.response[0].photo }}
           />
           <View style={styles.playerTopRight}>
             {/* details - right side */}
             <Text style={styles.playerCardGraySubtitle}>Ani</Text>
             <Text style={styles.playerAgeNumber}>
-              {coachData.response[0].age}
+              {coachData?.response[0].age}
             </Text>
           </View>
         </View>
 
         <View style={styles.playerBottomPart}>
-          <Text style={styles.playerName}>{coachData.response[0].name}</Text>
+          <Text style={styles.playerName}>{coachData?.response[0].name}</Text>
           <Text style={styles.playerCardGraySubtitle}>Antrenor</Text>
         </View>
       </View>
@@ -734,24 +765,39 @@ const StatsLineup = () => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.positionTitleStyle}>Coach</Text>
-      <CoachCard />
-      <Text style={styles.positionTitleStyle}>Goalkeepers</Text>
-      <View style={styles.categoryWrapper}>
-        <PlayerCard position={goalkeepers} />
-      </View>
-      <Text style={styles.positionTitleStyle}>Defenders</Text>
-      <View style={styles.categoryWrapper}>
-        <PlayerCard position={defenders} />
-      </View>
-      <Text style={styles.positionTitleStyle}>Middfileders</Text>
-      <View style={styles.categoryWrapper}>
-        <PlayerCard position={midfielderers} />
-      </View>
-      <Text style={styles.positionTitleStyle}>Attcker</Text>
-      <View style={styles.categoryWrapper}>
-        <PlayerCard position={attackers} />
-      </View>
+      {loading ? (
+        // Show a loading spinner or message while waiting for data
+        <Text>Loading...</Text>
+      ) : playersData ? (
+        // Render the data when it's available
+        <View>
+          <Text style={styles.positionTitleStyle}>Coach</Text>
+          <CoachCard />
+          <Text style={styles.positionTitleStyle}>Goalkeepers</Text>
+          <View style={styles.categoryWrapper}>
+            <PlayerCard position={goalkeepers} />
+          </View>
+          <Text style={styles.positionTitleStyle}>Defenders</Text>
+          <View style={styles.categoryWrapper}>
+            <PlayerCard position={defenders} />
+          </View>
+          <Text style={styles.positionTitleStyle}>Middfileders</Text>
+          <View style={styles.categoryWrapper}>
+            <PlayerCard position={midfielderers} />
+          </View>
+          <Text style={styles.positionTitleStyle}>Attcker</Text>
+          <View style={styles.categoryWrapper}>
+            <PlayerCard position={attackers} />
+          </View>
+        </View>
+      ) : // <Text> If all works fine</Text>
+      isError ? (
+        // Handle the case when no data is available or an error occurred
+        <Text>{isError}</Text>
+      ) : (
+        // Handle the case when no data is available or an error occurred
+        <Text>Some other error</Text>
+      )}
     </View>
   );
 };
@@ -771,7 +817,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 5,
     borderWidth: 2,
-    borderColor: COLORS.lightGreen,
+    borderColor: COLORS.mediumGray,
     borderRadius: 16,
     width: "43%",
     // height: "auto",

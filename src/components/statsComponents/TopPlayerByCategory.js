@@ -5,65 +5,16 @@ import {
   Image,
   ImageBackground,
   Dimensions,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../../utils/colors";
 
 const TopPlayerByCategory = ({ data, playerType }) => {
-  // console.log("type", playerType);
+  const navigation = useNavigation();
 
   const CardType = ({ rating }) => {
-    // console.log("rating", rating, rating >= 8);
-    // switch (rating) {
-    //   case rating >= "8":
-    //     return (
-    //       // <ImageBackground
-    //       //   source={require("../../../assets/ratingCardGreen.png")}
-    //       //   style={styles.cardStyling}
-    //       // ></ImageBackground>
-    //       // <View style={styles.newRatingWrapper}>
-    //       // </View>
-    //       // <Text style={styles.ratingTextStyle}>
-    //       //   {/* {el?.statistics[0]?.games?.rating?.slice(0, -4) || "-"} */}
-    //       //   Gold
-    //       // </Text>
-    //       <Text>GOLD</Text>
-    //     );
-
-    //   case rating < 8 && rating > 7:
-    //     return (
-    //       <ImageBackground
-    //         source={require("../../../assets/ratingTopAssist.png")}
-    //         style={styles.cardStyling}
-    //       >
-    //         <View style={styles.cardTextWrapper}>
-    //           <Text style={styles.ratingBronzeTextStyle}>
-    //             {/* {el?.statistics[0]?.games?.rating?.slice(0, -4) || "-"} */}
-    //             SILVER
-    //           </Text>
-    //         </View>
-    //       </ImageBackground>
-    //     );
-
-    //   case rating < 7:
-    //     return (
-    //       <ImageBackground
-    //         source={require("../../../assets/ratingCardSilver.png")}
-    //         style={styles.cardStyling}
-    //       >
-    //         <View style={styles.cardTextWrapper}>
-    //           <Text style={styles.ratingBronzeTextStyle}>
-    //             {/* {el?.statistics[0]?.games?.rating?.slice(0, -4) || "-"} */}
-    //             BRONZE
-    //           </Text>
-    //         </View>
-    //       </ImageBackground>
-    //     );
-
-    //   default:
-    //     return <Text>Default</Text>;
-    // }
-
     if (rating >= 8) {
       return (
         <View style={styles.GoldRatingWrapper}>
@@ -150,33 +101,44 @@ const TopPlayerByCategory = ({ data, playerType }) => {
     return data.response.slice(0, 3).map((el, i) => {
       // console.log("el", el.statistics[0].games.rating);
       //   console.log("el", el.statistics[0].games.position);
+      // console.log("el", el);
       return (
-        <View style={styles.playerCardWrapper} key={el.player.id}>
-          <View style={styles.playerPicture}>
-            {/* <Text>{i + 1}</Text> */}
-            <Image
-              style={styles.clubPicStyle}
-              source={require("../../../assets/teamLogo2.png")}
-            />
-            <Image
-              style={styles.profilePicStyle}
-              source={require("../../../assets/topScorer.png")}
-            />
-          </View>
-          <View style={styles.playerNamePosition}>
-            <Text style={styles.nume}>{el.player.firstname}</Text>
-            <Text style={styles.prenume}>{el.player.lastname}</Text>
-            <Text style={styles.playerPosition}>
-              {el.statistics[0].games.position}
-            </Text>
-          </View>
-          <MatchDetails el={el} />
-          <View style={styles.playerRating}>
-            <CardType rating={el.statistics[0].games.rating} />
+        <TouchableOpacity
+          onPress={() => {
+            // console.log("team name : ", data.team.name);
+            navigation.navigate("PlayerDetailsStatistics", {
+              params: el,
+            });
+          }}
+          key={el.player.id}
+        >
+          <View style={styles.playerCardWrapper}>
+            <View style={styles.playerPicture}>
+              {/* <Text>{i + 1}</Text> */}
+              <Image
+                style={styles.clubPicStyle}
+                source={require("../../../assets/teamLogo2.png")}
+              />
+              <Image
+                style={styles.profilePicStyle}
+                source={require("../../../assets/topScorer.png")}
+              />
+            </View>
+            <View style={styles.playerNamePosition}>
+              <Text style={styles.nume}>{el.player.firstname}</Text>
+              <Text style={styles.prenume}>{el.player.lastname}</Text>
+              <Text style={styles.playerPosition}>
+                {el.statistics[0].games.position}
+              </Text>
+            </View>
+            <MatchDetails el={el} />
+            <View style={styles.playerRating}>
+              <CardType rating={el.statistics[0].games.rating} />
 
-            {/* <Text>2</Text> */}
+              {/* <Text>2</Text> */}
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
       );
     });
   };

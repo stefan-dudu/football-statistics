@@ -15,7 +15,10 @@ import { COLORS } from "../utils/colors";
 
 const Statistics = (params) => {
   const navigation = useNavigation();
-  const clubID = params?.route?.params?.params.id;
+  const clubID = params?.route?.params?.id;
+  // console.log("params", params.route.params.id);
+  // console.log("clubID", clubID);
+
   // console.log("params", params?.route?.params?.params);
   // console.log("club id", params?.route?.params?.params.id);
 
@@ -25,6 +28,8 @@ const Statistics = (params) => {
   const selectedTeamData = Superliga23TeamsInformation.response.filter(
     (el) => el.team.id === clubID
   );
+
+  // console.log("selectedTeamData");
 
   const [topScorer, setTopScorer] = useState(null);
   const [topAssist, setTopAssist] = useState(null);

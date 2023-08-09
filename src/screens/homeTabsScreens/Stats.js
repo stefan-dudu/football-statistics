@@ -4,11 +4,16 @@ import { COLORS } from "../../utils/colors";
 
 const Stats = ({ data }) => {
   // console.log("1st obj", data.response[0].statistics[9].value);
-  // console.log("data", data);
+  // console.log("data", data.response[0].statistics);
+
+  // console.log("home val", data?.response[0]?.statistics[number]?.value);
 
   const RowBuilder = ({ number, text }) => {
-    const homeValue = data.response[0].statistics[number].value || "-";
-    const awayValue = data.response[1].statistics[number].value || "-";
+    const homeValue = data?.response[0]?.statistics[number]?.value || "-";
+    const awayValue = data?.response[1]?.statistics[number]?.value || "-";
+
+    // console.log("homeValue", homeValue);
+    // console.log("awayValue", awayValue);
 
     const styles2 = StyleSheet.create({
       homeAdvantageStyle: {
@@ -70,7 +75,10 @@ const Stats = ({ data }) => {
   return (
     <View style={styles.parentWRapper}>
       <RowBuilder number={9} text={"Posesie"} />
-      <RowBuilder number={16} text={"Sanse De Gol"} />
+      {/* {(data?.response[0]?.statistics[9]?.value !== null ||
+        data?.response[1]?.statistics[9]?.value !== null) && (
+        <RowBuilder number={16} text={"Sanse De Gol"} />
+      )} */}
       <RowBuilder number={6} text={"Faulturi"} />
       <RowBuilder number={7} text={"Cornere"} />
       <RowBuilder number={8} text={"Offside"} />

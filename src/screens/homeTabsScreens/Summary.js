@@ -6,12 +6,20 @@ import {
   Dimensions,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import apiSports from "../../api/api-sports";
 import { COLORS } from "../../utils/colors";
+import fixtureSummaryData from "../../api/DummyData/fixtureSummaryData";
 
-const Summary = () => {
+const Summary = ({ fixtureID }) => {
   const homeTeamID = 6886;
   const awayTeamID = 2589;
+
+  // console.log("fixtureID", fixtureID);
+
+  const [loading, setLoading] = useState(true);
+  const [fixtureEvents, setFixtureEvents] = useState(null);
+  const [isError, setIsError] = useState("");
 
   const data = {
     get: "fixtures/events",
@@ -380,7 +388,29 @@ const Summary = () => {
     ],
   };
 
-  const Timeline = data.response.map((el) => {
+  const getFixtureEvents = async () => {
+    try {
+      const response = await apiSports.get("/fixtures/events", {
+        params: {
+          fixture: fixtureID,
+        },
+      });
+      response?.data?.errors?.requests?.includes &&
+        setIsError("Max limit for today been reached");
+
+      response?.data.results > 0 && setFixtureEvents(response?.data);
+      setLoading(false);
+    } catch (err) {
+      console.log("error : ", err);
+    }
+  };
+
+  useEffect(() => {
+    // getFixtureEvents();
+  }, []);
+
+  const Timeline = fixtureEvents?.response?.map((el) => {
+    // console.log("el", el);
     const TypeOfAction = ({ data }) => {
       switch (data.type) {
         case "Goal":
@@ -403,7 +433,8 @@ const Summary = () => {
                   <View style={styles.iconActionStyle}>
                     <Image
                       style={styles.teamLogo}
-                      source={require("../../../assets/teamLogo.png")}
+                      // source={require("../../../assets/teamLogo.png")}
+                      source={{ uri: el.team.logo }}
                     />
                     <Text style={styles.teamName}>
                       {" "}
@@ -418,7 +449,10 @@ const Summary = () => {
                 </View>
                 <Image
                   style={styles.playerPicture}
-                  source={require("../../../assets/topScorer.png")}
+                  // source={require("../../../assets/topScorer.png")}
+                  source={{
+                    uri: `https://media.api-sports.io/football/players/${el.player.id}.png`,
+                  }}
                 />
               </View>
             </View>
@@ -442,20 +476,24 @@ const Summary = () => {
                 <View style={styles.bottomSideWrapper}>
                   <View style={styles.teamLogoName}>
                     <Text style={styles.actionText}>
-                      {el.player.name} |
+                      {el.assist.name} |
                       <Text style={{ color: "#01B55C" }}> INTRA</Text>
                     </Text>
                     <View style={styles.iconActionStyle}>
                       <Image
                         style={styles.teamLogo}
-                        source={require("../../../assets/teamLogo.png")}
+                        // source={require("../../../assets/teamLogo.png")}
+                        source={{ uri: el.team.logo }}
                       />
                       <Text style={styles.teamName}> {el.team.name}</Text>
                     </View>
                   </View>
                   <Image
                     style={styles.playerPicture}
-                    source={require("../../../assets/topScorer.png")}
+                    // source={require("../../../assets/topScorer.png")}
+                    source={{
+                      uri: `https://media.api-sports.io/football/players/${el.assist.id}.png`,
+                    }}
                   />
                 </View>
 
@@ -468,14 +506,18 @@ const Summary = () => {
                     <View style={styles.iconActionStyle}>
                       <Image
                         style={styles.teamLogo}
-                        source={require("../../../assets/teamLogo.png")}
+                        // source={require("../../../assets/teamLogo.png")}
+                        source={{ uri: el.team.logo }}
                       />
                       <Text style={styles.teamName}> {el.team.name} </Text>
                     </View>
                   </View>
                   <Image
                     style={styles.playerPicture}
-                    source={require("../../../assets/gk.png")}
+                    // source={require("../../../assets/gk.png")}
+                    source={{
+                      uri: `https://media.api-sports.io/football/players/${el.player.id}.png`,
+                    }}
                   />
                 </View>
               </View>
@@ -517,7 +559,8 @@ const Summary = () => {
                     <View style={styles.iconActionStyle}>
                       <Image
                         style={styles.teamLogo}
-                        source={require("../../../assets/teamLogo.png")}
+                        // source={require("../../../assets/teamLogo.png")}
+                        source={{ uri: el.team.logo }}
                       />
                       <Text style={styles.teamName}>
                         {" "}
@@ -532,7 +575,10 @@ const Summary = () => {
                   </View>
                   <Image
                     style={styles.playerPicture}
-                    source={require("../../../assets/topScorer.png")}
+                    // source={require("../../../assets/topScorer.png")}
+                    source={{
+                      uri: `https://media.api-sports.io/football/players/${el.player.id}.png`,
+                    }}
                   />
                 </View>
               </View>
@@ -559,14 +605,18 @@ const Summary = () => {
                     <View style={styles.iconActionStyle}>
                       <Image
                         style={styles.teamLogo}
-                        source={require("../../../assets/teamLogo.png")}
+                        // source={require("../../../assets/teamLogo.png")}
+                        source={{ uri: el.team.logo }}
                       />
                       <Text style={styles.teamName}> {el.team.name} </Text>
                     </View>
                   </View>
                   <Image
                     style={styles.playerPicture}
-                    source={require("../../../assets/coach.png")}
+                    // source={require("../../../assets/coach.png")}
+                    source={{
+                      uri: `https://media.api-sports.io/football/players/${el.player.id}.png`,
+                    }}
                   />
                 </View>
               </View>
@@ -589,7 +639,22 @@ const Summary = () => {
 
   return (
     <View style={styles.parentContainer}>
-      <ScrollView>{Timeline}</ScrollView>
+      {/* <ScrollView>{Timeline}</ScrollView> */}
+
+      {loading ? (
+        // Show a loading spinner or message while waiting for data
+        <Text>Loading...</Text>
+      ) : fixtureEvents ? (
+        // Render the data when it's available
+        <ScrollView>{Timeline}</ScrollView>
+      ) : // <Text> If all works fine</Text>
+      isError ? (
+        // Handle the case when no data is available or an error occurred
+        <Text>{isError}</Text>
+      ) : (
+        // Handle the case when no data is available or an error occurred
+        <Text>Some other error</Text>
+      )}
     </View>
   );
 };

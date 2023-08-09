@@ -11,6 +11,8 @@ import { COLORS } from "../../utils/colors";
 import { useNavigation } from "@react-navigation/native";
 
 const TeamsComparasionCard = ({ data }) => {
+  // console.log(" TeamsComparasionCard data", data);
+
   const navigation = useNavigation();
   return (
     <View style={styles.wrapperDetailPage}>
@@ -24,23 +26,22 @@ const TeamsComparasionCard = ({ data }) => {
         <View style={styles.teamsWrapper}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Statistici", { params: data.teams.home });
+              navigation.navigate("Statistics", {
+                screen: "Statistici",
+                params: data?.teams?.home,
+              });
             }}
           >
             <View style={styles.homeWrapper}>
-              {/* home */}
               <Image
                 style={styles.teamLogo}
-                // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-                // source={require("../../assets/teamLogo.png")}
-                source={{ uri: data.teams.home.logo }}
+                source={{ uri: data?.teams?.home?.logo }}
               />
               <Text style={styles.teamName}>{data?.teams?.home?.name}</Text>
               <Text style={styles.underTeamType}>Home</Text>
             </View>
           </TouchableOpacity>
 
-          {/* middle ( score and time) */}
           <View style={styles.middleWrapper}>
             <View style={styles.scoreWrapper}>
               <Text style={styles.scoreStyle}> {data?.goals?.home} :</Text>
@@ -53,16 +54,15 @@ const TeamsComparasionCard = ({ data }) => {
 
           <TouchableOpacity
             onPress={() => {
-              // console.log("team name : ", data.team.name);
-              navigation.navigate("Statistici", { params: data.teams.away });
+              navigation.navigate("Statistics", {
+                screen: "Statistici",
+                params: data?.teams?.away,
+              });
             }}
           >
             <View style={styles.awayWrapper}>
-              {/* away */}
               <Image
                 style={styles.teamLogo}
-                // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-                // source={require("../../assets/teamLogo2.png")}
                 source={{ uri: data.teams.away.logo }}
               />
               <Text style={styles.teamName}>{data?.teams?.away?.name}</Text>

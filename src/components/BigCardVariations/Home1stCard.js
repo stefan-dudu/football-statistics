@@ -31,7 +31,10 @@ const Home1stCard = ({ data }) => {
               // style={styles.teamButtonStyle}
               onPress={() => {
                 // console.log("team name : ", data.team.name);
-                navigation.navigate("Statistici", { params: data.teams.home });
+                navigation.navigate("Statistics", {
+                  screen: "Statistici",
+                  params: data.teams.home,
+                });
               }}
             >
               <View style={styles.homeWrapper}>
@@ -63,7 +66,10 @@ const Home1stCard = ({ data }) => {
             <TouchableOpacity
               onPress={() => {
                 // console.log("team name : ", data.team.name);
-                navigation.navigate("Statistici", { params: data.teams.away });
+                navigation.navigate("Statistics", {
+                  screen: "Statistici",
+                  params: data.teams.away,
+                });
               }}
             >
               <View style={styles.awayWrapper}>

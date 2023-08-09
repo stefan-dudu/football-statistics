@@ -5,11 +5,13 @@ import HomeOtherCards from "./BigCardVariations/HomeOtherCards";
 import TeamsComparasionCard from "./BigCardVariations/TeamsComparasionCard";
 
 const BigScoreCard = ({ data, page, i }) => {
+  // console.log("data BigScoreCard", data);
+
   return (
     <View>
       {page === "home" && i == 0 && <Home1stCard data={data} />}
       {page === "home" && i > 0 && <HomeOtherCards data={data} />}
-      {page === "details" && <TeamsComparasionCard data={data} page={page} />}
+      {page === "details" && <TeamsComparasionCard data={data} />}
     </View>
   );
 };

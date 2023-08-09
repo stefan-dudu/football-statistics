@@ -787,7 +787,10 @@ const Table = ({ data }) => {
         style={styles.teamButtonStyle}
         onPress={() => {
           // console.log("team name : ", data.team.name);
-          navigation.navigate("Statistici", { params: data.team });
+          navigation.navigate("Statistics", {
+            screen: "Statistici",
+            params: data.team,
+          });
         }}
       >
         <Image style={styles.teamLogoStyle} source={{ uri: data.team.logo }} />

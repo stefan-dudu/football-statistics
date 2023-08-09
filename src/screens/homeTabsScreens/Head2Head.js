@@ -1,8 +1,35 @@
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import apiSports from "../../api/api-sports";
 import { COLORS } from "../../utils/colors";
 
-const Head2Head = () => {
+const Head2Head = ({ homeTeamId, awayTeamId }) => {
+  const [loading, setLoading] = useState(true);
+  const [h2hData, seth2hData] = useState(null);
+  const [isError, setIsError] = useState("");
+
+  const getFixturesH2H = async () => {
+    try {
+      const response = await apiSports.get("/fixtures/headtohead", {
+        params: {
+          h2h: `${homeTeamId}-${awayTeamId}`,
+          last: "10",
+        },
+      });
+      response?.data?.errors?.requests?.includes &&
+        setIsError("Max limit for today been reached");
+
+      response?.data.results > 0 && seth2hData(response?.data);
+      setLoading(false);
+    } catch (err) {
+      console.log("error : ", err);
+    }
+  };
+
+  useEffect(() => {
+    getFixturesH2H();
+  }, []);
+
   const data = {
     get: "fixtures/headtohead",
     parameters: {
@@ -699,7 +726,7 @@ const Head2Head = () => {
     ],
   };
 
-  const h2h = data.response.map((el) => {
+  const h2h = h2hData?.response?.map((el) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
     const dayOfEvent = new Date(el.fixture.date).toLocaleDateString(
       "ro-RO",
@@ -717,7 +744,8 @@ const Head2Head = () => {
             {/* left side */}
             <Image
               style={styles.teamLogoStyle}
-              source={require("../../../assets/teamLogo.png")}
+              // source={require("../../../assets/teamLogo.png")}
+              source={{ uri: el.teams.home.logo }}
             />
             <Text style={styles.teamsName}>{el.teams.home.name}</Text>
           </View>
@@ -726,7 +754,8 @@ const Head2Head = () => {
             {/* middle ( score + league logo) */}
             <Image
               style={styles.leagueLogoStyle}
-              source={require("../../../assets/premierLeague.png")}
+              // source={require("../../../assets/premierLeague.png")}
+              source={{ uri: el.league.logo }}
             />
             <Text style={styles.score}>{el.goals.home}</Text>
           </View>
@@ -734,7 +763,8 @@ const Head2Head = () => {
             {/* right side */}
             <Image
               style={styles.teamLogoStyle}
-              source={require("../../../assets/teamLogo2.png")}
+              // source={require("../../../assets/teamLogo2.png")}
+              source={{ uri: el.teams.away.logo }}
             />
             <Text style={styles.teamsName}>{el.teams.away.name}</Text>
           </View>
@@ -751,10 +781,25 @@ const Head2Head = () => {
 
   return (
     <View style={styles.parentWrapper}>
-      <Text style={styles.titleStyling}>
-        Rezultatatele in ultimele {data.results} infruntari
-      </Text>
-      {h2h}
+      {loading ? (
+        // Show a loading spinner or message while waiting for data
+        <Text>Loading...</Text>
+      ) : h2hData ? (
+        // Render the data when it's available
+        <View>
+          <Text style={styles.titleStyling}>
+            Rezultatatele in ultimele {h2hData.results} infruntari
+          </Text>
+          {h2h}
+        </View>
+      ) : // <Text> If all works fine</Text>
+      isError ? (
+        // Handle the case when no data is available or an error occurred
+        <Text>{isError}</Text>
+      ) : (
+        // Handle the case when no data is available or an error occurred
+        <Text>Some other error</Text>
+      )}
     </View>
   );
 };
@@ -791,11 +836,13 @@ const styles = StyleSheet.create({
   leagueLogoStyle: {
     width: 45,
     height: 45,
+    resizeMode: "contain",
   },
 
   teamLogoStyle: {
     width: 50,
     height: 50,
+    resizeMode: "contain",
   },
 
   dayStyle: {
@@ -819,7 +866,7 @@ const styles = StyleSheet.create({
 
   score: {
     fontSize: 40,
-    color: COLORS.powerOrange,
+    color: COLORS.mainGreen,
     fontWeight: "600",
   },
 
