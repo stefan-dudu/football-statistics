@@ -3,22 +3,22 @@ import React from "react";
 import { BarChart } from "react-native-gifted-charts";
 import { COLORS } from "../../utils/colors";
 
-const GoalsHorizontalBarChart = () => {
+const GoalsHorizontalBarChart = ({ home, away }) => {
   const barData = [
     {
-      value: 21,
+      value: home,
       label: "Ho",
       labelComponent: () => <Text style={{ fontSize: 18, width: 20 }}>🏠</Text>,
-      topLabelComponent: () => <Text style={styles.topLabelStyle}>21</Text>,
+      topLabelComponent: () => <Text style={styles.topLabelStyle}>{home}</Text>,
       frontColor: COLORS.lightGreen,
     },
     {
-      value: 16,
+      value: away,
       label: "Aw",
       labelComponent: () => (
         <Text style={{ fontSize: 16, width: 22, height: 20 }}>➡️</Text>
       ),
-      topLabelComponent: () => <Text style={styles.topLabelStyle}>16</Text>,
+      topLabelComponent: () => <Text style={styles.topLabelStyle}>{away}</Text>,
     },
   ];
   return (

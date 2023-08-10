@@ -16,14 +16,7 @@ import { COLORS } from "../utils/colors";
 const Statistics = (params) => {
   const navigation = useNavigation();
   const clubID = params?.route?.params?.id;
-  // console.log("params", params.route.params.id);
-  // console.log("clubID", clubID);
-
-  // console.log("params", params?.route?.params?.params);
-  // console.log("club id", params?.route?.params?.params.id);
-
-  // console.log("teams all data", Superliga23TeamsInformation.response);
-  // console.log("red", topRedCards.response[0].statistics[0].cards.red > 0);
+  console.log("clubID", clubID);
 
   const selectedTeamData = Superliga23TeamsInformation.response.filter(
     (el) => el.team.id === clubID
@@ -48,14 +41,14 @@ const Statistics = (params) => {
         apiSports.get("/players/topredcards?league=283&season=2023"),
       ]);
 
-      response1?.data.errors.requests.includes &&
+      response1?.data?.errors?.requests?.includes &&
         setIsError("Max limit for today been reached");
 
       // Set the state variables with the fetched data
-      response1?.data.results > 0 && setTopScorer(response1);
-      response2?.data.results > 0 && setTopAssist(response2);
-      response3?.data.results > 0 && setTopYellowCard(response3);
-      response4?.data.results > 0 && setTopRedCard(response4);
+      response1?.data.results > 0 && setTopScorer(response1.data);
+      response2?.data.results > 0 && setTopAssist(response2.data);
+      response3?.data.results > 0 && setTopYellowCard(response3.data);
+      response4?.data.results > 0 && setTopRedCard(response4.data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -67,20 +60,20 @@ const Statistics = (params) => {
     return (
       <View style={styles.leagueParentWrapper}>
         <Text style={styles.subTitleStyle}>Top marcatori</Text>
-        <TopPlayerByCategory data={TopScorerData} playerType={"scorer"} />
+        <TopPlayerByCategory data={topScorer} playerType={"scorer"} />
         <Text style={styles.subTitleStyle}>Top assisturi</Text>
-        <TopPlayerByCategory data={TopAssistsData} playerType={"assists"} />
-        {TopYellowCards?.response[0].statistics[0].cards.yellow > 0 && (
+        <TopPlayerByCategory data={topAssist} playerType={"assists"} />
+        {topYellowCard?.response[0].statistics[0].cards.yellow > 0 && (
           <View>
             <Text style={styles.subTitleStyle}>Top cartonase galbene</Text>
-            <TopPlayerByCategory data={TopYellowCards} playerType={"cards"} />
+            <TopPlayerByCategory data={topYellowCard} playerType={"cards"} />
           </View>
         )}
 
-        {TopRedCards?.response[0].statistics[0].cards.red > 0 && (
+        {topRedCard?.response[0].statistics[0].cards.red > 0 && (
           <View>
             <Text style={styles.subTitleStyle}>Top cartonase rosii</Text>
-            <TopPlayerByCategory data={TopRedCards} playerType={"cards"} />
+            <TopPlayerByCategory data={topRedCard} playerType={"cards"} />
           </View>
         )}
       </View>
@@ -101,7 +94,7 @@ const Statistics = (params) => {
           ) : clubID ? (
             // IF CLUB IS SELECTED SHOW TEAM STATITICS
             <TeamStats params={selectedTeamData} />
-          ) : TopScorerData ? (
+          ) : topRedCard ? (
             // IF NO CLUB SELECTED SHOW TOP PLAYERS
             <LeagueTopPlayers />
           ) : isError ? (

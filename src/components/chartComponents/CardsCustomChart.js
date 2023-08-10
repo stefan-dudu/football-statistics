@@ -4,28 +4,74 @@ import { BarChart } from "react-native-gifted-charts";
 import { COLORS } from "../../utils/colors";
 
 const CardsCustomChart = ({ cards }) => {
-  //   console.log("cards", cards);
-
   const cardsData = {
     red: {
-      "0-15": { percentage: null, total: null },
-      "106-120": { percentage: null, total: null },
-      "16-30": { percentage: null, total: null },
-      "31-45": { percentage: null, total: null },
-      "46-60": { percentage: "14.29%", total: 1 },
-      "61-75": { percentage: "42.86%", total: 3 },
-      "76-90": { percentage: "28.57%", total: 2 },
-      "91-105": { percentage: "14.29%", total: 1 },
+      "0-15": {
+        percentage: cards.red["0-15"].percentage,
+        total: cards.red["0-15"].total,
+      },
+      "106-120": {
+        percentage: cards.red["106-120"].percentage,
+        total: cards.red["106-120"].total,
+      },
+      "16-30": {
+        percentage: cards.red["16-30"].percentage,
+        total: cards.red["16-30"].total,
+      },
+      "31-45": {
+        percentage: cards.red["31-45"].percentage,
+        total: cards.red["31-45"].total,
+      },
+      "46-60": {
+        percentage: cards.red["46-60"].percentage,
+        total: cards.red["46-60"].total,
+      },
+      "61-75": {
+        percentage: cards.red["61-75"].percentage,
+        total: cards.red["61-75"].total,
+      },
+      "76-90": {
+        percentage: cards.red["76-90"].percentage,
+        total: cards.red["76-90"].total,
+      },
+      "91-105": {
+        percentage: cards.red["91-105"].percentage,
+        total: cards.red["91-105"].total,
+      },
     },
     yellow: {
-      "0-15": { percentage: "3.75%", total: 3 },
-      "106-120": { percentage: null, total: null },
-      "16-30": { percentage: "11.25%", total: 9 },
-      "31-45": { percentage: "10.00%", total: 8 },
-      "46-60": { percentage: "26.25%", total: 21 },
-      "61-75": { percentage: "12.50%", total: 10 },
-      "76-90": { percentage: "22.50%", total: 18 },
-      "91-105": { percentage: "13.75%", total: 11 },
+      "0-15": {
+        percentage: cards.yellow["0-15"].percentage,
+        total: cards.yellow["0-15"].total,
+      },
+      "106-120": {
+        percentage: cards.yellow["106-120"].percentage,
+        total: cards.yellow["106-120"].total,
+      },
+      "16-30": {
+        percentage: cards.yellow["16-30"].percentage,
+        total: cards.yellow["16-30"].total,
+      },
+      "31-45": {
+        percentage: cards.yellow["31-45"].percentage,
+        total: cards.yellow["31-45"].total,
+      },
+      "46-60": {
+        percentage: cards.yellow["46-60"].percentage,
+        total: cards.yellow["46-60"].total,
+      },
+      "61-75": {
+        percentage: cards.yellow["61-75"].percentage,
+        total: cards.yellow["61-75"].total,
+      },
+      "76-90": {
+        percentage: cards.yellow["76-90"].percentage,
+        total: cards.yellow["76-90"].total,
+      },
+      "91-105": {
+        percentage: cards.yellow["91-105"].percentage,
+        total: cards.yellow["91-105"].total,
+      },
     },
   };
 
@@ -37,10 +83,20 @@ const CardsCustomChart = ({ cards }) => {
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
       frontColor: COLORS.yellowCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.yellow)[0].total}
+        </Text>
+      ),
     },
     {
       value: Object.values(cardsData.red)[0].total,
       frontColor: COLORS.redCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.red)[0].total}
+        </Text>
+      ),
     },
 
     {
@@ -50,10 +106,20 @@ const CardsCustomChart = ({ cards }) => {
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
       frontColor: COLORS.yellowCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.yellow)[2].total}
+        </Text>
+      ),
     },
     {
       value: Object.values(cardsData.red)[2].total,
       frontColor: COLORS.redCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.red)[2].total}
+        </Text>
+      ),
     },
 
     {
@@ -63,10 +129,20 @@ const CardsCustomChart = ({ cards }) => {
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
       frontColor: COLORS.yellowCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.yellow)[3].total}
+        </Text>
+      ),
     },
     {
       value: Object.values(cardsData.red)[3].total,
       frontColor: COLORS.redCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.red)[3].total}
+        </Text>
+      ),
     },
 
     {
@@ -76,10 +152,20 @@ const CardsCustomChart = ({ cards }) => {
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
       frontColor: COLORS.yellowCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.yellow)[4].total}
+        </Text>
+      ),
     },
     {
       value: Object.values(cardsData.red)[4].total,
       frontColor: COLORS.redCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.red)[4].total}
+        </Text>
+      ),
     },
 
     {
@@ -89,10 +175,20 @@ const CardsCustomChart = ({ cards }) => {
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
       frontColor: COLORS.yellowCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.yellow)[5].total}
+        </Text>
+      ),
     },
     {
       value: Object.values(cardsData.red)[5].total,
       frontColor: COLORS.redCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.red)[5].total}
+        </Text>
+      ),
     },
 
     {
@@ -102,10 +198,20 @@ const CardsCustomChart = ({ cards }) => {
       labelWidth: 50,
       labelTextStyle: { color: "gray" },
       frontColor: COLORS.yellowCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.yellow)[6].total}
+        </Text>
+      ),
     },
     {
       value: Object.values(cardsData.red)[6].total,
       frontColor: COLORS.redCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.red)[6].total}
+        </Text>
+      ),
     },
     {
       value:
@@ -116,12 +222,24 @@ const CardsCustomChart = ({ cards }) => {
       labelWidth: 30,
       labelTextStyle: { color: "gray" },
       frontColor: COLORS.yellowCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.yellow)[7].total +
+            Object.values(cardsData.yellow)[1].total || ""}
+        </Text>
+      ),
     },
     {
       value:
         Object.values(cardsData.red)[7].total +
         Object.values(cardsData.red)[1].total,
       frontColor: COLORS.redCard,
+      topLabelComponent: () => (
+        <Text style={styles.topLabelStyle}>
+          {Object.values(cardsData.red)[7].total +
+            Object.values(cardsData.red)[1].total || ""}
+        </Text>
+      ),
     },
   ];
 

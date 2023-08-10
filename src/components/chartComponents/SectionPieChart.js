@@ -3,23 +3,24 @@ import React from "react";
 import { PieChart } from "react-native-gifted-charts";
 import { COLORS } from "../../utils/colors";
 
-const SectionPieChart = () => {
+const SectionPieChart = ({ data }) => {
+  // console.log("data", data.wins.total);
   const pieData = [
     {
-      value: 16,
+      value: data.wins.total,
       color: COLORS.mainGreen,
-      gradientCenterColor: COLORS.lightGray,
+      // gradientCenterColor: COLORS.lightGray,
       focused: true,
     },
     {
-      value: 4,
+      value: data.draws.total,
       color: COLORS.mediumGray,
-      gradientCenterColor: COLORS.lightGray,
+      // gradientCenterColor: COLORS.lightGray,
     },
     {
-      value: 19,
+      value: data.loses.total,
       color: COLORS.leagueRedBackground,
-      gradientCenterColor: COLORS.lightGray,
+      // gradientCenterColor: COLORS.lightGray,
     },
   ];
 
@@ -73,6 +74,8 @@ const SectionPieChart = () => {
           sectionAutoFocus
           radius={90}
           innerRadius={60}
+          color={"pink"}
+          // innerCircleBorderColor="green"
           innerCircleColor={COLORS.lightGray}
           centerLabelComponent={() => {
             return (
@@ -84,7 +87,7 @@ const SectionPieChart = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  16
+                  {data.wins.total}
                 </Text>
                 <Text style={{ fontSize: 20, color: COLORS.darkGray }}>
                   Victorii
@@ -129,6 +132,7 @@ const styles = StyleSheet.create({
   pieChartStyling: {
     paddingTop: 10,
     alignItems: "center",
+    // backgroundColor: "green",
   },
 
   legendText: { color: COLORS.darkGray, fontSize: 20, marginVertical: 10 },

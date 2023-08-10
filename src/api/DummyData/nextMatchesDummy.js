@@ -1,4 +1,4 @@
-export default dummyData = {
+export default nextMatchesDummy = {
   get: "fixtures",
   parameters: {
     league: "283",

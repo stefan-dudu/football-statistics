@@ -12,6 +12,7 @@ import { COLORS } from "../utils/colors";
 import apiSports from "../api/api-sports";
 import SmallScoreCardNextMatches from "./SmallScoreCardNextMatches";
 import LimitAlert from "../screens/settingsScreens/LimitAlert";
+import nextMatchesDummy from "../api/DummyData/nextMatchesDummy";
 
 const NextMatches = () => {
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,7 @@ const NextMatches = () => {
     // getNextMatches();
   }, []);
 
-  const matchData = nextMatches?.response?.map((el) => {
+  const matchData = nextMatchesDummy?.response?.map((el) => {
     return <SmallScoreCardNextMatches data={el} key={el?.fixture?.id} />;
   });
 
@@ -52,7 +53,7 @@ const NextMatches = () => {
       {loading ? (
         // Show a loading spinner or message while waiting for data
         <Text>Loading...</Text>
-      ) : nextMatches ? (
+      ) : nextMatchesDummy ? (
         // Render the data when it's available
         <ScrollView
           style={styles.scrollView}

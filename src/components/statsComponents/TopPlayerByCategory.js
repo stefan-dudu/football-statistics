@@ -10,46 +10,10 @@ import {
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../../utils/colors";
+import CardType from "./CardType";
 
 const TopPlayerByCategory = ({ data, playerType }) => {
   const navigation = useNavigation();
-
-  const CardType = ({ rating }) => {
-    if (rating >= 8) {
-      return (
-        <View style={styles.GoldRatingWrapper}>
-          {/* <Text>Gold</Text> */}
-          <Text style={styles.ratingGoldSilverTextStyle}>
-            {rating?.slice(0, -4) || "-"}
-          </Text>
-        </View>
-      );
-    } else if (rating >= 7 && rating < 8) {
-      return (
-        <View style={styles.SilverRatingWrapper}>
-          <Text style={styles.ratingGoldSilverTextStyle}>
-            {rating?.slice(0, -4) || "-"}
-          </Text>
-        </View>
-      );
-    } else if (rating < 7) {
-      return (
-        <View style={styles.BronzeRatingWrapper}>
-          <Text style={styles.ratingBronzeTextStyle}>
-            {rating?.slice(0, -4) || "-"}
-          </Text>
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.BronzeRatingWrapper}>
-          <Text style={styles.ratingBronzeTextStyle}>
-            {rating?.slice(0, -4) || "-"}
-          </Text>
-        </View>
-      );
-    }
-  };
 
   const MatchDetails = ({ el }) => {
     return playerType !== "cards" ? (
@@ -101,7 +65,6 @@ const TopPlayerByCategory = ({ data, playerType }) => {
     return data.response.slice(0, 3).map((el, i) => {
       // console.log("el", el.statistics[0].games.rating);
       //   console.log("el", el.statistics[0].games.position);
-      // console.log("el", el);
       return (
         <TouchableOpacity
           onPress={() => {
@@ -117,16 +80,18 @@ const TopPlayerByCategory = ({ data, playerType }) => {
               {/* <Text>{i + 1}</Text> */}
               <Image
                 style={styles.clubPicStyle}
-                source={require("../../../assets/teamLogo2.png")}
+                // source={require("../../../assets/teamLogo2.png")}
+                source={{ uri: el.statistics[0].team.logo }}
               />
               <Image
                 style={styles.profilePicStyle}
-                source={require("../../../assets/topScorer.png")}
+                // source={require("../../../assets/topScorer.png")}
+                source={{ uri: el.player.photo }}
               />
             </View>
             <View style={styles.playerNamePosition}>
-              <Text style={styles.nume}>{el.player.firstname}</Text>
-              <Text style={styles.prenume}>{el.player.lastname}</Text>
+              <Text style={styles.nume}>{el.player.lastname}</Text>
+              <Text style={styles.prenume}>{el.player.firstname}</Text>
               <Text style={styles.playerPosition}>
                 {el.statistics[0].games.position}
               </Text>
@@ -251,13 +216,13 @@ const styles = StyleSheet.create({
   },
 
   prenume: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "500",
     color: COLORS.darkGreen,
   },
 
   detailsHighlighted: {
-    fontSize: 25,
+    fontSize: 23,
     fontWeight: "800",
     color: COLORS.darkGreen,
   },

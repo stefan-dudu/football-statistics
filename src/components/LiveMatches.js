@@ -11,11 +11,13 @@ import apiSports from "../api/api-sports";
 import BigScoreCard from "./BigScoreCard";
 import { COLORS } from "../utils/colors";
 import { useNavigation } from "@react-navigation/native";
+import liveMatchesDummy from "../api/DummyData/liveMatchesDummy";
+import LimitAlert from "../screens/settingsScreens/LimitAlert";
 
 const LiveMatches = () => {
   const navigation = useNavigation();
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [liveMatchesData, setLiveMatchesData] = useState(null);
   const [isError, setIsError] = useState("");
 
@@ -38,7 +40,7 @@ const LiveMatches = () => {
     }
   };
 
-  const matchData = liveMatchesData?.response?.map((el, i) => {
+  const matchData = liveMatchesDummy?.response?.map((el, i) => {
     // const matchData = liveMatchesData?.response?.map((el) => {
     // console.log("i", i);
     return (
@@ -62,27 +64,22 @@ const LiveMatches = () => {
 
   return (
     <View style={styles.containerStyle}>
-      {
-        loading ? (
-          // Show a loading spinner or message while waiting for data
-          <Text>Loading...</Text>
-        ) : (
-          liveMatchesData && (
-            // Render the data when it's available
-            <>
-              <Text style={styles.textHeader}>Meciuri live ⚽</Text>
-              <ScrollView horizontal>{matchData}</ScrollView>
-            </>
-          )
-        )
-        // : isError ? (
-        //   // Handle the case when no data is available or an error occurred
-        //   <Text> </Text>
-        // ) : (
-        //   // Handle the case when no data is available or an error occurred
-        //   <Text>Some other error</Text>
-        // )
-      }
+      {loading ? (
+        // Show a loading spinner or message while waiting for data
+        <Text>Loading...</Text>
+      ) : liveMatchesDummy ? (
+        // Render the data when it's available
+        <>
+          <Text style={styles.textHeader}>Meciuri live ⚽</Text>
+          <ScrollView horizontal>{matchData}</ScrollView>
+        </>
+      ) : isError ? (
+        // Handle the case when no data is available or an error occurred
+        <LimitAlert />
+      ) : (
+        // Handle the case when no data is available or an error occurred
+        <Text>Some other error</Text>
+      )}
     </View>
   );
 };

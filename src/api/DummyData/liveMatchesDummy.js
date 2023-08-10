@@ -1,4 +1,4 @@
-export default dummyData = {
+export default liveMatchesDummy = {
   get: "fixtures",
   parameters: {
     live: "all",

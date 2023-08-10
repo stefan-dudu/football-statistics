@@ -3,21 +3,23 @@ import React from "react";
 import { PieChart } from "react-native-gifted-charts";
 import { COLORS } from "../../utils/colors";
 
-const PenaltyDonutChart = () => {
+const PenaltyDonutChart = ({ data }) => {
   const pieData = [
-    { value: 70, color: COLORS.mainGreen },
-    { value: 30, color: COLORS.lightGray },
+    { value: data.scored.total, color: COLORS.mainGreen },
+    { value: data.missed.total, color: COLORS.lightGray },
   ];
   return (
     <View style={styles.parentWrapper}>
       <PieChart
         donut
         radius={90}
-        innerRadius={80}
+        innerRadius={70}
         data={pieData}
         centerLabelComponent={() => {
           return (
-            <Text style={{ fontSize: 30, color: COLORS.mainGreen }}>70%</Text>
+            <Text style={{ fontSize: 30, color: COLORS.mainGreen }}>
+              {data.scored.percentage}
+            </Text>
           );
         }}
       />
@@ -46,6 +48,6 @@ const styles = StyleSheet.create({
     maxWidth: Dimensions.get("window").width - 250,
     color: COLORS.darkGray,
     flexWrap: "wrap",
-    fontSize: 20,
+    fontSize: 18,
   },
 });

@@ -7,7 +7,7 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CustomSwitch from "../../components/CustomSwitch";
 import ScreenHeader from "../../components/ScreenHeader";
 import { COLORS } from "../../utils/colors";
@@ -23,6 +23,8 @@ const DetailedPlayerScreen = (params) => {
   // console.log("playerDetaliedDataDummy", playerDetaliedDataDummy);
 
   const [detailsTab, setDetailsTab] = useState(1);
+  const [playerPosition, setPlayerPosition] = useState("");
+
   const scrollY = new Animated.Value(0);
   const HEADER_EXPANDED_HEIGHT = 0;
   const HEADER_COLLAPSED_HEIGHT = 0;
@@ -37,6 +39,18 @@ const DetailedPlayerScreen = (params) => {
   const onSelectSwitch = (value) => {
     setDetailsTab(value);
   };
+
+  useEffect(() => {
+    if (playerData.statistics[0].games.position === "Attacker") {
+      setPlayerPosition("Atacant");
+    } else if (playerData.statistics[0].games.position === "Midfielder") {
+      setPlayerPosition("Mijlocas");
+    } else if (playerData.statistics[0].games.position === "Defender") {
+      setPlayerPosition("Fundas");
+    } else if (playerData.statistics[0].games.position === "Goalkeeper") {
+      setPlayerPosition("Portar");
+    }
+  }, []);
 
   const StatsTab = <OverviewTab data={playerData.player} />;
   const StatsTab2 = <PlayerStatsTab data={playerData.statistics} />;
@@ -53,7 +67,8 @@ const DetailedPlayerScreen = (params) => {
         <View style={styles.topRightWrapper}>
           <Text style={styles.playerNameTopCard}>{playerData.player.name}</Text>
           <Text style={styles.playerPositionTopCard}>
-            {playerData.statistics[0].games.position}
+            {/* {playerData.statistics[0].games.position} */}
+            {playerPosition}
           </Text>
         </View>
         <View style={styles.logoWrapper}>
