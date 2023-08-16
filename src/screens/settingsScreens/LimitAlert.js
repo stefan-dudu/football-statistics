@@ -9,12 +9,12 @@ const LimitAlert = () => {
     <View style={styles.parentWrapper}>
       <View style={styles.textWrapper}>
         <Text style={styles.textStyle}>
-          Cam atat pentru azi..{"\n"}
-          Daca vezi acest ecran, inseamna ca limita pentru astazi a fost atinsa.
+          Cam atât pentru azi..{"\n"}
+          Dacă vezi acest ecran, înseamnă că limita pentru astăzi a fost atinsă.
           😟 {"\n"}
-          Furnizorul de unde preluam datele impune o limita zilnica pentru tipul
+          Furnizorul de unde preluăm datele impune o limită zilnică pentru tipul
           curent de abonament.{"\n"}
-          Dar stai fara griji, revino si maine pentru mai multe date.
+          Dar stai fară griji, revino și mâine pentru mai multe date.
         </Text>
       </View>
     </View>

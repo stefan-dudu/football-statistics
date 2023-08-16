@@ -34,8 +34,8 @@ const SmallScoreCardNextMatches = ({ data }) => {
           style={styles.teamButtonStyle}
           onPress={() => {
             // console.log("team name : ", data.team.name);
-            navigation.navigate("Statistics", {
-              screen: "Statistici",
+            navigation.navigate("Statistici", {
+              screen: "StatisticsStack",
               params: data.teams.home,
             });
           }}
@@ -62,8 +62,8 @@ const SmallScoreCardNextMatches = ({ data }) => {
           style={styles.teamButtonStyle}
           onPress={() => {
             // console.log("team name : ", data.team.name);
-            navigation.navigate("Statistics", {
-              screen: "Statistici",
+            navigation.navigate("Statistici", {
+              screen: "StatisticsStack",
               params: data.teams.away,
             });
           }}

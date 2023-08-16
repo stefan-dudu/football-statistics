@@ -42,7 +42,7 @@ const HomeStack = () => (
 const SatisticsStack = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="Statistici"
+      name="StatisticsStack"
       component={Statistics}
       options={{ headerShown: false }}
     />
@@ -67,7 +67,7 @@ const App = ({ navigation }) => {
         }}
       >
         <Tab.Screen
-          name="Home"
+          name="Acasă"
           component={HomeStack}
           options={{
             headerShown: false,
@@ -91,7 +91,7 @@ const App = ({ navigation }) => {
           }}
         />
         <Tab.Screen
-          name="Statistics"
+          name="Statistici"
           component={SatisticsStack}
           navigation={navigation}
           options={{
@@ -110,7 +110,7 @@ const App = ({ navigation }) => {
           })}
         />
         <Tab.Screen
-          name="Settings"
+          name="Setări"
           component={Settings}
           options={{
             headerShown: true,

@@ -26,8 +26,8 @@ const TeamsComparasionCard = ({ data }) => {
         <View style={styles.teamsWrapper}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Statistics", {
-                screen: "Statistici",
+              navigation.navigate("Statistici", {
+                screen: "StatisticsStack",
                 params: data?.teams?.home,
               });
             }}
@@ -54,8 +54,8 @@ const TeamsComparasionCard = ({ data }) => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Statistics", {
-                screen: "Statistici",
+              navigation.navigate("Statistici", {
+                screen: "StatisticsStack",
                 params: data?.teams?.away,
               });
             }}

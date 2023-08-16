@@ -781,8 +781,8 @@ const Home = ({ navigation }) => {
           <View style={styles.bottomWrapper}>
             <CustomSwitch
               selectionMode={1}
-              option1={"Next matches"}
-              option2={"Previous matches"}
+              option1={"Următoarele meciuri"}
+              option2={"Meciuri încheiate"}
               onSelectSwitch={onSelectSwitch}
             />
             <View style={styles.resultsContainer}>

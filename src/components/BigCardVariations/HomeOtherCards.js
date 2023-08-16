@@ -27,8 +27,8 @@ const HomeOtherCards = ({ data }) => {
           <TouchableOpacity
             onPress={() => {
               // console.log("team name : ", data.team.name);
-              navigation.navigate("Statistics", {
-                screen: "Statistici",
+              navigation.navigate("Statistici", {
+                screen: "StatisticsStack",
                 params: data.teams.home,
               });
             }}
@@ -61,8 +61,8 @@ const HomeOtherCards = ({ data }) => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Statistics", {
-                screen: "Statistici",
+              navigation.navigate("Statistici", {
+                screen: "StatisticsStack",
                 params: data.teams.away,
               });
             }}
