@@ -192,7 +192,8 @@ const DetailedPlayerScreen = (parameters) => {
         <LimitAlert />
       ) : (
         // Handle the case when no data is available or an error occurred
-        <Text>Some other error</Text>
+        // <Text>Some other error</Text>
+        <LoadingScreen />
       )}
     </View>
   );

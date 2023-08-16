@@ -104,7 +104,7 @@ const App = ({ navigation }) => {
             tabPress: (e) => {
               // console.log("e", e);
               // console.log("navigation", navigation.isFocused());
-              navigation.isFocused() && navigation.navigate("Statistici"),
+              navigation.isFocused() && navigation.navigate("StatisticsStack"),
                 { screen: "Device" };
             },
           })}
