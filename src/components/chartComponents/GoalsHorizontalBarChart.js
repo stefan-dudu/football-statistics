@@ -38,18 +38,6 @@ const GoalsHorizontalBarChart = ({ home, away }) => {
           xAxisThickness={0}
           hideRules
         />
-
-        {/* <BarChart
-          horizontal
-          height={140}
-          barWidth={22}
-          noOfSections={3}
-          barBorderRadius={4}
-          frontColor="lightgray"
-          data={barData}
-          yAxisThickness={0}
-          xAxisThickness={0}
-        /> */}
       </View>
     </View>
   );

@@ -6,10 +6,6 @@ const LoadingScreen = () => {
   return (
     <View style={styles.parentWrapper}>
       <Text style={styles.textStyle}>Informatiile se incarca ... </Text>
-      {/* <LottieView
-        source={require("../../../assets/loading_animation.json")}
-        style={{ width: 100, height: 100 }}
-      /> */}
       <Image
         style={styles.loading}
         source={require("../../../assets/loading_gif.gif")}
@@ -22,8 +18,6 @@ export default LoadingScreen;
 
 const styles = StyleSheet.create({
   parentWrapper: {
-    // backgroundColor: "white",
-    // width: Dimensions.get("window").width,
     paddingVertical: 10,
     justifyContent: "center",
     alignItems: "center",

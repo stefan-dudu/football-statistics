@@ -1,13 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  useWindowDimensions,
-  Dimensions,
-  TouchableOpacity,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { COLORS } from "../../utils/colors";
 import { useNavigation } from "@react-navigation/native";
@@ -37,8 +28,6 @@ const HomeOtherCards = ({ data }) => {
               {/* home */}
               <Image
                 style={styles.teamLogoStyle}
-                // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-                // source={require("../../assets/teamLogo.png")}
                 source={{ uri: data.teams.home.logo }}
               />
               <Text style={styles.teamNameStyle}>
@@ -71,8 +60,6 @@ const HomeOtherCards = ({ data }) => {
               {/* away */}
               <Image
                 style={styles.teamLogoStyle}
-                // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-                // source={require("../../assets/teamLogo2.png")}
                 source={{ uri: data.teams.away.logo }}
               />
               <Text style={styles.teamNameStyle}>

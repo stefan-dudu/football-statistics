@@ -17,7 +17,6 @@ const ScreenHeader = ({ shouldGoToParent }) => {
             : navigation.goBack();
         }}
       />
-      {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
     </View>
   );
 };

@@ -3,7 +3,6 @@ import {
   Text,
   View,
   Image,
-  Dimensions,
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
@@ -30,7 +29,6 @@ const Home1stCard = ({ data }) => {
             <TouchableOpacity
               // style={styles.teamButtonStyle}
               onPress={() => {
-                // console.log("team name : ", data.team.name);
                 navigation.navigate("Statistici", {
                   screen: "StatisticsStack",
                   params: data.teams.home,
@@ -41,8 +39,6 @@ const Home1stCard = ({ data }) => {
                 {/* home */}
                 <Image
                   style={styles.teamLogoStyle}
-                  // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-                  // source={require("../../assets/teamLogo.png")}
                   source={{ uri: data.teams.home.logo }}
                 />
                 <Text style={styles.teamNameStyle}>
@@ -65,7 +61,6 @@ const Home1stCard = ({ data }) => {
 
             <TouchableOpacity
               onPress={() => {
-                // console.log("team name : ", data.team.name);
                 navigation.navigate("Statistici", {
                   screen: "StatisticsStack",
                   params: data.teams.away,
@@ -76,8 +71,6 @@ const Home1stCard = ({ data }) => {
                 {/* away */}
                 <Image
                   style={styles.teamLogoStyle}
-                  // source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
-                  // source={require("../../assets/teamLogo2.png")}
                   source={{ uri: data.teams.away.logo }}
                 />
                 <Text style={styles.teamNameStyle}>

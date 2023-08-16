@@ -8,8 +8,6 @@ import {
   ScrollView,
 } from "react-native";
 import React from "react";
-import CollapsibleHeader from "../components/CollapsibleHeader";
-import { BarChart, LineChart } from "react-native-gifted-charts";
 import AccordionItem from "../components/AccordionItem";
 
 const Settings = () => {

@@ -11,8 +11,6 @@ import { COLORS } from "../../utils/colors";
 import { useNavigation } from "@react-navigation/native";
 
 const TeamsComparasionCard = ({ data }) => {
-  // console.log(" TeamsComparasionCard data", data);
-
   const navigation = useNavigation();
   return (
     <View style={styles.wrapperDetailPage}>

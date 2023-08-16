@@ -11,7 +11,6 @@ import React, { useState, useEffect } from "react";
 import CustomSwitch from "../../components/CustomSwitch";
 import Graphs from "../statisticsTabsScreens/Graphs";
 import StatsLineup from "../statisticsTabsScreens/StatsLineup";
-import StatsTransfers from "../statisticsTabsScreens/StatsTransfers";
 import { COLORS } from "../../utils/colors";
 import ScreenHeader from "../../components/ScreenHeader";
 import apiSports from "../../api/api-sports";
