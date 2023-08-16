@@ -6,6 +6,7 @@ import {
   View,
   Animated,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { COLORS } from "../utils/colors";
@@ -14,6 +15,7 @@ import SmallScoreCardNextMatches from "./SmallScoreCardNextMatches";
 import LimitAlert from "../screens/settingsScreens/LimitAlert";
 import SmallScoreCardPreviousMatches from "./SmallScoreCardPreviousMatches";
 import previousMatchesDummy from "../api/DummyData/previousMatchesDummy";
+import LoadingScreen from "../screens/settingsScreens/LoadingScreen";
 
 const PreviousMatches = () => {
   const [loading, setLoading] = useState(true);
@@ -47,7 +49,7 @@ const PreviousMatches = () => {
   };
 
   useEffect(() => {
-    // getPreviousMatches();
+    getPreviousMatches();
   }, []);
 
   const matchData = previousMatches?.response?.map((el) => {
@@ -58,7 +60,8 @@ const PreviousMatches = () => {
     <View style={styles.containerStyle}>
       {loading ? (
         // Show a loading spinner or message while waiting for data
-        <Text>Loading...</Text>
+        // <Text>Loading...</Text>
+        <LoadingScreen />
       ) : previousMatches ? (
         // Render the data when it's available
         <ScrollView
@@ -89,7 +92,7 @@ const PreviousMatches = () => {
       ) : (
         // <Text>S-a atins limita pentru azi</Text>
         // Handle the case when no data is available or an error occurred
-        <Text>Some other error</Text>
+        <LoadingScreen />
       )}
     </View>
   );
@@ -114,6 +117,8 @@ const styles = StyleSheet.create({
   containerStyle: {
     marginTop: 15,
     flexDirection: "column",
+    justifyContent: "center",
+    width: Dimensions.get("window").width,
   },
 
   scrollView: {

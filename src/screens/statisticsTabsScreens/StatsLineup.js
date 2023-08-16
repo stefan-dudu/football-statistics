@@ -1,11 +1,25 @@
-import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import apiSports from "../../api/api-sports";
 import { COLORS } from "../../utils/colors";
+import coachDummy from "../../api/DummyData/lineup/coachDummy";
+import playersDummy from "../../api/DummyData/lineup/playersDummy";
+
+import { useNavigation } from "@react-navigation/native";
+import LimitAlert from "../settingsScreens/LimitAlert";
+import LoadingScreen from "../settingsScreens/LoadingScreen";
 
 const StatsLineup = ({ teamID }) => {
+  const navigation = useNavigation();
   // console.log("teamID", teamID);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [coachData, setCoachData] = useState(null);
   const [playersData, setPlayersData] = useState(null);
   const [isError, setIsError] = useState("");
@@ -36,7 +50,7 @@ const StatsLineup = ({ teamID }) => {
   };
 
   useEffect(() => {
-    // fetchCoachPlayersData();
+    fetchCoachPlayersData();
   }, [teamID]);
 
   const coachDataArray = coachData?.response[coachData?.response.length - 1];
@@ -58,7 +72,6 @@ const StatsLineup = ({ teamID }) => {
   );
 
   const CoachCard = () => {
-    // console.log("coach", coachData.response[0].name);
     return (
       <View style={styles.playerCardWrapper}>
         <View style={styles.playerTopPart}>
@@ -85,30 +98,38 @@ const StatsLineup = ({ teamID }) => {
 
   const PlayerCard = ({ position }) => {
     // console.log("position", position);
-    return position.map((el) => {
+    return position?.map((el) => {
       // console.log("el", el);
       return (
         <View style={styles.playerCardWrapper} key={el.id}>
-          <View style={styles.playerTopPart}>
-            {/* top part */}
-            <Image
-              style={styles.playerPicStyle}
-              // source={require("../../../assets/gk.png")}
-              source={{ uri: el.photo }}
-            />
-            <View style={styles.playerTopRight}>
-              {/* details - right side */}
-              <Text style={styles.playerCardGraySubtitle}>Ani</Text>
-              <Text style={styles.playerAgeNumber}>{el.age}</Text>
-              <Text style={styles.playerCardGraySubtitle}>Nr</Text>
-              <Text style={styles.playerAgeNumber}>{el.number}</Text>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("PlayerDetailsStatistics", {
+                playerID: el.id,
+              })
+            }
+          >
+            <View style={styles.playerTopPart}>
+              {/* top part */}
+              <Image
+                style={styles.playerPicStyle}
+                // source={require("../../../assets/gk.png")}
+                source={{ uri: el.photo }}
+              />
+              <View style={styles.playerTopRight}>
+                {/* details - right side */}
+                <Text style={styles.playerCardGraySubtitle}>Ani</Text>
+                <Text style={styles.playerAgeNumber}>{el.age}</Text>
+                <Text style={styles.playerCardGraySubtitle}>Nr</Text>
+                <Text style={styles.playerAgeNumber}>{el.number}</Text>
+              </View>
             </View>
-          </View>
 
-          <View style={styles.playerBottomPart}>
-            <Text style={styles.playerName}>{el.name}</Text>
-            <Text style={styles.playerCardGraySubtitle}>{el.position}</Text>
-          </View>
+            <View style={styles.playerBottomPart}>
+              <Text style={styles.playerName}>{el.name}</Text>
+              <Text style={styles.playerCardGraySubtitle}>{el.position}</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       );
     });
@@ -117,7 +138,8 @@ const StatsLineup = ({ teamID }) => {
     <View style={styles.container}>
       {loading ? (
         // Show a loading spinner or message while waiting for data
-        <Text>Loading...</Text>
+        // <Text>Loading...</Text>
+        <LoadingScreen />
       ) : coachData ? (
         // Render the data when it's available
         <View>
@@ -143,7 +165,7 @@ const StatsLineup = ({ teamID }) => {
       ) : // <Text> If all works fine</Text>
       isError ? (
         // Handle the case when no data is available or an error occurred
-        <Text>{isError}</Text>
+        <LimitAlert />
       ) : (
         // Handle the case when no data is available or an error occurred
         <Text>Some other error</Text>

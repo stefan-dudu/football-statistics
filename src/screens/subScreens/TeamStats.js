@@ -16,6 +16,8 @@ import { COLORS } from "../../utils/colors";
 import ScreenHeader from "../../components/ScreenHeader";
 import apiSports from "../../api/api-sports";
 import teamStatsDummy from "../../api/DummyData/teamStatsDummy";
+import LimitAlert from "../settingsScreens/LimitAlert";
+import LoadingScreen from "../settingsScreens/LoadingScreen";
 
 const TeamStats = ({ params }) => {
   const teamInfoData = params[0];
@@ -57,14 +59,14 @@ const TeamStats = ({ params }) => {
   };
 
   useEffect(() => {
-    // getTeamStats();
+    getTeamStats();
   }, [teamInfoData]);
 
   const onSelectSwitch = (value) => {
     setDetailsTab(value);
   };
 
-  const TeamForm = teamStatsDummy?.response?.form.slice(-5).split("");
+  const TeamForm = teamStats?.response?.form.slice(-5).split("");
   const FromComponent = () => {
     return TeamForm.map((el, i) => {
       return (
@@ -148,7 +150,7 @@ const TeamStats = ({ params }) => {
     </View>
   );
 
-  const StatsTab = <Graphs teamStatsData={teamStatsDummy} />;
+  const StatsTab = <Graphs teamStatsData={teamStats} />;
   const StatsTab2 = <StatsLineup teamID={teamInfoData.team.id} />;
   return (
     <View style={styles.container}>
@@ -182,8 +184,9 @@ const TeamStats = ({ params }) => {
       >
         {loading ? (
           // Show a loading spinner or message while waiting for data
-          <Text>Loading...</Text>
-        ) : teamStatsDummy ? (
+          // <Text>Loading...</Text>
+          <LoadingScreen />
+        ) : teamStats ? (
           // Render the data when it's available
           <View>
             <ScreenHeader />
@@ -209,7 +212,7 @@ const TeamStats = ({ params }) => {
         ) : // <Text> If all works fine</Text>
         isError ? (
           // Handle the case when no data is available or an error occurred
-          <Text>{isError}</Text>
+          <LimitAlert />
         ) : (
           // Handle the case when no data is available or an error occurred
           <Text>Some other error</Text>

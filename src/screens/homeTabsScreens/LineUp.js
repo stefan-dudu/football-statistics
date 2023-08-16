@@ -1,9 +1,21 @@
-import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import { COLORS } from "../../utils/colors";
 import React, { useEffect, useState } from "react";
 import apiSports from "../../api/api-sports";
+import lineupsDummy from "../../api/DummyData/lineupsDummy";
+import { useNavigation } from "@react-navigation/native";
+import LimitAlert from "../settingsScreens/LimitAlert";
+import LoadingScreen from "../settingsScreens/LoadingScreen";
 
 const LineUp = ({ fixtureID }) => {
+  const navigation = useNavigation();
   const [loading, setLoading] = useState(true);
   const [fixtureLineup, setFixtureLineup] = useState(null);
   const [isError, setIsError] = useState("");
@@ -26,12 +38,11 @@ const LineUp = ({ fixtureID }) => {
   };
 
   useEffect(() => {
-    // getFixtureLineup();
+    getFixtureLineup();
   }, []);
 
   const FieldPosition = ({ position }) => {
     // console.log("position", position);
-
     switch (position) {
       case "G":
         return <Text style={styles.playerPositonStyle}>Portar</Text>;
@@ -93,73 +104,99 @@ const LineUp = ({ fixtureID }) => {
   });
 
   const Starting11Home = fixtureLineup?.response[0]?.startXI.map((el) => {
+    // console.log(el);
     return (
-      <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
-        <View style={styles.playerNumberNameStyle}>
-          {/* <Text>{el.player.number}</Text> */}
-          <Text>{el.player.name}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("PlayerDetailsStatistics", {
+            playerID: el.player.id,
+          })
+        }
+        key={el.player.id}
+      >
+        <View style={styles.playerManagerStylingWrapper}>
+          <View style={styles.playerNumberNameStyle}>
+            {/* <Text>{el.player.number}</Text> */}
+            <Text>{el.player.name}</Text>
+          </View>
+
+          {/* <FieldPosition position={el.player.pos} /> */}
         </View>
-        {/* <FieldPosition position={el.player.pos} /> */}
-      </View>
+      </TouchableOpacity>
     );
   });
 
   const Starting11Away = fixtureLineup?.response[1]?.startXI.map((el) => {
     return (
-      <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
-        <View style={styles.playerNumberNameStyle}>
-          {/* <Text>{el.player.number}</Text> */}
-          <Text>{el.player.name}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("PlayerDetailsStatistics", {
+            playerID: el.player.id,
+            from: "prevMatchesLineup",
+          })
+        }
+        key={el.player.id}
+      >
+        <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
+          <View style={styles.playerNumberNameStyle}>
+            {/* <Text>{el.player.number}</Text> */}
+            <Text>{el.player.name}</Text>
+          </View>
+          {/* <FieldPosition position={el.player.pos} /> */}
         </View>
-        {/* <FieldPosition position={el.player.pos} /> */}
-      </View>
+      </TouchableOpacity>
     );
   });
 
   const SubsHome = fixtureLineup?.response[0]?.substitutes.map((el) => {
     return (
-      <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
-        <View style={styles.playerNumberNameStyle}>
-          {/* <Text>{el.player.number}</Text> */}
-          <Text>{el.player.name}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("PlayerDetailsStatistics", {
+            playerID: el.player.id,
+          })
+        }
+        key={el.player.id}
+      >
+        <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
+          <View style={styles.playerNumberNameStyle}>
+            {/* <Text>{el.player.number}</Text> */}
+            <Text>{el.player.name}</Text>
+          </View>
+          {/* <FieldPosition position={el.player.pos} /> */}
         </View>
-        {/* <FieldPosition position={el.player.pos} /> */}
-      </View>
+      </TouchableOpacity>
     );
   });
 
   const SubsAway = fixtureLineup?.response[1]?.substitutes.map((el) => {
     return (
-      <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
-        <View style={styles.playerNumberNameStyle}>
-          {/* <Text>{el.player.number}</Text> */}
-          <Text>{el.player.name}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("PlayerDetailsStatistics", {
+            playerID: el.player.id,
+          })
+        }
+        key={el.player.id}
+      >
+        <View style={styles.playerManagerStylingWrapper} key={el.player.id}>
+          <View style={styles.playerNumberNameStyle}>
+            {/* <Text>{el.player.number}</Text> */}
+            <Text>{el.player.name}</Text>
+          </View>
+          {/* <FieldPosition position={el.player.pos} /> */}
         </View>
-        {/* <FieldPosition position={el.player.pos} /> */}
-      </View>
+      </TouchableOpacity>
     );
   });
 
   return (
     <View style={styles.parentWrapperStyle}>
-      {/* <View style={styles.rowStyle}>{TeamLogoNameFormation}</View>
-      <Text style={styles.middleTitles}>Antrenor</Text>
-      <View style={styles.rowStyle}>{Manager}</View>
-      <Text style={styles.middleTitles}>Primul 11</Text>
-      <View style={styles.rowStyle}>
-        <View>{Starting11Home}</View>
-        <View>{Starting11Away}</View>
-      </View>
-      <Text style={styles.middleTitles}>Rezerve</Text>
-      <View style={styles.rowStyle}>
-        <View>{SubsHome}</View>
-        <View>{SubsAway}</View>
-      </View> */}
-
       {loading ? (
         // Show a loading spinner or message while waiting for data
-        <Text>Loading...</Text>
-      ) : fixtureLineup ? (
+        // <Text>Loading...</Text>
+        <LoadingScreen />
+      ) : lineupsDummy ? (
         // Render the data when it's available
         <View>
           <View style={styles.rowStyle}>{TeamLogoNameFormation}</View>
@@ -179,7 +216,7 @@ const LineUp = ({ fixtureID }) => {
       ) : // <Text> If all works fine</Text>
       isError ? (
         // Handle the case when no data is available or an error occurred
-        <Text>{isError}</Text>
+        <LimitAlert />
       ) : (
         // Handle the case when no data is available or an error occurred
         <Text>Some other error</Text>
@@ -237,6 +274,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     paddingHorizontal: -10,
+    maxWidth: Dimensions.get("window").width * 0.3,
   },
 
   teamName: {
@@ -274,6 +312,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
+    // width: Dimensions.get("window").width * 0.94,
     // marginTop: 10,
   },
 

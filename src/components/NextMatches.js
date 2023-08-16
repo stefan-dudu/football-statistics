@@ -6,6 +6,7 @@ import {
   View,
   Animated,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { COLORS } from "../utils/colors";
@@ -13,9 +14,10 @@ import apiSports from "../api/api-sports";
 import SmallScoreCardNextMatches from "./SmallScoreCardNextMatches";
 import LimitAlert from "../screens/settingsScreens/LimitAlert";
 import nextMatchesDummy from "../api/DummyData/nextMatchesDummy";
+import LoadingScreen from "../screens/settingsScreens/LoadingScreen";
 
 const NextMatches = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [nextMatches, setNextMatches] = useState(null);
   const [isError, setIsError] = useState("");
   const scrollY = new Animated.Value(0);
@@ -41,10 +43,10 @@ const NextMatches = () => {
   };
 
   useEffect(() => {
-    // getNextMatches();
+    getNextMatches();
   }, []);
 
-  const matchData = nextMatchesDummy?.response?.map((el) => {
+  const matchData = nextMatches?.response?.map((el) => {
     return <SmallScoreCardNextMatches data={el} key={el?.fixture?.id} />;
   });
 
@@ -52,8 +54,9 @@ const NextMatches = () => {
     <View style={styles.containerStyle}>
       {loading ? (
         // Show a loading spinner or message while waiting for data
-        <Text>Loading...</Text>
-      ) : nextMatchesDummy ? (
+        // <Text>Loading...</Text>
+        <LoadingScreen />
+      ) : nextMatches ? (
         // Render the data when it's available
         <ScrollView
           style={styles.scrollView}
@@ -78,7 +81,7 @@ const NextMatches = () => {
         <LimitAlert />
       ) : (
         // Handle the case when no data is available or an error occurred
-        <Text>Some other error</Text>
+        <LoadingScreen />
       )}
     </View>
   );
@@ -103,6 +106,8 @@ const styles = StyleSheet.create({
   containerStyle: {
     marginTop: 15,
     flexDirection: "column",
+    justifyContent: "center",
+    width: Dimensions.get("window").width,
   },
 
   scrollView: {

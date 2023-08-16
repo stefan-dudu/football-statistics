@@ -65,12 +65,13 @@ const TopPlayerByCategory = ({ data, playerType }) => {
     return data.response.slice(0, 3).map((el, i) => {
       // console.log("el", el.statistics[0].games.rating);
       //   console.log("el", el.statistics[0].games.position);
+      // console.log("el", el);
       return (
         <TouchableOpacity
           onPress={() => {
             // console.log("team name : ", data.team.name);
             navigation.navigate("PlayerDetailsStatistics", {
-              params: el,
+              TopPlayerData: el,
             });
           }}
           key={el.player.id}

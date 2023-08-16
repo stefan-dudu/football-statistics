@@ -3,7 +3,7 @@ import React from "react";
 import { COLORS } from "../../utils/colors";
 
 CardType = ({ rating }) => {
-  if (rating >= 8) {
+  if (rating >= 7.5) {
     return (
       <View style={styles.GoldRatingWrapper}>
         {/* <Text>Gold</Text> */}
@@ -12,7 +12,7 @@ CardType = ({ rating }) => {
         </Text>
       </View>
     );
-  } else if (rating >= 7 && rating < 8) {
+  } else if (rating >= 7 && rating < 7.5) {
     return (
       <View style={styles.SilverRatingWrapper}>
         <Text style={styles.ratingGoldSilverTextStyle}>

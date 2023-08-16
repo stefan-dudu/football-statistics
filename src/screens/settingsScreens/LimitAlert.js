@@ -1,14 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { Dimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const LimitAlert = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.parentWrapper}>
       <View style={styles.textWrapper}>
-        <Text>
+        <Text style={styles.textStyle}>
+          Cam atat pentru azi..{"\n"}
           Daca vezi acest ecran, inseamna ca limita pentru astazi a fost atinsa.
-          😟 {"\n"}Revin-o si maine pentru mai multe date.
+          😟 {"\n"}
+          Furnizorul de unde preluam datele impune o limita zilnica pentru tipul
+          curent de abonament.{"\n"}
+          Dar stai fara griji, revino si maine pentru mai multe date.
         </Text>
       </View>
     </View>
@@ -24,20 +30,32 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignSelf: "center",
     // backgroundColor: "pink",
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height - 200,
+    // paddingHorizontal: 20,
+    width: Dimensions.get("window").width * 0.89,
+    height: 300,
+    flexWrap: "wrap",
   },
 
   textWrapper: {
     backgroundColor: "white",
-    paddingHorizontal: 10,
-    height: 100,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "gray",
+    borderRadius: 17,
+  },
+
+  buttonStyle: {
+    // backgroundColor: "pink",
     alignItems: "center",
     justifyContent: "center",
     alignContent: "center",
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: "gray",
-    borderRadius: 17,
+    marginBottom: -4,
+  },
+
+  textStyle: {
+    fontSize: 16,
+    lineHeight: 24,
+    // backgroundColor: "blue",
   },
 });

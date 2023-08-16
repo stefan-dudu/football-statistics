@@ -2,6 +2,8 @@ import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import React, { useState, useEffect } from "react";
 import apiSports from "../../api/api-sports";
 import { COLORS } from "../../utils/colors";
+import LimitAlert from "../settingsScreens/LimitAlert";
+import LoadingScreen from "../settingsScreens/LoadingScreen";
 
 const Head2Head = ({ homeTeamId, awayTeamId }) => {
   const [loading, setLoading] = useState(true);
@@ -27,7 +29,7 @@ const Head2Head = ({ homeTeamId, awayTeamId }) => {
   };
 
   useEffect(() => {
-    // getFixturesH2H();
+    getFixturesH2H();
   }, []);
 
   const h2h = h2hData?.response?.map((el) => {
@@ -87,7 +89,8 @@ const Head2Head = ({ homeTeamId, awayTeamId }) => {
     <View style={styles.parentWrapper}>
       {loading ? (
         // Show a loading spinner or message while waiting for data
-        <Text>Loading...</Text>
+        // <Text>Loading...</Text>
+        <LoadingScreen />
       ) : h2hData ? (
         // Render the data when it's available
         <View>
@@ -99,7 +102,7 @@ const Head2Head = ({ homeTeamId, awayTeamId }) => {
       ) : // <Text> If all works fine</Text>
       isError ? (
         // Handle the case when no data is available or an error occurred
-        <Text>{isError}</Text>
+        <LimitAlert />
       ) : (
         // Handle the case when no data is available or an error occurred
         <Text>Some other error</Text>

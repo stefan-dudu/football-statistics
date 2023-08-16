@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import React, { useState } from "react";
 import { COLORS } from "../../../utils/colors";
 import { AntDesign } from "@expo/vector-icons";
@@ -27,32 +27,45 @@ const OverviewTab = ({ data }) => {
 
   return (
     <View>
-      <Text style={styles.textStyle}>
-        <AntDesign name="idcard" size={24} /> Prenume :{" "}
-        <Text style={styles.accentText}>{data.firstname}</Text>
-      </Text>
-      <Text style={styles.textStyle}>
-        <AntDesign name="idcard" size={24} /> Nume:{" "}
-        <Text style={styles.accentText}>{data.lastname}</Text>
-      </Text>
-      <Text style={styles.textStyle}>
-        <Feather name="calendar" size={24} /> Varsta:{" "}
-        <Text style={styles.accentText}>{data.age} ani</Text>
-      </Text>
-      <Text style={styles.textStyle}>
-        <FontAwesome name="birthday-cake" size={24} /> Data nasterii:{" "}
-        <Text style={styles.accentText}>{data.birth.date}</Text>
-      </Text>
-      <Text style={styles.textStyle}>
-        <MaterialIcons name="place" size={24} /> Locul nasterii:{" "}
-        <Text style={styles.accentText}>
-          {data.birth.place}, {data.birth.country}
-        </Text>
-      </Text>
-
-      <View style={styles.nationalitateWrapper}>
+      <View style={styles.rowWrapper}>
+        <AntDesign name="idcard" size={24} color={COLORS.mainGreen} />
         <Text style={styles.textStyle}>
-          <AntDesign name="flag" size={24} /> Nationalitate:{" "}
+          Prenume : <Text style={styles.accentText}>{data.firstname}</Text>
+        </Text>
+      </View>
+      <View style={styles.rowWrapper}>
+        <AntDesign name="idcard" size={24} color={COLORS.mainGreen} />
+        <Text style={styles.textStyle}>
+          Nume: <Text style={styles.accentText}>{data.lastname}</Text>
+        </Text>
+      </View>
+      <View style={styles.rowWrapper}>
+        <Feather name="calendar" size={24} color={COLORS.mainGreen} />
+        <Text style={styles.textStyle}>
+          Varsta: <Text style={styles.accentText}>{data.age} ani</Text>
+        </Text>
+      </View>
+      <View style={styles.rowWrapper}>
+        <FontAwesome name="birthday-cake" size={24} color={COLORS.mainGreen} />
+        <Text style={styles.textStyle}>
+          Data nasterii:{" "}
+          <Text style={styles.accentText}>{data.birth.date}</Text>
+        </Text>
+      </View>
+      <View style={styles.rowWrapper}>
+        <MaterialIcons name="place" size={24} color={COLORS.mainGreen} />
+        <Text style={styles.textStyle}>
+          Locul nasterii:{" "}
+          <Text style={styles.accentText}>
+            {data.birth.place}, {data.birth.country}
+          </Text>
+        </Text>
+      </View>
+
+      <View style={styles.rowWrapper}>
+        <AntDesign name="flag" size={24} color={COLORS.mainGreen} />
+        <Text style={styles.textStyle}>
+          Nationalitate:{" "}
           <Text style={styles.accentText}>{data.nationality} </Text>
         </Text>
         <Image
@@ -61,18 +74,22 @@ const OverviewTab = ({ data }) => {
           source={{ uri: countryFlag }}
         />
       </View>
-
-      <Text style={styles.textStyle}>
-        <MaterialIcons name="height" size={24} /> Inaltime:{" "}
-        <Text style={styles.accentText}>{data.height}</Text>
-      </Text>
-      <Text style={styles.textStyle}>
-        <FontAwesome5 name="weight-hanging" size={24} /> Greutate:{" "}
-        <Text style={styles.accentText}>{data.weight}</Text>
-      </Text>
-      {/* <Text style={styles.textStyle}>
-        Accidentat: <Text style={styles.accentText}>{data.injured}</Text>
-      </Text> */}
+      <View style={styles.rowWrapper}>
+        <MaterialIcons name="height" size={24} color={COLORS.mainGreen} />
+        <Text style={styles.textStyle}>
+          Inaltime: <Text style={styles.accentText}>{data.height}</Text>
+        </Text>
+      </View>
+      <View style={styles.rowWrapper}>
+        <FontAwesome5
+          name="weight-hanging"
+          size={24}
+          color={COLORS.mainGreen}
+        />
+        <Text style={styles.textStyle}>
+          Greutate: <Text style={styles.accentText}>{data.weight}</Text>
+        </Text>
+      </View>
     </View>
   );
 };
@@ -84,10 +101,11 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: 16,
     color: COLORS.mediumGray,
-    marginLeft: 5,
+    marginLeft: 10,
     // marginBottom: 20,
-    paddingVertical: 10,
+
     // backgroundColor: "lightgreen",
+    // borderWidth: 2,
   },
 
   accentText: {
@@ -100,12 +118,19 @@ const styles = StyleSheet.create({
     height: 50,
   },
 
-  nationalitateWrapper: {
-    // backgroundColor: "pink",
+  rowWrapper: {
+    // backgroundColor: COLORS.lightGray,
     flexDirection: "row",
     alignItems: "center",
     alignContent: "center",
     textAlign: "center",
     verticalAlign: "center",
+    width: Dimensions.get("window").width * 0.92,
+    borderWidth: 1,
+    borderColor: COLORS.lightGreen,
+    borderRadius: 16,
+    marginVertical: 10,
+    paddingVertical: 10,
+    paddingLeft: 10,
   },
 });

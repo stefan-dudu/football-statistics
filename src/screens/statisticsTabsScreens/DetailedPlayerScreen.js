@@ -14,16 +14,50 @@ import { COLORS } from "../../utils/colors";
 import playerDetaliedDataDummy from "../../api/DummyData/playerDetaliedDataDummy";
 import OverviewTab from "./PlayerStats/OverviewTab";
 import PlayerStatsTab from "./PlayerStats/PlayerStatsTab";
+import apiSports from "../../api/api-sports";
+import LoadingScreen from "../settingsScreens/LoadingScreen";
 
-const DetailedPlayerScreen = (params) => {
-  const playerData = params.route.params.params;
+const DetailedPlayerScreen = (parameters) => {
+  const topPlayerData = parameters?.route?.params?.TopPlayerData;
+
+  const playerIDtoFetchData = parameters?.route?.params?.playerID;
+  // console.log("playerIDtoFetchData", playerIDtoFetchData);
+
+  // console.log("parameters", parameters?.route?.params?.from);
+
+  // playerIDtoFetchData && console.log("fetch data");
+  // console.log("topPlayerData", topPlayerData);
+
+  const [detailsTab, setDetailsTab] = useState(1);
+  const [playerPosition, setPlayerPosition] = useState("");
+
+  const [loading, setLoading] = useState(true);
+  const [playerData, setPlayerData] = useState(null);
+  const [isError, setIsError] = useState("");
+
+  const getPlayerData = async () => {
+    try {
+      const response = await apiSports.get("/players", {
+        params: {
+          id: playerIDtoFetchData,
+          season: 2023,
+        },
+      });
+      response?.data?.errors?.requests?.includes &&
+        setIsError("Max limit for today been reached");
+
+      // console.log("response?.data", response?.data);
+
+      response?.data.results > 0 && setPlayerData(response?.data.response[0]);
+      setLoading(false);
+    } catch (err) {
+      console.log("error : ", err);
+    }
+  };
 
   // console.log("playerData", playerData);
   // console.log("playerData.statistics[0]", playerData.statistics[0]);
   // console.log("playerDetaliedDataDummy", playerDetaliedDataDummy);
-
-  const [detailsTab, setDetailsTab] = useState(1);
-  const [playerPosition, setPlayerPosition] = useState("");
 
   const scrollY = new Animated.Value(0);
   const HEADER_EXPANDED_HEIGHT = 0;
@@ -41,19 +75,29 @@ const DetailedPlayerScreen = (params) => {
   };
 
   useEffect(() => {
-    if (playerData.statistics[0].games.position === "Attacker") {
+    if (topPlayerData) {
+      setLoading(false);
+      setPlayerData(topPlayerData);
+    }
+    playerIDtoFetchData && getPlayerData();
+  }, [topPlayerData, playerIDtoFetchData]);
+
+  useEffect(() => {
+    if (playerData?.statistics[0].games.position === "Attacker") {
       setPlayerPosition("Atacant");
-    } else if (playerData.statistics[0].games.position === "Midfielder") {
+    } else if (playerData?.statistics[0].games.position === "Midfielder") {
       setPlayerPosition("Mijlocas");
-    } else if (playerData.statistics[0].games.position === "Defender") {
+    } else if (playerData?.statistics[0].games.position === "Defender") {
       setPlayerPosition("Fundas");
-    } else if (playerData.statistics[0].games.position === "Goalkeeper") {
+    } else if (playerData?.statistics[0].games.position === "Goalkeeper") {
       setPlayerPosition("Portar");
     }
-  }, []);
+  }, [playerData]);
 
-  const StatsTab = <OverviewTab data={playerData.player} />;
-  const StatsTab2 = <PlayerStatsTab data={playerData.statistics} />;
+  // console.log("playerData", playerData?.statistics[0].games);
+
+  const StatsTab = <OverviewTab data={playerData?.player} />;
+  const StatsTab2 = <PlayerStatsTab data={playerData?.statistics} />;
   const TopComponent = () => {
     return (
       <View style={styles.topComponentWrapper}>
@@ -61,11 +105,13 @@ const DetailedPlayerScreen = (params) => {
           <Image
             style={styles.playerPicture}
             // source={require("../../../assets/neymar.png")}
-            source={{ uri: playerData.player.photo }}
+            source={{ uri: playerData?.player.photo }}
           />
         </View>
         <View style={styles.topRightWrapper}>
-          <Text style={styles.playerNameTopCard}>{playerData.player.name}</Text>
+          <Text style={styles.playerNameTopCard}>
+            {playerData?.player.name}
+          </Text>
           <Text style={styles.playerPositionTopCard}>
             {/* {playerData.statistics[0].games.position} */}
             {playerPosition}
@@ -75,7 +121,7 @@ const DetailedPlayerScreen = (params) => {
           <Image
             style={styles.teamLogo}
             // source={require("../../../assets/neymar.png")}
-            source={{ uri: playerData.statistics[0].team.logo }}
+            source={{ uri: playerData?.statistics[0].team.logo }}
           />
         </View>
       </View>
@@ -84,53 +130,70 @@ const DetailedPlayerScreen = (params) => {
 
   return (
     <View style={styles.container}>
-      <Animated.View
-        style={{
-          height: headerHeight,
-          width: SCREEN_WIDTH,
-          position: "absolute",
-          top: 0,
-          left: 0,
-        }}
-      />
-      <ScrollView
-        contentContainerStyle={{
-          padding: 8,
-          paddingTop: HEADER_EXPANDED_HEIGHT,
-        }}
-        onScroll={Animated.event(
-          [
-            {
-              nativeEvent: {
-                contentOffset: {
-                  y: scrollY,
-                },
-              },
-            },
-          ],
-          { useNativeDriver: false }
-        )}
-        scrollEventThrottle={16}
-      >
-        <ScreenHeader />
-        <View style={styles.topCard}>
-          <TopComponent />
-        </View>
-        <View style={styles.bottomWrapper}>
-          <CustomSwitch
-            selectionMode={1}
-            option1={"General"}
-            option2={"Statistici"}
-            // option3={"Transfers"}
-            // option4={"?"}
-            onSelectSwitch={onSelectSwitch}
+      {loading ? (
+        // Show a loading spinner or message while waiting for data
+        // <Text>Loading...</Text>
+        <LoadingScreen />
+      ) : playerData ? (
+        // Render the data when it's available
+        <>
+          <Animated.View
+            style={{
+              height: headerHeight,
+              width: SCREEN_WIDTH,
+              position: "absolute",
+              top: 0,
+              left: 0,
+            }}
           />
-          <View style={styles.resultsContainer}>
-            {detailsTab == 1 && <Text>{StatsTab}</Text>}
-            {detailsTab == 2 && <Text>{StatsTab2}</Text>}
-          </View>
-        </View>
-      </ScrollView>
+          <ScrollView
+            contentContainerStyle={{
+              padding: 8,
+              paddingTop: HEADER_EXPANDED_HEIGHT,
+            }}
+            onScroll={Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    contentOffset: {
+                      y: scrollY,
+                    },
+                  },
+                },
+              ],
+              { useNativeDriver: false }
+            )}
+            scrollEventThrottle={16}
+          >
+            <ScreenHeader
+              shouldGoToParent={!!parameters?.route?.params?.from}
+            />
+            <View style={styles.topCard}>
+              <TopComponent />
+            </View>
+            <View style={styles.bottomWrapper}>
+              <CustomSwitch
+                selectionMode={1}
+                option1={"General"}
+                option2={"Statistici"}
+                // option3={"Transfers"}
+                // option4={"?"}
+                onSelectSwitch={onSelectSwitch}
+              />
+              <View style={styles.resultsContainer}>
+                {detailsTab == 1 && <Text>{StatsTab}</Text>}
+                {detailsTab == 2 && <Text>{StatsTab2}</Text>}
+              </View>
+            </View>
+          </ScrollView>
+        </>
+      ) : isError ? (
+        // Handle the case when no data is available or an error occurred
+        <LimitAlert />
+      ) : (
+        // Handle the case when no data is available or an error occurred
+        <Text>Some other error</Text>
+      )}
     </View>
   );
 };

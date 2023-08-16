@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
 
-const ScreenHeader = () => {
+const ScreenHeader = ({ shouldGoToParent }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.parentWrapper}>
@@ -11,7 +11,11 @@ const ScreenHeader = () => {
         name="chevron-left"
         size={44}
         color="black"
-        onPress={() => navigation.goBack()}
+        onPress={() => {
+          shouldGoToParent
+            ? navigation.navigate("Details")
+            : navigation.goBack();
+        }}
       />
       {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
     </View>

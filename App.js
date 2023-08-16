@@ -71,7 +71,7 @@ const App = ({ navigation }) => {
           component={HomeStack}
           options={{
             headerShown: false,
-            tabBarBadge: 3,
+            // tabBarBadge: 3,
             tabBarBadgeStyle: {
               // backgroundColor: COLORS.mainGreen,
             },

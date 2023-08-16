@@ -19,11 +19,14 @@ import Summary from "../homeTabsScreens/Summary";
 import ScreenHeader from "../../components/ScreenHeader";
 import ScreenHeaderLeague from "../../components/ScreenHeaderLeague";
 import apiSports from "../../api/api-sports";
+import dataForTopCardDummy from "../../api/DummyData/detailScreen/dataForTopCardDummy";
+import statsDataDummy from "../../api/DummyData/detailScreen/statsDataDummy";
+import LimitAlert from "../settingsScreens/LimitAlert";
+import LoadingScreen from "../settingsScreens/LoadingScreen";
 
 const DetailsScreen = (params) => {
   const [detailsTab, setDetailsTab] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [finishedFixtureData, setFinshedFixtureData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [topCardData, setTopCardData] = useState(null);
   const [statisticsData, setStatisticsData] = useState(null);
   const [isError, setIsError] = useState("");
@@ -91,7 +94,7 @@ const DetailsScreen = (params) => {
   useEffect(() => {
     liveMatchFixtureID &&
       console.log("will fetch liveMatchFixtureID data", liveMatchFixtureID);
-    // finishedMatchFixtureID && fetchFinishedFixtureData();
+    finishedMatchFixtureID && fetchFinishedFixtureData();
     // console.log("will fetch finishedMatchFixtureID", finishedMatchFixtureID);
   }, []);
 
@@ -129,7 +132,8 @@ const DetailsScreen = (params) => {
 
         {loading ? (
           // Show a loading spinner or message while waiting for data
-          <Text>Loading...</Text>
+          // <Text>Loading...</Text>
+          <LoadingScreen />
         ) : topCardData ? (
           // Render the data when it's available
           <View>
@@ -139,7 +143,7 @@ const DetailsScreen = (params) => {
         ) : // <Text> If all works fine</Text>
         isError ? (
           // Handle the case when no data is available or an error occurred
-          <Text>{isError}</Text>
+          <LimitAlert />
         ) : (
           // Handle the case when no data is available or an error occurred
           <Text>Some other error</Text>
@@ -147,7 +151,8 @@ const DetailsScreen = (params) => {
 
         {loading ? (
           // Show a loading spinner or message while waiting for data
-          <Text>Loading...</Text>
+          // <Text>Loading...</Text>
+          <LoadingScreen />
         ) : statisticsData ? (
           // Render the data when it's available
           <View style={styles.bottomWrapper}>
@@ -177,7 +182,7 @@ const DetailsScreen = (params) => {
         ) : // <Text> If all works fine</Text>
         isError ? (
           // Handle the case when no data is available or an error occurred
-          <Text>{isError}</Text>
+          <LimitAlert />
         ) : (
           // Handle the case when no data is available or an error occurred
           <Text>Some other error</Text>

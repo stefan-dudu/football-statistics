@@ -10,6 +10,8 @@ import React, { useEffect, useState } from "react";
 import apiSports from "../../api/api-sports";
 import { COLORS } from "../../utils/colors";
 import fixtureSummaryData from "../../api/DummyData/fixtureSummaryData";
+import LimitAlert from "../settingsScreens/LimitAlert";
+import LoadingScreen from "../settingsScreens/LoadingScreen";
 
 const Summary = ({ fixtureID }) => {
   const homeTeamID = 6886;
@@ -39,7 +41,7 @@ const Summary = ({ fixtureID }) => {
   };
 
   useEffect(() => {
-    // getFixtureEvents();
+    getFixtureEvents();
   }, []);
 
   const Timeline = fixtureEvents?.response?.map((el) => {
@@ -276,14 +278,15 @@ const Summary = ({ fixtureID }) => {
 
       {loading ? (
         // Show a loading spinner or message while waiting for data
-        <Text>Loading...</Text>
+        // <Text>Loading...</Text>
+        <LoadingScreen />
       ) : fixtureEvents ? (
         // Render the data when it's available
         <ScrollView>{Timeline}</ScrollView>
       ) : // <Text> If all works fine</Text>
       isError ? (
         // Handle the case when no data is available or an error occurred
-        <Text>{isError}</Text>
+        <LimitAlert />
       ) : (
         // Handle the case when no data is available or an error occurred
         <Text>Some other error</Text>

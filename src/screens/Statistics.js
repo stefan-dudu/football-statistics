@@ -12,13 +12,15 @@ import Superliga23TeamsInformation from "../api/data/Superliga23TeamsInformation
 import { useNavigation } from "@react-navigation/native";
 import ScreenHeader from "../components/ScreenHeader";
 import { COLORS } from "../utils/colors";
+import LimitAlert from "./settingsScreens/LimitAlert";
+import LoadingScreen from "./settingsScreens/LoadingScreen";
 
 const Statistics = (params) => {
   const navigation = useNavigation();
   const clubID = params?.route?.params?.id;
-  console.log("clubID", clubID);
+  // console.log("clubID", clubID);
 
-  const selectedTeamData = Superliga23TeamsInformation.response.filter(
+  const selectedTeamData = Superliga23TeamsInformation?.response.filter(
     (el) => el.team.id === clubID
   );
 
@@ -28,7 +30,7 @@ const Statistics = (params) => {
   const [topAssist, setTopAssist] = useState(null);
   const [topYellowCard, setTopYellowCard] = useState(null);
   const [topRedCard, setTopRedCard] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
   const fetchAllData = async () => {
@@ -81,7 +83,7 @@ const Statistics = (params) => {
   };
 
   useEffect(() => {
-    // fetchAllData();
+    fetchAllData();
   }, []);
 
   return (
@@ -90,7 +92,8 @@ const Statistics = (params) => {
         <View>
           {loading ? (
             // Show a loading spinner or message while waiting for data
-            <Text>Loading...</Text>
+            // <Text>Loading...</Text>
+            <LoadingScreen />
           ) : clubID ? (
             // IF CLUB IS SELECTED SHOW TEAM STATITICS
             <TeamStats params={selectedTeamData} />
@@ -99,10 +102,10 @@ const Statistics = (params) => {
             <LeagueTopPlayers />
           ) : isError ? (
             // Handle the case when no data is available or an error occurred
-            <Text>{isError}</Text>
+            <LimitAlert />
           ) : (
             // Handle the case when no data is available or an error occurred
-            <Text>Some other error</Text>
+            <LoadingScreen />
           )}
         </View>
       </ScrollView>
@@ -113,7 +116,11 @@ const Statistics = (params) => {
 export default Statistics;
 
 const styles = StyleSheet.create({
-  parentWrapper: {},
+  parentWrapper: {
+    flexDirection: "column",
+    justifyContent: "center",
+    width: Dimensions.get("window").width,
+  },
 
   leagueParentWrapper: {
     height: "100%",

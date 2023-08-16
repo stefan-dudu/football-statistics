@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import apiSports from "../api/api-sports";
 import Table from "./testScreens/Table";
 import standingsDummy from "../api/DummyData/standingsDummy";
+import LimitAlert from "./settingsScreens/LimitAlert";
+import LoadingScreen from "./settingsScreens/LoadingScreen";
 
 const Standings = () => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +20,7 @@ const Standings = () => {
         },
       });
 
-      response?.data.errors.requests.includes &&
+      response?.data?.errors?.requests?.includes &&
         setIsError("Max limit for today been reached");
 
       response?.data.results > 0 && setStandingsData(response?.data);
@@ -34,24 +36,25 @@ const Standings = () => {
   // regular season as of july 2023
 
   useEffect(() => {
-    // getStandings();
+    getStandings();
   }, []);
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       {loading ? (
         // Show a loading spinner or message while waiting for data
-        <Text>Loading...</Text>
-      ) : standingsDummy ? (
+        // <Text>Loading...</Text>
+        <LoadingScreen />
+      ) : standingsData ? (
         // Render the data when it's available
-        <Table data={standingsDummy} />
+        <Table data={standingsData} />
       ) : // <Text> If all works fine</Text>
       isError ? (
         // Handle the case when no data is available or an error occurred
-        <Text>{isError}</Text>
+        <LimitAlert />
       ) : (
         // Handle the case when no data is available or an error occurred
-        <Text>Some other error</Text>
+        <LoadingScreen />
       )}
     </View>
   );

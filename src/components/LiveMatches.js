@@ -13,11 +13,12 @@ import { COLORS } from "../utils/colors";
 import { useNavigation } from "@react-navigation/native";
 import liveMatchesDummy from "../api/DummyData/liveMatchesDummy";
 import LimitAlert from "../screens/settingsScreens/LimitAlert";
+import LoadingScreen from "../screens/settingsScreens/LoadingScreen";
 
 const LiveMatches = () => {
   const navigation = useNavigation();
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [liveMatchesData, setLiveMatchesData] = useState(null);
   const [isError, setIsError] = useState("");
 
@@ -25,8 +26,8 @@ const LiveMatches = () => {
     try {
       const response = await apiSports.get("/fixtures", {
         params: {
-          // league: 283,
-          // season: 2023,
+          league: 283,
+          season: 2023,
           live: "all",
         },
       });
@@ -40,8 +41,7 @@ const LiveMatches = () => {
     }
   };
 
-  const matchData = liveMatchesDummy?.response?.map((el, i) => {
-    // const matchData = liveMatchesData?.response?.map((el) => {
+  const matchData = liveMatchesData?.response?.map((el, i) => {
     // console.log("i", i);
     return (
       <TouchableOpacity
@@ -59,15 +59,16 @@ const LiveMatches = () => {
   });
 
   useEffect(() => {
-    // getLiveMatches();
+    getLiveMatches();
   }, []);
 
   return (
     <View style={styles.containerStyle}>
       {loading ? (
         // Show a loading spinner or message while waiting for data
-        <Text>Loading...</Text>
-      ) : liveMatchesDummy ? (
+        // <Text>Loading...</Text>
+        <LoadingScreen />
+      ) : liveMatchesData ? (
         // Render the data when it's available
         <>
           <Text style={styles.textHeader}>Meciuri live ⚽</Text>
@@ -75,10 +76,12 @@ const LiveMatches = () => {
         </>
       ) : isError ? (
         // Handle the case when no data is available or an error occurred
-        <LimitAlert />
+        // <LimitAlert />
+        <Text></Text>
       ) : (
         // Handle the case when no data is available or an error occurred
-        <Text>Some other error</Text>
+        // <Text>Some other error</Text>
+        <Text></Text>
       )}
     </View>
   );
