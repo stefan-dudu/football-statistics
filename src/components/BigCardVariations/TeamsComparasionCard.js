@@ -36,7 +36,7 @@ const TeamsComparasionCard = ({ data }) => {
                 source={{ uri: data?.teams?.home?.logo }}
               />
               <Text style={styles.teamName}>{data?.teams?.home?.name}</Text>
-              <Text style={styles.underTeamType}>Home</Text>
+              <Text style={styles.underTeamType}>Acasă</Text>
             </View>
           </TouchableOpacity>
 
@@ -64,7 +64,7 @@ const TeamsComparasionCard = ({ data }) => {
                 source={{ uri: data.teams.away.logo }}
               />
               <Text style={styles.teamName}>{data?.teams?.away?.name}</Text>
-              <Text style={styles.underTeamType}>Away</Text>
+              <Text style={styles.underTeamType}>Deplasare</Text>
             </View>
           </TouchableOpacity>
         </View>

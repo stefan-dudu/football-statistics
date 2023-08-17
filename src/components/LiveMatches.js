@@ -18,7 +18,7 @@ import LoadingScreen from "../screens/settingsScreens/LoadingScreen";
 const LiveMatches = () => {
   const navigation = useNavigation();
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [liveMatchesData, setLiveMatchesData] = useState(null);
   const [isError, setIsError] = useState("");
 

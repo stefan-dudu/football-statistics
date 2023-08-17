@@ -44,7 +44,7 @@ const Home1stCard = ({ data }) => {
                 <Text style={styles.teamNameStyle}>
                   {data?.teams?.home?.name}
                 </Text>
-                <Text style={styles.underTeamType}>Home</Text>
+                <Text style={styles.underTeamType}>Acasă</Text>
               </View>
             </TouchableOpacity>
 
@@ -76,7 +76,7 @@ const Home1stCard = ({ data }) => {
                 <Text style={styles.teamNameStyle}>
                   {data?.teams?.away?.name}
                 </Text>
-                <Text style={styles.underTeamType}>Away</Text>
+                <Text style={styles.underTeamType}>Deplasare</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   teamLogoStyle: {
     width: 70,
     height: 70,
-    // resizeMode: "stretch",
+    resizeMode: "contain",
   },
 
   weekSideStyle: {

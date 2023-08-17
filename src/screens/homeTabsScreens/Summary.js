@@ -175,7 +175,7 @@ const Summary = ({ fixtureID }) => {
                     {data.detail == "Red Card" && (
                       <Image
                         style={styles.actionImgStyle}
-                        source={require("../../../assets/redCard.png")}
+                        source={require("../../../assets/redCard.jpg")}
                       />
                     )}
                     {data.detail == "Yellow Card" && (

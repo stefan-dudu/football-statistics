@@ -12,6 +12,414 @@ export default liveMatchesDummy = {
   response: [
     {
       fixture: {
+        id: 1049790,
+        referee: "M. Bîrsan",
+        timezone: "UTC",
+        date: "2023-08-06T18:30:00+00:00",
+        timestamp: 1691346600,
+        periods: {
+          first: 1691346600,
+          second: 1691350200,
+        },
+        venue: {
+          id: 12042,
+          name: "Stadionul Steaua",
+          city: "București",
+        },
+        status: {
+          long: "Match Finished",
+          short: "FT",
+          elapsed: 70,
+        },
+      },
+      league: {
+        id: 283,
+        name: "Liga I",
+        country: "Romania",
+        logo: "https://media-3.api-sports.io/football/leagues/283.png",
+        flag: "https://media-1.api-sports.io/flags/ro.svg",
+        season: 2023,
+        round: "Regular Season - 4",
+      },
+      teams: {
+        home: {
+          id: 559,
+          name: "FCSB",
+          logo: "https://media-1.api-sports.io/football/teams/559.png",
+          winner: true,
+        },
+        away: {
+          id: 2246,
+          name: "CFR 1907 Cluj",
+          logo: "https://media-3.api-sports.io/football/teams/2246.png",
+          winner: false,
+        },
+      },
+      goals: {
+        home: 1,
+        away: 0,
+      },
+      score: {
+        halftime: {
+          home: 0,
+          away: 0,
+        },
+        fulltime: {
+          home: 1,
+          away: 0,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+    },
+    {
+      fixture: {
+        id: 1049796,
+        referee: "G. Găman",
+        timezone: "UTC",
+        date: "2023-08-06T15:15:00+00:00",
+        timestamp: 1691334900,
+        periods: {
+          first: 1691334900,
+          second: 1691338500,
+        },
+        venue: {
+          id: 1312,
+          name: "Stadionul Ilie Oană",
+          city: "Ploieşti",
+        },
+        status: {
+          long: "Match Finished",
+          short: "FT",
+          elapsed: 90,
+        },
+      },
+      league: {
+        id: 283,
+        name: "Liga I",
+        country: "Romania",
+        logo: "https://media-3.api-sports.io/football/leagues/283.png",
+        flag: "https://media-1.api-sports.io/flags/ro.svg",
+        season: 2023,
+        round: "Regular Season - 4",
+      },
+      teams: {
+        home: {
+          id: 2598,
+          name: "Petrolul Ploiesti",
+          logo: "https://media-3.api-sports.io/football/teams/2598.png",
+          winner: true,
+        },
+        away: {
+          id: 2596,
+          name: "Farul Constanta",
+          logo: "https://media-1.api-sports.io/football/teams/2596.png",
+          winner: false,
+        },
+      },
+      goals: {
+        home: 3,
+        away: 2,
+      },
+      score: {
+        halftime: {
+          home: 0,
+          away: 0,
+        },
+        fulltime: {
+          home: 3,
+          away: 2,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+    },
+    {
+      fixture: {
+        id: 1049792,
+        referee: "O. Hațegan",
+        timezone: "UTC",
+        date: "2023-08-05T18:30:00+00:00",
+        timestamp: 1691260200,
+        periods: {
+          first: 1691260200,
+          second: 1691263800,
+        },
+        venue: {
+          id: 1320,
+          name: "Stadionul Municipal Gaz Metan",
+          city: "Mediaş",
+        },
+        status: {
+          long: "Match Finished",
+          short: "FT",
+          elapsed: 90,
+        },
+      },
+      league: {
+        id: 283,
+        name: "Liga I",
+        country: "Romania",
+        logo: "https://media-3.api-sports.io/football/leagues/283.png",
+        flag: "https://media-1.api-sports.io/flags/ro.svg",
+        season: 2023,
+        round: "Regular Season - 4",
+      },
+      teams: {
+        home: {
+          id: 2599,
+          name: "Universitatea Cluj",
+          logo: "https://media-2.api-sports.io/football/teams/2599.png",
+          winner: null,
+        },
+        away: {
+          id: 635,
+          name: "Dinamo Bucuresti",
+          logo: "https://media-1.api-sports.io/football/teams/635.png",
+          winner: null,
+        },
+      },
+      goals: {
+        home: 1,
+        away: 1,
+      },
+      score: {
+        halftime: {
+          home: 0,
+          away: 1,
+        },
+        fulltime: {
+          home: 1,
+          away: 1,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+    },
+    {
+      fixture: {
+        id: 1049800,
+        referee: "A. Cojocaru",
+        timezone: "UTC",
+        date: "2023-08-14T17:30:00+00:00",
+        timestamp: 1692034200,
+        periods: {
+          first: 1692034200,
+          second: 1692037800,
+        },
+        venue: {
+          id: 19612,
+          name: "Stadionul Arcul de Triumf",
+          city: "București",
+        },
+        status: {
+          long: "Match Finished",
+          short: "FT",
+          elapsed: 90,
+        },
+      },
+      league: {
+        id: 283,
+        name: "Liga I",
+        country: "Romania",
+        logo: "https://media-3.api-sports.io/football/leagues/283.png",
+        flag: "https://media-1.api-sports.io/flags/ro.svg",
+        season: 2023,
+        round: "Regular Season - 5",
+      },
+      teams: {
+        home: {
+          id: 635,
+          name: "Dinamo Bucuresti",
+          logo: "https://media-2.api-sports.io/football/teams/635.png",
+          winner: true,
+        },
+        away: {
+          id: 2581,
+          name: "FC Botosani",
+          logo: "https://media-3.api-sports.io/football/teams/2581.png",
+          winner: false,
+        },
+      },
+      goals: {
+        home: 1,
+        away: 0,
+      },
+      score: {
+        halftime: {
+          home: 0,
+          away: 0,
+        },
+        fulltime: {
+          home: 1,
+          away: 0,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+    },
+    {
+      fixture: {
+        id: 1049803,
+        referee: "A. Chivulete",
+        timezone: "UTC",
+        date: "2023-08-13T18:30:00+00:00",
+        timestamp: 1691951400,
+        periods: {
+          first: 1691951400,
+          second: 1691955000,
+        },
+        venue: {
+          id: 19516,
+          name: "Superbet Arena-Giulești",
+          city: "București",
+        },
+        status: {
+          long: "Match Finished",
+          short: "FT",
+          elapsed: 90,
+        },
+      },
+      league: {
+        id: 283,
+        name: "Liga I",
+        country: "Romania",
+        logo: "https://media-3.api-sports.io/football/leagues/283.png",
+        flag: "https://media-1.api-sports.io/flags/ro.svg",
+        season: 2023,
+        round: "Regular Season - 5",
+      },
+      teams: {
+        home: {
+          id: 6231,
+          name: "Rapid",
+          logo: "https://media-2.api-sports.io/football/teams/6231.png",
+          winner: false,
+        },
+        away: {
+          id: 2598,
+          name: "Petrolul Ploiesti",
+          logo: "https://media-2.api-sports.io/football/teams/2598.png",
+          winner: true,
+        },
+      },
+      goals: {
+        home: 0,
+        away: 2,
+      },
+      score: {
+        halftime: {
+          home: 0,
+          away: 0,
+        },
+        fulltime: {
+          home: 0,
+          away: 2,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+    },
+    {
+      fixture: {
+        id: 1049802,
+        referee: "I. Kovacs",
+        timezone: "UTC",
+        date: "2023-08-12T18:30:00+00:00",
+        timestamp: 1691865000,
+        periods: {
+          first: 1691865000,
+          second: 1691868600,
+        },
+        venue: {
+          id: 1322,
+          name: "Stadionul Emil Alexandrescu",
+          city: "Iaşi",
+        },
+        status: {
+          long: "Match Finished",
+          short: "FT",
+          elapsed: 90,
+        },
+      },
+      league: {
+        id: 283,
+        name: "Liga I",
+        country: "Romania",
+        logo: "https://media-3.api-sports.io/football/leagues/283.png",
+        flag: "https://media-1.api-sports.io/flags/ro.svg",
+        season: 2023,
+        round: "Regular Season - 5",
+      },
+      teams: {
+        home: {
+          id: 2583,
+          name: "Politehnica Iasi",
+          logo: "https://media-1.api-sports.io/football/teams/2583.png",
+          winner: false,
+        },
+        away: {
+          id: 632,
+          name: "Universitatea Craiova",
+          logo: "https://media-1.api-sports.io/football/teams/632.png",
+          winner: true,
+        },
+      },
+      goals: {
+        home: 1,
+        away: 4,
+      },
+      score: {
+        halftime: {
+          home: 1,
+          away: 0,
+        },
+        fulltime: {
+          home: 1,
+          away: 4,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+    },
+    {
+      fixture: {
         id: 1029995,
         referee: null,
         timezone: "UTC",

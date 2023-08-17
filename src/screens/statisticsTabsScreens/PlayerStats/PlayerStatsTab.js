@@ -151,7 +151,7 @@ const PlayerStatsTab = ({ data }) => {
             <Text style={styles.textStyle}>
               Assisturi:{" "}
               <Text style={styles.accentText}>
-                {data[0].games.assists || "-"}
+                {data[0].goals.assists || "-"}
               </Text>
             </Text>
           </View>

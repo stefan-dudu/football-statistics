@@ -19,7 +19,7 @@ const TopPlayerByCategory = ({ data, playerType }) => {
     return playerType !== "cards" ? (
       <View style={styles.playerMatchDetails}>
         <Text style={styles.playerMatchDetailTitles}>
-          Goals:{" "}
+          Goluri:{" "}
           <Text style={styles.detailsHighlighted}>
             {el.statistics[0].goals.total || "-"}
           </Text>

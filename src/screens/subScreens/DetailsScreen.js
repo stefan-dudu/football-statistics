@@ -160,8 +160,8 @@ const DetailsScreen = (params) => {
             <CustomSwitch
               selectionMode={1}
               option1={"Stats"}
-              option2={"Summary"}
-              option3={"Line-up"}
+              option2={"Sumar"}
+              option3={"Lot"}
               option4={"H2H"}
               onSelectSwitch={onSelectSwitch}
             />

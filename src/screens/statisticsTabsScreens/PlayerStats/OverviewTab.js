@@ -57,7 +57,7 @@ const OverviewTab = ({ data }) => {
         <Text style={styles.textStyle}>
           Locul nasterii:{" "}
           <Text style={styles.accentText}>
-            {data.birth.place}, {data.birth.country}
+            {data.birth.place && data.birth.place + ","} {data.birth.country}
           </Text>
         </Text>
       </View>
@@ -74,22 +74,27 @@ const OverviewTab = ({ data }) => {
           source={{ uri: countryFlag }}
         />
       </View>
-      <View style={styles.rowWrapper}>
-        <MaterialIcons name="height" size={24} color={COLORS.mainGreen} />
-        <Text style={styles.textStyle}>
-          Inaltime: <Text style={styles.accentText}>{data.height}</Text>
-        </Text>
-      </View>
-      <View style={styles.rowWrapper}>
-        <FontAwesome5
-          name="weight-hanging"
-          size={24}
-          color={COLORS.mainGreen}
-        />
-        <Text style={styles.textStyle}>
-          Greutate: <Text style={styles.accentText}>{data.weight}</Text>
-        </Text>
-      </View>
+      {data.height && (
+        <View style={styles.rowWrapper}>
+          <MaterialIcons name="height" size={24} color={COLORS.mainGreen} />
+          <Text style={styles.textStyle}>
+            Inaltime: <Text style={styles.accentText}>{data.height}</Text>
+          </Text>
+        </View>
+      )}
+
+      {data.weight && (
+        <View style={styles.rowWrapper}>
+          <FontAwesome5
+            name="weight-hanging"
+            size={24}
+            color={COLORS.mainGreen}
+          />
+          <Text style={styles.textStyle}>
+            Greutate: <Text style={styles.accentText}>{data.weight}</Text>
+          </Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -102,10 +107,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: COLORS.mediumGray,
     marginLeft: 10,
-    // marginBottom: 20,
-
-    // backgroundColor: "lightgreen",
-    // borderWidth: 2,
+    flexWrap: "wrap",
+    maxWidth: Dimensions.get("window").width * 0.85,
   },
 
   accentText: {

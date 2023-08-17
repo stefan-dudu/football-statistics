@@ -97,24 +97,24 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
   },
-
-  left: {
+  teamWrapper: {
     // flex: 3,
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
-    width: Dimensions.get("window").width * 0.4,
+    width: Dimensions.get("window").width * 0.42,
     height: 100,
     flexWrap: "wrap",
   },
+
   middle: {
     // flex: 1,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     // backgroundColor: "lightyellow",
-    width: Dimensions.get("window").width * 0.2,
+    width: Dimensions.get("window").width * 0.16,
     height: 100,
   },
   right: {
@@ -123,25 +123,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
-    width: Dimensions.get("window").width * 0.4,
+    width: Dimensions.get("window").width * 0.42,
     height: 100,
     flexWrap: "wrap",
   },
 
-  teamWrapper: {
-    // flex: 3,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-    width: Dimensions.get("window").width * 0.4,
-    height: 100,
-    flexWrap: "wrap",
-  },
   teamLogo: {
     width: 50,
     height: 50,
-    resizeMode: "stretch",
+    resizeMode: "contain",
   },
 
   teamName: {

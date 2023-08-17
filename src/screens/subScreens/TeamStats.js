@@ -196,8 +196,8 @@ const TeamStats = ({ params }) => {
             <View style={styles.bottomWrapper}>
               <CustomSwitch
                 selectionMode={1}
-                option1={"Stats"}
-                option2={"Line-up"}
+                option1={"Statistici"}
+                option2={"Echipă"}
                 // option3={"Transfers"}
                 // option4={"?"}
                 onSelectSwitch={onSelectSwitch}
@@ -233,13 +233,7 @@ const styles = StyleSheet.create({
     width: 130,
     height: 130,
     // borderRadius: 50,
-    resizeMode: "stretch",
-  },
-  venueStyle: {
-    // width: 60,
-    // height: 60,
-    // borderRadius: 50,
-    resizeMode: "stretch",
+    resizeMode: "contain",
   },
 
   topCard: {

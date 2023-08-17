@@ -127,7 +127,7 @@ const StatsLineup = ({ teamID }) => {
 
             <View style={styles.playerBottomPart}>
               <Text style={styles.playerName}>{el.name}</Text>
-              <Text style={styles.playerCardGraySubtitle}>{el.position}</Text>
+              {/* <Text style={styles.playerCardGraySubtitle}>{el.position}</Text> */}
             </View>
           </TouchableOpacity>
         </View>
@@ -143,21 +143,21 @@ const StatsLineup = ({ teamID }) => {
       ) : coachData ? (
         // Render the data when it's available
         <View>
-          <Text style={styles.positionTitleStyle}>Coach</Text>
+          <Text style={styles.positionTitleStyle}>Antrenor</Text>
           <CoachCard />
-          <Text style={styles.positionTitleStyle}>Goalkeepers</Text>
+          <Text style={styles.positionTitleStyle}>Portari</Text>
           <View style={styles.categoryWrapper}>
             <PlayerCard position={goalkeepers} />
           </View>
-          <Text style={styles.positionTitleStyle}>Defenders</Text>
+          <Text style={styles.positionTitleStyle}>Fundași</Text>
           <View style={styles.categoryWrapper}>
             <PlayerCard position={defenders} />
           </View>
-          <Text style={styles.positionTitleStyle}>Middfileders</Text>
+          <Text style={styles.positionTitleStyle}>Mijlocași</Text>
           <View style={styles.categoryWrapper}>
             <PlayerCard position={midfielderers} />
           </View>
-          <Text style={styles.positionTitleStyle}>Attcker</Text>
+          <Text style={styles.positionTitleStyle}>Atacanți</Text>
           <View style={styles.categoryWrapper}>
             <PlayerCard position={attackers} />
           </View>
