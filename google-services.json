@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "47451961635",
+    "project_id": "ligascore-9567c",
+    "storage_bucket": "ligascore-9567c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47451961635:android:044cf6efbde14a5de2f496",
+        "android_client_info": {
+          "package_name": "com.LigaScore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47451961635-9kbhs5sdhoquv57ksl1jcjgmil1j789c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrmwN52SXslqb6--zdfB5Nf-ZDGOR-oeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47451961635-9kbhs5sdhoquv57ksl1jcjgmil1j789c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
